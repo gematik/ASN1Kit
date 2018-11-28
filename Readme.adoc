@@ -1,0 +1,16 @@
+= Projekt ASN1Kit für IOS =
+
+Project
+-------
+
+ASN.1 Decoder for Swift
+
+Init
+----
+
+To start working on this project, first run fastlane to setup the Xcode project for you.
+
+```bash
+
+$ bundle install && bundle exec fastlane generate_xcodeproj
+```
