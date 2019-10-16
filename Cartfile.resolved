@@ -1,0 +1,4 @@
+github "gematik/GemCommonsKit" "1.0.2"
+github "Carthage/Commandant" "0.17.0"
+github "Quick/Nimble" "v8.0.1"
+github "SwiftCommon/DataKit" "1.0.1"

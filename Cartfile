@@ -1,0 +1,3 @@
+github "Carthage/Commandant" "0.17.0"
+github "SwiftCommon/DataKit" ~> 1.0
+git "https://build.top.local/source/git/refImpl/mobszen/iOS/GemCommonsKit.git" ~> 1.0

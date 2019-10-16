@@ -1,24 +1,25 @@
 //
-// Created by Arjan Duijzer on 18/04/2017.
-// Copyright (c) 2017 Gematik. All rights reserved.
+//  Copyright (c) 2019 gematik - Gesellschaft für Telematikanwendungen der Gesundheitskarte mbH
+//  
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//  
+//     http://www.apache.org/licenses/LICENSE-2.0
+//  
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
+import DataKit
 import Foundation
 import GemCommonsKit
 
 /**
-    ASN.1 Error type
-*/
-public enum ASN1DecoderError {
-    /// When the byte-stream encountered an unexpected byte or length
-    case malformedEncoding(String)
-}
-
-extension ASN1DecoderError: Error {
-}
-
-/**
-    ASN.1 Decoder implementation according to the X.690-0207 (Abstract Syntax Notation One) specification.
+    ASN.1 (DER) Decoder implementation according to the X.690-0207 (Abstract Syntax Notation One) specification.
 
     For more info, please find the complete
     [X.690-0207.pdf](https://www.itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf) specification.
@@ -34,67 +35,54 @@ public class ASN1Decoder {
 
         - Returns: ASN1Object or nil when parsing failed.
     */
-    public class func decode(asn1 data: Data) -> ASN1Object? {
+    public class func decode(asn1 data: Data) throws -> ASN1Object {
         let scanner = DataScanner(data: data)
 
-        return decode(from: scanner)
+        return try decode(from: scanner)
     }
 
-    private class func decode(from scanner: DataScanner) -> ASN1Object? {
+    class func decode(from scanner: DataScanner) throws -> ASN1Object {
         guard let firstByte = scanner.scan(distance: 1)?[0] else {
-            return nil
+            throw ASN1Error.malformedEncoding("Scanner has no bytes left to decode")
         }
 
         if firstByte == 0x0 {
             DLog("Decoding ASN.1 object bounced unexpected on NULL (0x0) marker")
-            return nil
+            throw ASN1Error.malformedEncoding("Decoding ASN.1 object bounced unexpected on NULL (0x0) marker")
         }
 
-        guard let tagNo = try? decodeTagNumber(from: firstByte, with: scanner) else {
-            DLog("Decoding ASN.1 object could not find the Tag number")
-            return nil
-        }
-
+        let tagNo = try decodeTagNumber(from: firstByte, with: scanner)
         let constructed = (firstByte & ASN1Tag.constructed) != 0x0
+        let length = try decodeLength(from: scanner)
 
-        guard let length = try? decodeLength(from: scanner) else {
-            DLog("Decoding ASN.1 cannot decode length")
-            return nil
+        guard length != -1 else {
+            throw ASN1Error.unsupported("BER indefinite length encoding is unsupported")
         }
 
-        // Application Tag
-        if firstByte & ASN1Tag.application != 0x0 {
-            return createApplicationSpecific(tag: tagNo, length: length, constructed: constructed, scanner: scanner)
-        }
-        // Tagged object
-        if firstByte & ASN1Tag.tagged != 0x0 {
-            return createTaggedObject(tag: tagNo, length: length, constructed: constructed, scanner: scanner)
-        }
-        guard let tag = ASN1Tag(rawValue: UInt8(tagNo)) else {
-            DLog("Decoding ASN.1 Unsupported tag nr: \(tagNo)")
-            return nil
-        }
-        if constructed {
-            return createConstructedObject(tag: tag, length: length, scanner: scanner)
-        } else {
-            return createPrimitive(tag: tag, length: length, scanner: scanner)
-        }
+        return try tagNo.createObject(tag: tagNo, length: length, constructed: constructed, scanner: scanner)
     }
 
-    internal class func decodeLength(from scanner: DataScanner) throws -> Int {
+    class func decodeLength(from scanner: DataScanner) throws -> Int {
         guard let data = scanner.scan(distance: 1) else {
             DLog("Decoding ASN.1 Scanner has no bytes left")
-            throw ASN1DecoderError.malformedEncoding("Scanner has no bytes left")
+            throw ASN1Error.malformedEncoding("Scanner has no bytes left [length]")
         }
 
         let firstByte = data[0]
+        // check for indefinite
+        if firstByte == 0x80 {
+            return -1
+        }
+
         // check for short or long notation
         if firstByte & 0x80 != 0 {
             // long
             let octets = firstByte & 0x7f
-            guard let lengthBytes = scanner.scan(distance: Int(octets)),
-                  let length = lengthBytes.unsignedIntValue else {
-                throw ASN1DecoderError.malformedEncoding("Length data INVALID")
+            guard let lengthBytes = scanner.scan(distance: Int(octets)) else {
+                throw ASN1Error.malformedEncoding("Scanner has insufficient bytes left to decode long-length notation")
+            }
+            guard let length = lengthBytes.unsignedIntValue else {
+                throw ASN1Error.unsupported("Length data invalid(/too long): [0x\(lengthBytes.hexString())]")
             }
             return Int(length)
         } else {
@@ -110,23 +98,30 @@ public class ASN1Decoder {
             - tag: the first byte
             - scanner: The current data and position. Leaving the scanner position ready for the next scan operation
 
-        - Returns: Tuple with the found TagNo and/or the type of the tag
+        - Returns: Enum case with the found TagNo and/or the type of the tag
     */
-    internal class func decodeTagNumber(from tag: UInt8, with scanner: DataScanner) throws -> UInt {
+    class func decodeTagNumber(from tag: UInt8, with scanner: DataScanner) throws -> ASN1DecodedTag {
         // Bottom 5 bits is tagNo
-        let tagNo = tag & 0x1f
-        if tagNo == 0x1f {
+        let tagNo: UInt // = tag & 0x1f
+        if tag & 0x1f == 0x1f {
             // Long notation
             var longTagNo: UInt = 0
             var end = false
-
+            let maxSize = Int(ceil(Double(MemoryLayout<UInt>.size) * 8.0 / 7.0))
+            var idx = 0
             repeat {
                 guard let byte = scanner.scan(distance: 1)?[0] else {
                     DLog("Decoding ASN.1 Scanner has no bytes left")
-                    throw ASN1DecoderError.malformedEncoding("Scanner has no bytes left")
+                    throw ASN1Error.malformedEncoding("Scanner has no bytes left to decode long tag number")
                 }
+                // Overflow check
+                guard idx < maxSize else {
+                    throw ASN1Error.unsupported("ASN1Decoder bounced on too big Tag number (> UInt.max)")
+                }
+                idx += 1
                 end = (byte & 0x80 == 0x0)
                 let value = byte & 0x7f
+
                 if longTagNo == 0 {
                     longTagNo = UInt(value)
                 } else {
@@ -135,105 +130,148 @@ public class ASN1Decoder {
                 }
 
             } while (!end)
-
-            return longTagNo
+            tagNo = longTagNo
         } else {
-            return UInt(tagNo)
+            tagNo = UInt(tag & 0x1f)
         }
+        // Private Tag
+        if tag & ASN1Tag.private == ASN1Tag.private {
+            return .privateTag(tagNo)
+        } else {
+            // Application Tag
+            if tag & ASN1Tag.application == ASN1Tag.application {
+                return .applicationTag(tagNo)
+            }
+            // Tagged object
+            if tag & ASN1Tag.tagged == ASN1Tag.tagged {
+                return .taggedTag(tagNo)
+            }
+        }
+        guard let tag = ASN1Tag(rawValue: UInt8(tagNo)) else {
+            throw ASN1Error.malformedEncoding("Tag value is invalid: [0x\(String(tagNo, radix: 16))]")
+        }
+        return .universal(tag)
     }
 
-    private class func createApplicationSpecific(tag: UInt, length: Int, constructed: Bool, scanner: DataScanner)
-                    -> ASN1ApplicationSpecific? {
-        guard let tagged = createTaggedObject(
-                tag: tag,
-                length: length,
-                constructed: constructed,
-                scanner: scanner
-        ) else {
-            return nil
-        }
-        return ASN1ApplicationSpecificObject(primitive: tagged)
-    }
-
-    private class func createTaggedObject(tag: UInt, length: Int, constructed: Bool, scanner: DataScanner)
-                    -> ASN1TaggedObject? {
+    class func createTaggedObject(tag: ASN1DecodedTag, length: Int, constructed: Bool, scanner: DataScanner) throws
+                    -> ASN1Object {
         if constructed {
-            guard let constructedObject = createConstructedObject(
+            let constructedObject = try createConstructedObject(
                     tag: ASN1Tag.set,
                     length: length,
                     scanner: scanner
-            ) as? ASN1Sequence else {
-                return nil
+            )
+
+            guard constructedObject.constructed else {
+                throw ASN1Error.malformedEncoding("Unexpected type encountered while expecting a constructed tag")
             }
 
-            return ASN1TaggedStructure(
-                    primitive: ASN1Primitive(data: Data.empty, type: .implicit, constructed: true),
-                    tagNo: tag,
-                    objects: constructedObject.items
-            )
+            return ASN1Primitive(data: constructedObject.data, tag: tag)
         } else {
             // Can be implicit null
             guard length > 0 else {
-                return ASN1TaggedStructure(
-                        primitive: ASN1Primitive(data: Data.empty, type: .implicit, constructed: false),
-                        tagNo: tag,
-                        objects: []
+                return ASN1Primitive(
+                        data: .primitive(Data.empty),
+                        tag: tag
                 )
             }
             guard let data = scanner.scan(distance: length) else {
-                return nil
+                throw ASN1Error.malformedEncoding("Scanner has no bytes left [tagged object]")
             }
-            return ASN1TaggedStructure(
-                    primitive: ASN1Primitive(data: data, type: .implicit, constructed: false),
-                    tagNo: tag,
-                    objects: []
-            )
+            // ASN1 tagged object is implicit octetString
+            return ASN1Primitive(data: .primitive(data), tag: tag)
         }
     }
 
-    private class func createConstructedObject(tag: ASN1Tag, length: Int, scanner: DataScanner) -> ASN1Object? {
+    class func createConstructedObject(tag: ASN1Tag, length: Int, scanner: DataScanner) throws -> ASN1Object {
         switch tag {
-        case .set: fallthrough //swiftlint:disable:this no_fallthrough_only
+        case .set:
+            return tag.toConstructed(with: try decodeItems(from: scanner, length: length))
         case .sequence:
-            return createSequence(from: scanner, length: length)
+            return tag.toConstructed(with: try decodeItems(from: scanner, length: length))
         case .octetString:
-            DLog("Decoding ASN.1 CONSTRUCTED Octet String is unsupported")
-            return nil // TODO //swiftlint:disable:this todo
+            return tag.toConstructed(with: try decodeItems(from: scanner, length: length))
+        case .bitString:
+            return tag.toConstructed(with: try decodeItems(from: scanner, length: length))
         case .external:
             DLog("Decoding ASN.1 External Tag is unsupported")
-            return nil // TODO //swiftlint:disable:this todo
-        default: return nil
+            // TODO //swiftlint:disable:this todo
+            throw ASN1Error.unsupported("Decoding ASN.1 External Tag is unsupported")
+        default:
+            throw ASN1Error.unsupported("Decoding tag: [0x\(String(tag.rawValue, radix: 16))] " +
+                    "as a constructed type is unsupported")
         }
     }
 
-    private class func createSequence(from scanner: DataScanner, length: Int) -> ASN1Sequence? {
+    class func decodeItems(from scanner: DataScanner, length: Int) throws -> [ASN1Object] {
         guard let data = scanner.scan(distance: length) else {
-            DLog("Decoding ASN.1 Scanner has no bytes left")
-            return nil
+            DLog("Scanner has no bytes left to decode sequence")
+            throw ASN1Error.malformedEncoding("Scanner has no bytes left to decode sequence")
         }
 
         let sequenceScanner = DataScanner(data: data)
         var items = [ASN1Object]()
 
-        repeat {
-            if let object = decode(from: sequenceScanner) {
-                items.append(object)
-            }
+        while !sequenceScanner.isComplete {
+            let object = try decode(from: sequenceScanner)
+            items.append(object)
+        }
 
-        } while (!sequenceScanner.isComplete)
-
-        let primitive = ASN1Primitive(data: Data.empty, type: .sequence, constructed: true)
-        return ASN1SequenceStruct(primitive: primitive, items: items)
+        return items
     }
 
-    private class func createPrimitive(tag: ASN1Tag, length: Int, scanner: DataScanner) -> ASN1Object? {
+    class func createPrimitive(tag: ASN1Tag, length: Int, scanner: DataScanner) throws -> ASN1Object {
         guard length > 0 else {
-            return ASN1Primitive(data: Data.empty, type: .null, constructed: false)
+            return ASN1Tag.null.toPrimitive(with: Data.empty)
         }
         guard let data = scanner.scan(distance: length) else {
             DLog("Decoding ASN.1 Scanner has no bytes left")
-            return nil
+            throw ASN1Error.malformedEncoding(
+                    "Scanner has no bytes left to decode primitive: [0x\(String(tag.rawValue, radix: 16))]"
+            )
         }
-        return ASN1Primitive(data: data, type: tag, constructed: false)
+        return tag.toPrimitive(with: data)
+    }
+}
+
+extension ASN1Tag {
+    func toPrimitive(with data: Data) -> ASN1Object {
+        return ASN1Primitive(data: .primitive(data), tag: .universal(self))
+    }
+
+    func toConstructed(with items: [ASN1Object]) -> ASN1Object {
+        return ASN1Primitive(data: .constructed(items), tag: .universal(self))
+    }
+}
+
+extension ASN1DecodedTag {
+
+    internal func createObject(tag: ASN1DecodedTag, length len: Int, constructed flag: Bool, scanner: DataScanner)
+    throws -> ASN1Object {
+        switch self {
+        case .applicationTag: fallthrough //swiftlint:disable:this no_fallthrough_only
+        case .taggedTag: fallthrough //swiftlint:disable:this no_fallthrough_only
+        case .privateTag:
+            return try ASN1Decoder.createTaggedObject(
+                    tag: self,
+                    length: len,
+                    constructed: flag,
+                    scanner: scanner
+            )
+        case .universal(let asn1tag):
+            if flag {
+                return try ASN1Decoder.createConstructedObject(
+                        tag: asn1tag,
+                        length: len,
+                        scanner: scanner
+                )
+            } else {
+                return try ASN1Decoder.createPrimitive(
+                        tag: asn1tag,
+                        length: len,
+                        scanner: scanner
+                )
+            }
+        }
     }
 }

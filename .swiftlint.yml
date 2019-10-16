@@ -31,13 +31,24 @@ opt_in_rules:
   - empty_string
   - discouraged_optional_collection
   - closure_end_indentation
+  - file_header
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Package.swift
   - .build/
+  - vendor/
+  - Carthage/
 custom_rules:
   nimble_fail_with_description:
     included: ".*Test\\.swift"
     name: "Fail with description"
     regex: "(Nimble.fail\\(\\))"
     message: "Failures need a description"
+    severity: warning
+  must_not_contain_author:
+    included:
+      - ".*Test\\.swift"
+      - ".*Sources\\.swift"
+    name: "must not contain author"
+    regex: "(\/\/[[:space:]]*Created by)"
+    message: "Source must not contain author"
     severity: warning
