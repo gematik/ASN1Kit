@@ -1,3 +1,6 @@
+# Release 1.0.4
+fix non binary test resources
+
 # Release 1.0.3
 fix binary test resources
 
