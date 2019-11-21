@@ -999,7 +999,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = DerivedData/ASN1Kit/Info.plist;
+				INFOPLIST_FILE = Resources/ASN1Kit_Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.gematik.ti.common.ASN1Kit-iOS";
@@ -1041,7 +1041,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = DerivedData/ASN1Kit/Info.plist;
+				INFOPLIST_FILE = Resources/ASN1Kit_Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.gematik.ti.common.ASN1Kit-macOS";
@@ -1065,7 +1065,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = DerivedData/ASN1Kit/Info.plist;
+				INFOPLIST_FILE = Resources/ASN1Kit_Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.gematik.ti.common.ASN1Kit-iOS";
@@ -1091,7 +1091,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = DerivedData/ASN1Kit/Info.plist;
+				INFOPLIST_FILE = Resources/ASN1Kit_Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.gematik.ti.common.ASN1Kit-macOS";

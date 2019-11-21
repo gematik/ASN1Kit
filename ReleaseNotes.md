@@ -1,3 +1,6 @@
+# Release 1.0.5
+Info.plist added to repo
+
 # Release 1.0.4
 fix non binary test resources
 

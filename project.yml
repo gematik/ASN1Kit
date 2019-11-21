@@ -20,7 +20,7 @@ targets:
     type: framework
     platform: [macOS, iOS]
     info:
-      path: DerivedData/ASN1Kit/Info.plist
+      path: Resources/ASN1Kit_Info.plist
     sources:
       - Sources/ASN1Kit
     dependencies:
