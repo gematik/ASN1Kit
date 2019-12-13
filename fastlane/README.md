@@ -326,7 +326,7 @@ fastlane setup
 ```
 Lane that sets up the SPM/Carthage dependencies and xcodeproj.
 
-This lane calls `resolve_dependencies`, `generate_xcodeproj`
+This lane calls `set_build_env`, `resolve_dependencies`, `generate_xcodeproj`
 
 
 
@@ -334,6 +334,25 @@ This lane calls `resolve_dependencies`, `generate_xcodeproj`
 
 ```
 fastlane setup xcode:/Applications/Xcode-10.app configuration:Release --env ios12_xcode10
+```
+
+###Options
+
+ * **`xcode`**: The path to the Xcode.app to use for this project [default: uses system xcodebuild configuration]. (`G_XCODE`)
+
+
+### set_build_env
+```
+fastlane set_build_env
+```
+Lane that sets up the build environment. E.g. Xcodebuild version
+
+
+
+###Example:
+
+```
+fastlane set_build_env xcode:/Applications/Xcode-10.app
 ```
 
 ###Options

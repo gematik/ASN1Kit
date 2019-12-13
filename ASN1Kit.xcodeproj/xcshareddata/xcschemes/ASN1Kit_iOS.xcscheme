@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1000"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ADF48795950D497705C1D02948F6790C"
+               BlueprintIdentifier = "ADF48795950D497705C1D029"
                BuildableName = "ASN1Kit.framework"
                BlueprintName = "ASN1Kit_iOS"
                ReferencedContainer = "container:ASN1Kit.xcodeproj">
@@ -27,13 +27,14 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "NO"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2642DB693D29AADDF35E61993340CC3C"
+               BlueprintIdentifier = "2642DB693D29AADDF35E6199"
                BuildableName = "ASN1KitTests.xctest"
                BlueprintName = "ASN1KitTests_iOS"
                ReferencedContainer = "container:ASN1Kit.xcodeproj">
@@ -43,7 +44,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ADF48795950D497705C1D02948F6790C"
+            BlueprintIdentifier = "ADF48795950D497705C1D029"
             BuildableName = "ASN1Kit.framework"
             BlueprintName = "ASN1Kit_iOS"
             ReferencedContainer = "container:ASN1Kit.xcodeproj">
@@ -53,6 +54,8 @@
       </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
+      <CodeCoverageTargets>
+      </CodeCoverageTargets>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -67,7 +70,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ADF48795950D497705C1D02948F6790C"
+            BlueprintIdentifier = "ADF48795950D497705C1D029"
             BuildableName = "ASN1Kit.framework"
             BlueprintName = "ASN1Kit_iOS"
             ReferencedContainer = "container:ASN1Kit.xcodeproj">
@@ -88,7 +91,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ADF48795950D497705C1D02948F6790C"
+            BlueprintIdentifier = "ADF48795950D497705C1D029"
             BuildableName = "ASN1Kit.framework"
             BlueprintName = "ASN1Kit_iOS"
             ReferencedContainer = "container:ASN1Kit.xcodeproj">
