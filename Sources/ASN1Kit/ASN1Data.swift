@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2019 gematik GmbH
+// Copyright (c) 2020 gematik GmbH
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ public enum ASN1Data {
     /// Constructed type holding its set/sequence
     case constructed([ASN1Object])
 
-    /// Bytes needed for the primitive or nested objects/tags (including their resp. tag and length sizes)
+    /// Number of bytes needed for the primitive or nested objects/tags (including their resp. tag and length sizes)
     public var length: Int {
         switch self {
         case .primitive(let data):

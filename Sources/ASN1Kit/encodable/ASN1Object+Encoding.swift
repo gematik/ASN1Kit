@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2019 gematik GmbH
+// Copyright (c) 2020 gematik GmbH
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -144,7 +144,9 @@ extension ASN1Data {
             // Write primitive
             if !data.isEmpty {
                 return data.withUnsafeBytes { bytes in
-                    return output.write(bytes, maxLength: data.count)
+                    // swiftlint:disable:next force_unwrapping
+                    let ptr = bytes.baseAddress!.assumingMemoryBound(to: UInt8.self)
+                    return output.write(ptr, maxLength: data.count)
                 }
             } else {
                 // Not writing NULL

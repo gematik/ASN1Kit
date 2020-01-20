@@ -1,0 +1,21 @@
+ifndef::globalConfig[]
+
+:toc-title: Table of Contents
+
+// enable table-of-contents
+:toc:
+:toclevels: 4
+
+:classdia-caption: Class diagram
+:seqdia-caption: Sequence diagram
+
+:source-highlighter: prettify
+
+:imagesdir: ../images
+:imagesoutdir: ../images
+:testdir: ../../Tests
+:sourcedir: ../../Sources
+:plantumldir: ../plantuml
+
+
+endif::globalConfig[]

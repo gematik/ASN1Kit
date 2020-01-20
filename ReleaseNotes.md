@@ -1,3 +1,6 @@
+# Release 1.0.7
+- API documentation on gh-pages branch for GitHub.io page - user guide
+
 # Release 1.0.6
 - update Carthage dependencies
 

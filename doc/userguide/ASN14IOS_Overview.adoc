@@ -1,0 +1,9 @@
+include::config.adoc[]
+
+== Overview
+
+This library can be used for ASN.1 (Abstract Syntax Notation One) encoding/decoding
+using distinguished encoding rules (DER) according to the ITU-T X.690
+
+For more info, please find the complete https://www.itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf[X.690-0207.pdf]
+specification.

@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2019 gematik GmbH
+// Copyright (c) 2020 gematik GmbH
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,14 +21,14 @@ import XCTest
 class DataExtUIntTest: XCTestCase {
     func testDataToUInt() {
         let bytes: [UInt8] = [0x40, 0x00, 0x00, 0x81]
-        let data = Data(bytes: bytes)
+        let data = Data(bytes)
 
         expect(data.unsignedIntValue) == 0x40000081
     }
 
     func testDataToUInt_min() {
         let bytes: [UInt8] = [0x0]
-        let data = Data(bytes: bytes)
+        let data = Data(bytes)
 
         expect(data.unsignedIntValue) == UInt.min
     }
@@ -37,7 +37,7 @@ class DataExtUIntTest: XCTestCase {
         let uintSize = MemoryLayout<UInt>.size
         var data = Data()
         for _ in 0..<uintSize {
-            data.append(Data(bytes: [0xFF]))
+            data.append(Data([0xFF]))
         }
 
         expect(data.unsignedIntValue) == UInt.max
@@ -47,7 +47,7 @@ class DataExtUIntTest: XCTestCase {
         let uintSize = MemoryLayout<UInt>.size + 1
         var data = Data()
         for _ in 0..<uintSize {
-            data.append(Data(bytes: [0xFF]))
+            data.append(Data([0xFF]))
         }
 
         expect(data.unsignedIntValue).to(beNil())

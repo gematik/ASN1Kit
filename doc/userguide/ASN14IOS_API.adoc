@@ -1,0 +1,5 @@
+include::config.adoc[]
+
+== API Documentation
+
+Generated API docs are available at https://gematik.github.io/ASN1Kit.

@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2019 gematik GmbH
+// Copyright (c) 2020 gematik GmbH
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,31 +22,31 @@ import XCTest
 final class DataExtASN1IntTest: XCTestCase {
     func testASN1DataToInt_0x80() {
         //0x80 = -128
-        let data = Data(bytes: [0x80])
+        let data = Data([0x80])
         expect(data.asn1integer) == -128
     }
 
     func testASN1DataToInt_0x0080() {
         //0x0080 = 128
-        let data = Data(bytes: [0x00, 0x80])
+        let data = Data([0x00, 0x80])
         expect(data.asn1integer) == 128
     }
 
     func testASN1DataToInt_0x7FFFFF() {
         //0x7FFFFF = 8388607
-        let data = Data(bytes: [0x7F, 0xFF, 0xFF])
+        let data = Data([0x7F, 0xFF, 0xFF])
         expect(data.asn1integer) == 8388607
     }
 
     func testASN1DataToInt_0xff78() {
         //0xff78 = -136
-        let data = Data(bytes: [0xff, 0x78])
+        let data = Data([0xff, 0x78])
         expect(data.asn1integer) == -136
     }
 
     func testASN1DataToInt_0x800001() {
         //0x800001 = -8388607
-        let data = Data(bytes: [0x80, 0x00, 0x01])
+        let data = Data([0x80, 0x00, 0x01])
         expect(data.asn1integer) == -8388607
     }
 
@@ -54,7 +54,7 @@ final class DataExtASN1IntTest: XCTestCase {
         let size = MemoryLayout<Int>.size
         var bytes = [UInt8](repeating: 0x0, count: size)
         bytes[0] = 0x80
-        let data = Data(bytes: bytes)
+        let data = Data(bytes)
         expect(data.asn1integer) == Int.min
     }
 
@@ -63,7 +63,7 @@ final class DataExtASN1IntTest: XCTestCase {
         let size = MemoryLayout<Int>.size
         var bytes = [UInt8](repeating: 0xff, count: size)
         bytes[0] = 0x80 ^ bytes[0]
-        let data = Data(bytes: bytes)
+        let data = Data(bytes)
         expect(data.asn1integer) == Int.max
     }
 
@@ -74,7 +74,7 @@ final class DataExtASN1IntTest: XCTestCase {
         for idx in 0..<size {
             bytes[idx] = 0x80 | UInt8(idx + 1)
         }
-        let data = Data(bytes: bytes)
+        let data = Data(bytes)
 
         expect {
             data.asn1integer

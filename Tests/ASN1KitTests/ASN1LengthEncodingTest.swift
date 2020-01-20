@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2019 gematik GmbH
+// Copyright (c) 2020 gematik GmbH
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ class ASN1LengthEncodingTest: XCTestCase {
 
         expect(ASN1Primitive.write(length: 3, to: outputStream)) == 1
 
-        let data = Data(bytes: [0x3]) // length = 3
+        let data = Data([0x3]) // length = 3
         expect(outputStream.buffer) == data
     }
 
@@ -35,7 +35,7 @@ class ASN1LengthEncodingTest: XCTestCase {
 
         expect(ASN1Primitive.write(length: 435, to: outputStream)) == 3
 
-        let data = Data(bytes: [0x82, 0x01, 0xb3]) // length = 435
+        let data = Data([0x82, 0x01, 0xb3]) // length = 435
         expect(outputStream.buffer) == data
     }
 

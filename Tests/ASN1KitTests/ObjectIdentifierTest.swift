@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2019 gematik GmbH
+// Copyright (c) 2020 gematik GmbH
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -43,40 +43,40 @@ class ObjectIdentifierTest: XCTestCase {
     }
 
     let encodingTests: [EncodingTestCase] = [
-        ("2.100.3", Data(bytes: [0x6, 0x3, 0x81, 0x34, 0x3]), true),
-        ("0.39", Data(bytes: [0x6, 0x1, 0x27]), true),
-        ("1.0", Data(bytes: [0x6, 0x1, 0x28]), true),
-        ("1.39", Data(bytes: [0x6, 0x1, 0x4f]), true),
-        ("2.0", Data(bytes: [0x6, 0x1, 0x50]), true),
-        ("2.39", Data(bytes: [0x6, 0x1, 0x77]), true),
-        ("2.339", Data(bytes: [0x6, 0x2, 0x83, 0x23]), true),
+        ("2.100.3", Data([0x6, 0x3, 0x81, 0x34, 0x3]), true),
+        ("0.39", Data([0x6, 0x1, 0x27]), true),
+        ("1.0", Data([0x6, 0x1, 0x28]), true),
+        ("1.39", Data([0x6, 0x1, 0x4f]), true),
+        ("2.0", Data([0x6, 0x1, 0x50]), true),
+        ("2.39", Data([0x6, 0x1, 0x77]), true),
+        ("2.339", Data([0x6, 0x2, 0x83, 0x23]), true),
 
-        ("2.339.643", Data(bytes: [0x6, 0x4, 0x83, 0x23, 0x85, 0x03]), true),
-        ("{2 339 643}", Data(bytes: [0x6, 0x4, 0x83, 0x23, 0x85, 0x03]), false),
-        ("urn:oid:2.339.643", Data(bytes: [0x6, 0x4, 0x83, 0x23, 0x85, 0x03]), false),
+        ("2.339.643", Data([0x6, 0x4, 0x83, 0x23, 0x85, 0x03]), true),
+        ("{2 339 643}", Data([0x6, 0x4, 0x83, 0x23, 0x85, 0x03]), false),
+        ("urn:oid:2.339.643", Data([0x6, 0x4, 0x83, 0x23, 0x85, 0x03]), false),
         ("{iso(1) identified-organisation(3) dod(6) internet(1) private(4) enterprise(1)}",
-                Data(bytes: [0x6, 0x5, 0x2b, 0x6, 0x1, 0x4, 0x1]), false),
-        ("2.339.113549", Data(bytes: [0x6, 0x5, 0x83, 0x23, 0x86, 0xf7, 0x0d]), true),
-        ("2.339.49152", Data(bytes: [0x6, 0x5, 0x83, 0x23, 0x83, 0x80, 0x0]), true),
+                Data([0x6, 0x5, 0x2b, 0x6, 0x1, 0x4, 0x1]), false),
+        ("2.339.113549", Data([0x6, 0x5, 0x83, 0x23, 0x86, 0xf7, 0x0d]), true),
+        ("2.339.49152", Data([0x6, 0x5, 0x83, 0x23, 0x83, 0x80, 0x0]), true),
 
-        ("2.16.840.1.101.3.4.3.14", Data(bytes: [0x6, 0x9,
-                                                 0x60, //2.16
-                                                 0x86, 0x48, // 840
-                                                 0x1, // 1
-                                                 0x65, // 101
-                                                 0x3, // 3
-                                                 0x4, // 4
-                                                 0x3, // 3
-                                                 0xe  // 14
-        ]), true),
-        ("1.2.840.10045.4.3.2", Data(bytes: [0x6, 0x8,
-                                             0x2A, // 1.2
-                                             0x86, 0x48, // 840
-                                             0xce, 0x3d, // 10045
-                                             0x4, // 4
-                                             0x3, // 3
-                                             0x2 // 2
-        ]), true)
+        ("2.16.840.1.101.3.4.3.14", Data([0x6, 0x9,
+                                          0x60, //2.16
+                                          0x86, 0x48, // 840
+                                          0x1, // 1
+                                          0x65, // 101
+                                          0x3, // 3
+                                          0x4, // 4
+                                          0x3, // 3
+                                          0xe  // 14
+                                         ]), true),
+        ("1.2.840.10045.4.3.2", Data([0x6, 0x8,
+                                      0x2A, // 1.2
+                                      0x86, 0x48, // 840
+                                      0xce, 0x3d, // 10045
+                                      0x4, // 4
+                                      0x3, // 3
+                                      0x2 // 2
+                                     ]), true)
     ]
 
     func testEncodingParameterized() {

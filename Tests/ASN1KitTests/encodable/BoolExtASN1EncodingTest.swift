@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2019 gematik GmbH
+// Copyright (c) 2020 gematik GmbH
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ import XCTest
 class BoolExtASN1EncodingTest: XCTestCase {
 
     func testBoolEncodingTrue() {
-        let expected = Data(bytes: [0x1, 0x1, 0xff])
+        let expected = Data([0x1, 0x1, 0xff])
         // test encoding
         expect {
             try (true as Bool).asn1encode().serialize()
@@ -34,7 +34,7 @@ class BoolExtASN1EncodingTest: XCTestCase {
     }
 
     func testBoolEncodingFalse() {
-        let expected = Data(bytes: [0x1, 0x1, 0x0])
+        let expected = Data([0x1, 0x1, 0x0])
         // test encoding
         expect {
             try (false as Bool).asn1encode().serialize()
@@ -49,9 +49,9 @@ class BoolExtASN1EncodingTest: XCTestCase {
     func testBoolDecoding() {
         /// (DER encoded, Expected Bool)
         var tests = [(Data, Bool)]()
-        tests.append((Data(bytes: [0x1, 0x1, 0x0]), false))
+        tests.append((Data([0x1, 0x1, 0x0]), false))
         for idx in 1...0xff {
-            tests.append((Data(bytes: [0x1, 0x1, UInt8(idx & 0xff)]), true))
+            tests.append((Data([0x1, 0x1, UInt8(idx & 0xff)]), true))
         }
 
         tests.forEach { test in

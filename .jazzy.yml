@@ -1,5 +1,5 @@
 output: docs
-author: gematik Gesellschaft für Telematikanwendungen der Gesundheitskarte mbH
+author: gematik GmbH
 author_url: http://www.gematik.de
 exclude: /*/internal*
 module: ASN1Kit

@@ -68,6 +68,8 @@ targets:
   ASN1KitTests:
     type: bundle.unit-test
     platform: [macOS,iOS]
+    info:
+      path: Resources/ASN1Kit_Tests_Info.plist
     sources:
       - path: Tests/ASN1KitTests
     dependencies:

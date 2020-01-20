@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2019 gematik GmbH
+// Copyright (c) 2020 gematik GmbH
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -62,7 +62,7 @@ extension Date {
         }
 
         var strFraction = ""
-        let index = separatorIndex.encodedOffset
+        let index = separatorIndex.utf16Offset(in: date)
         for idx in index..<date.count {
             let str = String(date[idx])
             if str.isNumerical {
@@ -123,7 +123,7 @@ extension String {
             guard let index = self.firstIndex(of: ".") else {
                 return true
             }
-            return index.encodedOffset > 10
+            return index.utf16Offset(in: self) > 10
         }
         return false
     }
@@ -134,7 +134,7 @@ extension String {
             guard let index = self.firstIndex(of: ".") else {
                 return true
             }
-            return index.encodedOffset > 12
+            return index.utf16Offset(in: self) > 12
         }
         return false
     }

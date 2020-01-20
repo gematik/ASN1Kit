@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2019 gematik GmbH
+// Copyright (c) 2020 gematik GmbH
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ extension Bool: ASN1CodableType {
     }
 
     public func asn1encode(tag: ASN1DecodedTag? = nil) throws -> ASN1Object {
-        let data = Data(bytes: [(self ? 0xff : 0x0)])
+        let data = Data([(self ? 0xff : 0x0)])
         return ASN1Primitive(data: .primitive(data), tag: tag ?? .universal(.boolean))
     }
 }

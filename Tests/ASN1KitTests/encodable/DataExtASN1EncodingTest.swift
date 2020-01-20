@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2019 gematik GmbH
+// Copyright (c) 2020 gematik GmbH
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,8 +21,8 @@ import XCTest
 class DataExtASN1EncodingTest: XCTestCase {
 
     func testDataEncoding() {
-        let data = Data(bytes: [0x0, 0x1, 0x2, 0x4])
-        let expected = Data(bytes: [0x4, 0x4, 0x0, 0x1, 0x2, 0x4])
+        let data = Data([0x0, 0x1, 0x2, 0x4])
+        let expected = Data([0x4, 0x4, 0x0, 0x1, 0x2, 0x4])
         // test encoding
         expect {
             try data.asn1encode().serialize()
@@ -35,9 +35,9 @@ class DataExtASN1EncodingTest: XCTestCase {
     }
 
     func testTaggedDataEncoding() {
-        let data = Data(bytes: [0x0, 0x1, 0x2, 0x4])
+        let data = Data([0x0, 0x1, 0x2, 0x4])
         // tag 95
-        let expected = Data(bytes: [0x5f, 0x5f, 0x4, 0x0, 0x1, 0x2, 0x4])
+        let expected = Data([0x5f, 0x5f, 0x4, 0x0, 0x1, 0x2, 0x4])
 
         // test encoding
         expect {
@@ -51,7 +51,7 @@ class DataExtASN1EncodingTest: XCTestCase {
     }
 
     func testConstructedDataDecoding() {
-        let data = Data(bytes: [0x0, 0x1, 0x2, 0x4])
+        let data = Data([0x0, 0x1, 0x2, 0x4])
         let object = ASN1Primitive(
                 data: .constructed(
                         [ASN1Primitive(data: .primitive(data), tag: .universal(.octetString))]

@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2019 gematik GmbH
+// Copyright (c) 2020 gematik GmbH
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ final class ASN1DecodedTagEncodingTest: XCTestCase {
         let tag = ASN1DecodedTag.privateTag(0x0)
         expect(tag.write(to: outputStream, constructed: false)) == 1
         let bytesWritten = outputStream.buffer
-        let bytesExpected = Data(bytes: [0xc0])
+        let bytesExpected = Data([0xc0])
 
         expect(bytesWritten) == bytesExpected
         expect {
@@ -49,7 +49,7 @@ final class ASN1DecodedTagEncodingTest: XCTestCase {
         let tag = ASN1DecodedTag.applicationTag(0x1E)
         expect(tag.write(to: outputStream, constructed: true)) == 1
         let bytesWritten = outputStream.buffer
-        let bytesExpected = Data(bytes: [0x7e])
+        let bytesExpected = Data([0x7e])
 
         expect(bytesWritten) == bytesExpected
         expect {
@@ -68,7 +68,7 @@ final class ASN1DecodedTagEncodingTest: XCTestCase {
         let tag = ASN1DecodedTag.applicationTag(0x0)
         expect(tag.write(to: outputStream, constructed: true)) == 1
         let bytesWritten = outputStream.buffer
-        let bytesExpected = Data(bytes: [0x60])
+        let bytesExpected = Data([0x60])
 
         expect(bytesWritten) == bytesExpected
         expect {
@@ -87,7 +87,7 @@ final class ASN1DecodedTagEncodingTest: XCTestCase {
         let tag = ASN1DecodedTag.applicationTag(0x1FF)
         expect(tag.write(to: outputStream, constructed: true)) == 3
         let bytesWritten = outputStream.buffer
-        let bytesExpected = Data(bytes: [0x7f, 0x83, 0x7f])
+        let bytesExpected = Data([0x7f, 0x83, 0x7f])
 
         expect(bytesWritten) == bytesExpected
         expect {
@@ -105,7 +105,7 @@ final class ASN1DecodedTagEncodingTest: XCTestCase {
         let tag = ASN1DecodedTag.applicationTag(9747)
         expect(tag.write(to: outputStream, constructed: true)) == 3
         let bytesWritten = outputStream.buffer
-        let bytesExpected = Data(bytes: [0x7f, 0xcc, 0x13])
+        let bytesExpected = Data([0x7f, 0xcc, 0x13])
         expect(bytesWritten) == bytesExpected
         expect {
             try ASN1Decoder.decodeTagNumber(
@@ -122,7 +122,7 @@ final class ASN1DecodedTagEncodingTest: XCTestCase {
         let tag = ASN1DecodedTag.applicationTag(0xFFFFFF)
         expect(tag.write(to: outputStream, constructed: false)) == 5
         let bytesWritten = outputStream.buffer
-        let bytesExpected = Data(bytes: [0x5f, 0x87, 0xff, 0xff, 0x7f])
+        let bytesExpected = Data([0x5f, 0x87, 0xff, 0xff, 0x7f])
         expect(bytesWritten) == bytesExpected
         expect {
             try ASN1Decoder.decodeTagNumber(
@@ -139,7 +139,7 @@ final class ASN1DecodedTagEncodingTest: XCTestCase {
         let tag = ASN1DecodedTag.applicationTag(0xF7F7F7F7_7F7F7F7F)
         expect(tag.write(to: outputStream, constructed: false)) == 11
         let bytesWritten = outputStream.buffer
-        let bytesExpected = Data(bytes: [0x5f, 0x81, 0xf7, 0xfb, 0xfd, 0xfe, 0xf7, 0xfb, 0xfd, 0xfe, 0x7f])
+        let bytesExpected = Data([0x5f, 0x81, 0xf7, 0xfb, 0xfd, 0xfe, 0xf7, 0xfb, 0xfd, 0xfe, 0x7f])
         expect(bytesWritten) == bytesExpected
         expect {
             try ASN1Decoder.decodeTagNumber(
@@ -156,7 +156,7 @@ final class ASN1DecodedTagEncodingTest: XCTestCase {
         let tag = ASN1DecodedTag.applicationTag(127)
         expect(tag.write(to: outputStream, constructed: true)) == 2
         let bytesWritten = outputStream.buffer
-        let bytesExpected = Data(bytes: [0x7f, 0x7f])
+        let bytesExpected = Data([0x7f, 0x7f])
         expect(bytesWritten) == bytesExpected
         expect {
             try ASN1Decoder.decodeTagNumber(
@@ -173,7 +173,7 @@ final class ASN1DecodedTagEncodingTest: XCTestCase {
         let tag = ASN1DecodedTag.applicationTag(128)
         expect(tag.write(to: outputStream, constructed: true)) == 3
         let bytesWritten = outputStream.buffer
-        let bytesExpected = Data(bytes: [0x7f, 0x81, 0x0])
+        let bytesExpected = Data([0x7f, 0x81, 0x0])
         expect(bytesWritten) == bytesExpected
         expect {
             try ASN1Decoder.decodeTagNumber(
@@ -190,7 +190,7 @@ final class ASN1DecodedTagEncodingTest: XCTestCase {
         let tag = ASN1DecodedTag.applicationTag(255)
         expect(tag.write(to: outputStream, constructed: true)) == 3
         let bytesWritten = outputStream.buffer
-        let bytesExpected = Data(bytes: [0x7f, 0x81, 0x7f])
+        let bytesExpected = Data([0x7f, 0x81, 0x7f])
         expect(bytesWritten) == bytesExpected
         expect {
             try ASN1Decoder.decodeTagNumber(
@@ -207,7 +207,7 @@ final class ASN1DecodedTagEncodingTest: XCTestCase {
         let tag = ASN1DecodedTag.applicationTag(256)
         expect(tag.write(to: outputStream, constructed: true)) == 3
         let bytesWritten = outputStream.buffer
-        let bytesExpected = Data(bytes: [0x7f, 0x82, 0x0])
+        let bytesExpected = Data([0x7f, 0x82, 0x0])
         expect(bytesWritten) == bytesExpected
         expect {
             try ASN1Decoder.decodeTagNumber(
@@ -227,7 +227,7 @@ final class ASN1DecodedTagEncodingTest: XCTestCase {
         let tag = ASN1DecodedTag.applicationTag(0xFFFFFFFF_FFFFFFFF)
         expect(tag.write(to: outputStream, constructed: true)) == 11
         let bytesWritten = outputStream.buffer
-        let bytesExpected = Data(bytes: [0x7f, 0x81, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f])
+        let bytesExpected = Data([0x7f, 0x81, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x7f])
 
         expect(bytesWritten) == bytesExpected
         expect {

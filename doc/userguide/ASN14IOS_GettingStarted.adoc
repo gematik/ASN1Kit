@@ -1,17 +1,16 @@
-== ASN1Kit
-ASN.1 Decoder for Swift
+include::config.adoc[]
 
-=== Getting Started
+== Getting Started
 
 ASN1Kit requires Swift 5.1.
 
-==== Setup for integration:
+=== Setup for integration
 
 - **Carthage:** Put this in your `Cartfile`:
 
     github "gematik/ASN1Kit" ~> 1.0
 
-==== Setup for development
+=== Setup for development
 
 You will need https://bundler.io/[Bundler], https://github.com/yonaskolb/XcodeGen[XcodeGen]
 and https://fastlane.tools[fastlane] to conveniently use the established development environment.

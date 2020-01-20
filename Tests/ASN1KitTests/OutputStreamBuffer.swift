@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2019 gematik GmbH
+// Copyright (c) 2020 gematik GmbH
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,9 +21,11 @@ class OutputStreamBuffer: OutputStream, StreamDelegate {
 
     init(chunkSize: Int = 4096) {
         buffer = Data(capacity: chunkSize)
-        super.init(toBuffer: buffer.withUnsafeMutableBytes {
-            return $0
-        }, capacity: 0)
+        let ptr = buffer.withUnsafeMutableBytes {
+            // swiftlint:disable:next force_unwrapping
+            return $0.baseAddress!.bindMemory(to: UInt8.self, capacity: chunkSize)
+        }
+        super.init(toBuffer: ptr, capacity: 0)
     }
 
     override func write(_ buffer: UnsafePointer<UInt8>, maxLength len: Int) -> Int {

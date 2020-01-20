@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2019 gematik GmbH
+// Copyright (c) 2020 gematik GmbH
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ extension String {
 
         let data = try Data(hex: string)
 
-        return ASN1Primitive(data: .primitive(Data(bytes: [padding]) + data), tag: .universal(.bitString))
+        return ASN1Primitive(data: .primitive(Data([padding]) + data), tag: .universal(.bitString))
     }
 
     /// Parse an ASN.1 bitString into String
@@ -47,12 +47,13 @@ extension String {
         let padding: UInt8 = data[0]
         let length = data.count
 
-        return data.withUnsafeBytes { (bytes: UnsafePointer<UInt8>) -> String in
-            let raw = UnsafeMutableRawPointer(mutating: bytes)
-            var ptr = Data(bytesNoCopy: raw, count: data.count, deallocator: .none)
-            ptr[length - 1] = ptr[length - 1] & (0xff << padding)
+        return data.withUnsafeBytes { bytes in
+            // swiftlint:disable:next force_unwrapping
+            let ptr = UnsafeMutableRawPointer(mutating: bytes.baseAddress!.assumingMemoryBound(to: UInt8.self))
+            var copy = Data(bytesNoCopy: ptr, count: data.count, deallocator: .none)
+            copy[length - 1] = copy[length - 1] & (0xff << padding)
 
-            let string = ptr[1..<ptr.count].hexString()
+            let string = copy[1..<copy.count].hexString()
             if padding > 3 {
                 return string[0..<string.count - 1]
             }

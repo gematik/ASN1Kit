@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2019 gematik GmbH
+// Copyright (c) 2020 gematik GmbH
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -45,7 +45,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
     }
 
     func testASN1DecodeLength_short_notation() {
-        let data = Data(bytes: [0x3]) // length = 3
+        let data = Data([0x3]) // length = 3
         let scanner = DataScanner(data: data)
         expect {
             try ASN1Decoder.decodeLength(from: scanner)
@@ -53,7 +53,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
     }
 
     func testASN1DecodeLength_long_notation() {
-        let data = Data(bytes: [0x82, 0x01, 0xb3]) // length = 435
+        let data = Data([0x82, 0x01, 0xb3]) // length = 435
         let scanner = DataScanner(data: data)
         expect {
             try ASN1Decoder.decodeLength(from: scanner)
@@ -61,7 +61,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
     }
 
     func testASN1DecodeLength_indefinite() {
-        let data = Data(bytes: [0x80, 0x01, 0xb3]) // length = infinite (0x80)
+        let data = Data([0x80, 0x01, 0xb3]) // length = infinite (0x80)
         let scanner = DataScanner(data: data)
         expect {
             try ASN1Decoder.decodeLength(from: scanner)
@@ -73,8 +73,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         let maxSize = MemoryLayout<UInt>.size
         let lengthByte = 0x80 | UInt8(maxSize + 1)
 
-        let data = Data(bytes: [lengthByte,
-                                0x01, 0xb3, 0xff, 0xe1, 0x10, 0x9, 0x8, 0x7, 0x6]) // length = too long for UInt
+        let data = Data([lengthByte, 0x01, 0xb3, 0xff, 0xe1, 0x10, 0x9, 0x8, 0x7, 0x6]) // length = too long for UInt
         let scanner = DataScanner(data: data)
         expect {
             try ASN1Decoder.decodeLength(from: scanner)
@@ -85,7 +84,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
 
     func testASN1DecodeTagNumber_applicationTag_1() {
         // Application tag 0x2
-        let data = Data(bytes: [0x82, 0x01, 0x34]) // tag should be 0x2
+        let data = Data([0x82, 0x01, 0x34]) // tag should be 0x2
         expect {
             try ASN1Decoder.decodeTagNumber(from: 0x62, with: DataScanner(data: data))
         } == .applicationTag(0x2)
@@ -93,7 +92,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
 
     func testASN1DecodeTagNumber_applicationTag_2() {
         // Application tag 0x11
-        let data = Data(bytes: [0x04, 0x3F, 0xFF, 0x2F, 0x06])
+        let data = Data([0x04, 0x3F, 0xFF, 0x2F, 0x06])
         expect {
             try ASN1Decoder.decodeTagNumber(from: 0x51, with: DataScanner(data: data))
         } == .applicationTag(0x11)
@@ -101,7 +100,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
 
     func testASN1DecodeTagNumber_taggedObject_1() {
         // Tagged object
-        let data = Data(bytes: [0x03, 0x01, 0x05, 0x01])
+        let data = Data([0x03, 0x01, 0x05, 0x01])
         expect {
             try ASN1Decoder.decodeTagNumber(from: 0x91, with: DataScanner(data: data))
         } == .taggedTag(0x11)
@@ -109,7 +108,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
 
     func testASN1DecodeTagNumber_taggedObject_2() {
         // Tagged object
-        let data = Data(bytes: [0x81, 0x83])
+        let data = Data([0x81, 0x83])
         expect {
             try ASN1Decoder.decodeTagNumber(from: 0xAB, with: DataScanner(data: data))
         } == .taggedTag(11)
@@ -117,14 +116,14 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
 
     func testASN1DecodeTagNumber_universalTag() {
         // Universal tagged object
-        let data = Data(bytes: [0x81, 0x83])
+        let data = Data([0x81, 0x83])
         expect {
             try ASN1Decoder.decodeTagNumber(from: 0x10, with: DataScanner(data: data))
         } == .universal(ASN1Tag.sequence)
     }
 
     func testASN1DecodeTagNumber_privateTag() {
-        let data = Data(bytes: [0x3, 0x2, 0x1, 03])
+        let data = Data([0x3, 0x2, 0x1, 03])
         let scanner = DataScanner(data: data)
         expect {
             try ASN1Decoder.decodeTagNumber(from: 0xcd, with: scanner)
@@ -133,7 +132,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
 
     func testASN1DecodeTagNumber_long() {
         // Application specific object
-        let data = Data(bytes: [0x4C, 0x13])
+        let data = Data([0x4C, 0x13])
         expect {
             try ASN1Decoder.decodeTagNumber(from: 0x7F, with: DataScanner(data: data))
         } == .applicationTag(76)
@@ -141,7 +140,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
 
     func testASN1DecodeTagNumber_longer() {
         // Application specific object
-        let data = Data(bytes: [0xCC, 0x13])
+        let data = Data([0xCC, 0x13])
         expect {
             try ASN1Decoder.decodeTagNumber(from: 0x7F, with: DataScanner(data: data))
         } == .applicationTag(9747)
@@ -154,7 +153,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         for idx in 0..<size - 1 {
             bytes[idx] = 0x80 | UInt8(idx + 1)
         }
-        let data = Data(bytes: bytes)
+        let data = Data(bytes)
 
         expect {
             try ASN1Decoder.decodeTagNumber(from: 0x7F, with: DataScanner(data: data))
@@ -163,7 +162,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
 
     func testASN1DecodeTagNumber_unsupported_long_notation() {
         // Universal tag with 0x1f > tagNr
-        let data = Data(bytes: [0x1d, 0x2, 0x2, 0x1])
+        let data = Data([0x1d, 0x2, 0x2, 0x1])
         let scanner = DataScanner(data: data)
 
         expect {
@@ -173,7 +172,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
 
     func testASN1DecodeTagNumber_Bool() {
         // Primitive Bool
-        let data = Data(bytes: [0x1, 0xff])
+        let data = Data([0x1, 0xff])
         expect {
             try ASN1Decoder.decodeTagNumber(from: 0x1, with: DataScanner(data: data))
         } == .universal(ASN1Tag.boolean)
@@ -181,7 +180,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
 
     func testASN1DecodeTagNumber_Integer() {
         // Primitive Integer
-        let data = Data(bytes: [0x3, 0x3, 0xd4, 0xff])
+        let data = Data([0x3, 0x3, 0xd4, 0xff])
         expect {
             try ASN1Decoder.decodeTagNumber(from: 0x2, with: DataScanner(data: data))
         } == .universal(ASN1Tag.integer)
@@ -189,7 +188,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
 
     func testASN1DecodeTagNumber_IA5String() {
         // Primitive IA5String
-        let data = Data(bytes: [0x5, 0x53, 0x6d, 0x69, 0x74, 0x68]) // "Smith"
+        let data = Data([0x5, 0x53, 0x6d, 0x69, 0x74, 0x68]) // "Smith"
         expect {
             try ASN1Decoder.decodeTagNumber(from: 0x16, with: DataScanner(data: data))
         } == .universal(ASN1Tag.ia5String)
@@ -197,7 +196,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
 
     func testASN1DecodeTagNumber_OctetString_constructed() {
         // Constructed OctetString
-        let data = Data(bytes: [0x7, 0x4, 0x5, 0x53, 0x6d, 0x69, 0x74, 0x68]) // Constructed Octet "536D697468"
+        let data = Data([0x7, 0x4, 0x5, 0x53, 0x6d, 0x69, 0x74, 0x68]) // Constructed Octet "536D697468"
         expect {
             try ASN1Decoder.decodeTagNumber(from: 0x24, with: DataScanner(data: data))
         } == .universal(ASN1Tag.octetString)
@@ -205,7 +204,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
 
     func testASN1DecodeTagNumber_OctetString() {
         // Primitive OctetString
-        let data = Data(bytes: [0x5, 0x53, 0x6d, 0x69, 0x74, 0x68]) // Octet "536D697468"
+        let data = Data([0x5, 0x53, 0x6d, 0x69, 0x74, 0x68]) // Octet "536D697468"
         expect {
             try ASN1Decoder.decodeTagNumber(from: 0x4, with: DataScanner(data: data))
         } == .universal(ASN1Tag.octetString)
@@ -217,7 +216,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         //  Integer 132
         //  IA5String "Hello"
         // )
-        let data = Data(bytes: [0x6, 0x2, 0x1, 0x84, 0x16, 0x5, 0x48, 0x65, 0x6c, 0x6c, 0x6f])
+        let data = Data([0x6, 0x2, 0x1, 0x84, 0x16, 0x5, 0x48, 0x65, 0x6c, 0x6c, 0x6f])
         expect {
             try ASN1Decoder.decodeTagNumber(from: 0x30, with: DataScanner(data: data))
         } == .universal(ASN1Tag.sequence)
@@ -229,7 +228,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         //  [1] IMPLICIT Integer 105
         //  [2] IMPLICIT Bool false
         // )
-        let data = Data(bytes: [0x6, 0x81, 0x1, 0x69, 0x82, 0x1, 0x0])
+        let data = Data([0x6, 0x81, 0x1, 0x69, 0x82, 0x1, 0x0])
         expect {
             try ASN1Decoder.decodeTagNumber(from: 0x31, with: DataScanner(data: data))
         } == .universal(ASN1Tag.set)
@@ -237,14 +236,14 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
 
     func testASN1DecodeIndefiniteLengthObject() {
         // expect exception for now - unsupported
-        let data = Data(bytes: [0x6, 0x80, 0x40, 0x20, 0x50, 0x0, 0x0])
+        let data = Data([0x6, 0x80, 0x40, 0x20, 0x50, 0x0, 0x0])
         expect {
             try ASN1Decoder.decode(asn1: data)
         }.to(throwError(ASN1Error.unsupported("BER indefinite length encoding is unsupported")))
     }
 
     func testASN1DecodeConstructedObject() {
-        let data = Data(bytes: [0xa2, 0x7, 0x43, 0x5, 0x4A, 0x6f, 0x6e, 0x65, 0x73])
+        let data = Data([0xa2, 0x7, 0x43, 0x5, 0x4A, 0x6f, 0x6e, 0x65, 0x73])
         guard let asn1 = try? ASN1Decoder.decode(asn1: data) else {
             Nimble.fail("Could not decode Constructed object")
             return
@@ -263,7 +262,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
             expect(implicitObject.tagNo) == 3
             expect(implicitObject.length) == 5
             expect(implicitObject.constructed).to(beFalse())
-            expect(implicitObject.data).to(equalASN1(.primitive(Data(bytes: [0x4A, 0x6f, 0x6e, 0x65, 0x73]))))
+            expect(implicitObject.data).to(equalASN1(.primitive(Data([0x4A, 0x6f, 0x6e, 0x65, 0x73]))))
         } else {
             Nimble.fail("No Constructed items")
             return
@@ -277,7 +276,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
                 tag: ASN1DecodedTag.taggedTag(0x15)
         )
 
-        let data = Data(bytes: [0x95, 0x0])
+        let data = Data([0x95, 0x0])
         expect {
             try ASN1Decoder.decode(asn1: data).asEquatable()
         } == expected.asEquatable()
@@ -287,7 +286,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         // implicit null
         let expected: ASN1Object = ASN1Primitive(data: .primitive(Data.empty), tag: .taggedTag(0x45))
 
-        let data = Data(bytes: [0x9f, 0x45, 0x0])
+        let data = Data([0x9f, 0x45, 0x0])
         expect {
             try ASN1Decoder.decode(asn1: data).asEquatable()
         } == expected.asEquatable()
@@ -295,10 +294,10 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
 
     func testASN1DecodeTaggedImplicit() {
         // implicit octetString
-        let octets = Data(bytes: [0x45, 0xee, 0x3e, 0x4])
+        let octets = Data([0x45, 0xee, 0x3e, 0x4])
         let expected: ASN1Object = ASN1Primitive(data: .primitive(octets), tag: .taggedTag(0x1))
 
-        let data = Data(bytes: [0x81, 0x4]) + octets
+        let data = Data([0x81, 0x4]) + octets
         expect {
             try ASN1Decoder.decode(asn1: data).asEquatable()
         } == expected.asEquatable()
@@ -306,10 +305,10 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
 
     func testASN1DecodeTaggedImplicit_long() {
         // implicit octetString
-        let octets = Data(bytes: [0x45, 0xee, 0x3e, 0x4])
+        let octets = Data([0x45, 0xee, 0x3e, 0x4])
         let expected: ASN1Object = ASN1Primitive(data: .primitive(octets), tag: .taggedTag(0x22c5))
 
-        let data = Data(bytes: [0x9f, 0xc5, 0x45, 0x4]) + octets
+        let data = Data([0x9f, 0xc5, 0x45, 0x4]) + octets
         expect {
             try ASN1Decoder.decode(asn1: data).asEquatable()
         } == expected.asEquatable()
@@ -319,13 +318,13 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         //SET {name IA5String, ok BOOLEAN}
         let items = [
             ASN1Primitive(
-                    data: .primitive(Data(bytes: [0x53, 0x6d, 0x69, 0x74, 0x68])),
+                    data: .primitive(Data([0x53, 0x6d, 0x69, 0x74, 0x68])),
                     tag: .universal(.ia5String)
             ),
-            ASN1Primitive(data: .primitive(Data(bytes: [0xff])), tag: .universal(.boolean))
+            ASN1Primitive(data: .primitive(Data([0xff])), tag: .universal(.boolean))
         ]
         let expected = ASN1Primitive(data: .constructed(items), tag: .taggedTag(0x18))
-        let data = Data(bytes: [0xb8, 0xa, 0x16, 0x5, 0x53, 0x6d, 0x69, 0x74, 0x68, 0x1, 0x1, 0xff])
+        let data = Data([0xb8, 0xa, 0x16, 0x5, 0x53, 0x6d, 0x69, 0x74, 0x68, 0x1, 0x1, 0xff])
         expect {
             try ASN1Decoder.decode(asn1: data).asEquatable()
         } == expected.asEquatable()
@@ -335,22 +334,22 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         //SET {name IA5String, ok BOOLEAN}
         let items = [
             ASN1Primitive(
-                    data: .primitive(Data(bytes: [0x53, 0x6d, 0x69, 0x74, 0x68])),
+                    data: .primitive(Data([0x53, 0x6d, 0x69, 0x74, 0x68])),
                     tag: .universal(.ia5String)
             ),
-            ASN1Primitive(data: .primitive(Data(bytes: [0xff])), tag: .universal(.boolean))
+            ASN1Primitive(data: .primitive(Data([0xff])), tag: .universal(.boolean))
         ]
         let expected = ASN1Primitive(data: .constructed(items), tag: .taggedTag(0x3f79))
-        let data = Data(bytes: [0xbf, 0xfe, 0x79, 0xa, 0x16, 0x5, 0x53, 0x6d, 0x69, 0x74, 0x68, 0x1, 0x1, 0xff])
+        let data = Data([0xbf, 0xfe, 0x79, 0xa, 0x16, 0x5, 0x53, 0x6d, 0x69, 0x74, 0x68, 0x1, 0x1, 0xff])
         expect {
             try ASN1Decoder.decode(asn1: data).asEquatable()
         } == expected.asEquatable()
     }
 
     func testASN1DecodePrimitiveBool() {
-        let expected: ASN1Object = ASN1Primitive(data: .primitive(Data(bytes: [0xff])), tag: .universal(.boolean))
+        let expected: ASN1Object = ASN1Primitive(data: .primitive(Data([0xff])), tag: .universal(.boolean))
 
-        let data = Data(bytes: [0x1, 0x1, 0xff])
+        let data = Data([0x1, 0x1, 0xff])
         expect {
             try ASN1Decoder.decode(asn1: data).asEquatable()
         } == expected.asEquatable()
@@ -358,10 +357,10 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
 
     func testASN1DecodePrimitiveIA5String() {
         let expected = ASN1Primitive(
-                data: .primitive(Data(bytes: [0x48, 0x65, 0x6c, 0x6c, 0x6f])),
+                data: .primitive(Data([0x48, 0x65, 0x6c, 0x6c, 0x6f])),
                 tag: .universal(.ia5String)
         )
-        let data = Data(bytes: [0x16, 0x5, 0x48, 0x65, 0x6c, 0x6c, 0x6f])
+        let data = Data([0x16, 0x5, 0x48, 0x65, 0x6c, 0x6c, 0x6f])
         expect {
             try ASN1Decoder.decode(asn1: data).asEquatable()
         } == expected.asEquatable()
@@ -376,10 +375,10 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         //0x800001 = -8388607
 
         let expected = ASN1Primitive(
-                data: .primitive(Data(bytes: [0x1, 0xd5, 0x80])),
+                data: .primitive(Data([0x1, 0xd5, 0x80])),
                 tag: .universal(.integer)
         )
-        let data = Data(bytes: [0x2, 0x3, 0x1, 0xd5, 0x80])
+        let data = Data([0x2, 0x3, 0x1, 0xd5, 0x80])
         expect {
             try ASN1Decoder.decode(asn1: data).asEquatable()
         } == expected.asEquatable()
@@ -390,15 +389,15 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
 
     func testASN1DecodePrimitiveNull() {
         let expected = ASN1Primitive(data: .primitive(Data.empty), tag: .universal(.null))
-        let data = Data(bytes: [0x5, 0x0])
+        let data = Data([0x5, 0x0])
         expect {
             try ASN1Decoder.decode(asn1: data).asEquatable()
         } == expected.asEquatable()
     }
 
     func testASN1DecodePrimitiveOctetString() {
-        let expected = ASN1Primitive(data: .primitive(Data(bytes: [0xdf, 0x0])), tag: .universal(.octetString))
-        let data = Data(bytes: [0x4, 0x2, 0xdf, 0x0])
+        let expected = ASN1Primitive(data: .primitive(Data([0xdf, 0x0])), tag: .universal(.octetString))
+        let data = Data([0x4, 0x2, 0xdf, 0x0])
         expect {
             try ASN1Decoder.decode(asn1: data).asEquatable()
         } == expected.asEquatable()
@@ -407,13 +406,13 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
     func testASN1DecodeConstructedOctetString() {
         let expected = ASN1Primitive(
                 data: .constructed([
-                    ASN1Primitive(data: .primitive(Data(bytes: [0xdf, 0x0])), tag: .universal(.octetString)),
-                    ASN1Primitive(data: .primitive(Data(bytes: [0xef, 0xff])), tag: .universal(.octetString)),
-                    ASN1Primitive(data: .primitive(Data(bytes: [0xcf, 0x7f])), tag: .universal(.octetString))
+                    ASN1Primitive(data: .primitive(Data([0xdf, 0x0])), tag: .universal(.octetString)),
+                    ASN1Primitive(data: .primitive(Data([0xef, 0xff])), tag: .universal(.octetString)),
+                    ASN1Primitive(data: .primitive(Data([0xcf, 0x7f])), tag: .universal(.octetString))
                 ]),
                 tag: .universal(.octetString)
         )
-        let data = Data(bytes: [0x24, 0xc, 0x4, 0x2, 0xdf, 0x0, 0x4, 0x2, 0xef, 0xff, 0x4, 0x2, 0xcf, 0x7f])
+        let data = Data([0x24, 0xc, 0x4, 0x2, 0xdf, 0x0, 0x4, 0x2, 0xef, 0xff, 0x4, 0x2, 0xcf, 0x7f])
         expect {
             try ASN1Decoder.decode(asn1: data).asEquatable()
         } == expected.asEquatable()
@@ -423,13 +422,13 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         //SET {name IA5String, ok BOOLEAN}
         let items = [
             ASN1Primitive(
-                    data: .primitive(Data(bytes: [0x53, 0x6d, 0x69, 0x74, 0x68])),
+                    data: .primitive(Data([0x53, 0x6d, 0x69, 0x74, 0x68])),
                     tag: .universal(.ia5String)
             ),
-            ASN1Primitive(data: .primitive(Data(bytes: [0xff])), tag: .universal(.boolean))
+            ASN1Primitive(data: .primitive(Data([0xff])), tag: .universal(.boolean))
         ]
         let expected = ASN1Primitive(data: .constructed(items), tag: .universal(.set))
-        let data = Data(bytes: [0x31, 0xa, 0x16, 0x5, 0x53, 0x6d, 0x69, 0x74, 0x68, 0x1, 0x1, 0xff])
+        let data = Data([0x31, 0xa, 0x16, 0x5, 0x53, 0x6d, 0x69, 0x74, 0x68, 0x1, 0x1, 0xff])
         expect {
             try ASN1Decoder.decode(asn1: data).asEquatable()
         } == expected.asEquatable()
@@ -439,13 +438,13 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         //SEQUENCE {name IA5String, ok BOOLEAN}
         let items = [
             ASN1Primitive(
-                    data: .primitive(Data(bytes: [0x53, 0x6d, 0x69, 0x74, 0x68])),
+                    data: .primitive(Data([0x53, 0x6d, 0x69, 0x74, 0x68])),
                     tag: .universal(.ia5String)
             ),
-            ASN1Primitive(data: .primitive(Data(bytes: [0xff])), tag: .universal(.boolean))
+            ASN1Primitive(data: .primitive(Data([0xff])), tag: .universal(.boolean))
         ]
         let expected = ASN1Primitive(data: .constructed(items), tag: .universal(.sequence))
-        let data = Data(bytes: [0x30, 0xa, 0x16, 0x5, 0x53, 0x6d, 0x69, 0x74, 0x68, 0x1, 0x1, 0xff])
+        let data = Data([0x30, 0xa, 0x16, 0x5, 0x53, 0x6d, 0x69, 0x74, 0x68, 0x1, 0x1, 0xff])
         expect {
             try ASN1Decoder.decode(asn1: data).asEquatable()
         } == expected.asEquatable()
