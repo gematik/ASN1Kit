@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ASN1Tag Enumeration Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0" />
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Enum/ASN1Tag" class="dashAnchor"></a>
+    <a title="ASN1Tag Enumeration Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p>
+          <a href="../index.html">ASN1Kit Docs</a>
+          <span class="no-mobile"> (80% documented)</span>
+        </p>
+    
+        <p class="header-right">
+          <a href="https://www.github.com/gematik/ASN1Kit">
+            <img src="../img/gh.png"/>
+            <span class="no-mobile">View on GitHub</span>
+          </a>
+        </p>
+    
+      </div>
+    </header>
+    <div id="breadcrumbs-container">
+      <div class="content-wrapper">
+        <p id="breadcrumbs">
+          <span class="no-mobile">
+            <a href="../index.html">ASN1Kit Reference</a>
+            <img id="carat" src="../img/carat.png" />
+          </span>
+          ASN1Tag Enumeration Reference
+        </p>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="article-wrapper">
+        <article class="main-content">
+          <section>
+            <section class="section">
+              <h1>ASN1Tag</h1>
+                <div class="declaration">
+                  <div class="language">
+                    <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ASN1Tag</span> <span class="p">:</span> <span class="kt">UInt8</span></code></pre>
+
+                  </div>
+                </div>
+              <p>ASN.1 Tag implementation according to the X.690-0207 specification</p>
+
+<p>For more information see the
+<a href="https://www.itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf">X.690-0207.pdf</a> specification.</p>
+
+            </section>
+            <section class="section task-group-section">
+              <div class="task-group">
+                <ul>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO8implicityA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/implicit" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO8implicityA2CmF">implicit</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>&lsquo;Placeholder&rsquo; type for Tagged objects</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">implicit</span> <span class="o">=</span> <span class="mh">0x0</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO7booleanyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/boolean" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO7booleanyA2CmF">boolean</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is boolean</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">boolean</span> <span class="o">=</span> <span class="mh">0x1</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO7integeryA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/integer" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO7integeryA2CmF">integer</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is Integer</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">integer</span> <span class="o">=</span> <span class="mh">0x02</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO9bitStringyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/bitString" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO9bitStringyA2CmF">bitString</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is bit string</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">bitString</span> <span class="o">=</span> <span class="mh">0x03</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO11octetStringyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/octetString" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO11octetStringyA2CmF">octetString</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is Octet String (Byte octets as String)</p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code>Data.hexValue</code>
+
+</div>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">octetString</span> <span class="o">=</span> <span class="mh">0x04</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO4nullyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/null" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO4nullyA2CmF">null</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is null object</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">null</span> <span class="o">=</span> <span class="mh">0x05</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO16objectIdentifieryA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/objectIdentifier" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO16objectIdentifieryA2CmF">objectIdentifier</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is Object Identifier</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">objectIdentifier</span> <span class="o">=</span> <span class="mh">0x06</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO8externalyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/external" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO8externalyA2CmF">external</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is External</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    unsupported
+
+</div>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">external</span> <span class="o">=</span> <span class="mh">0x08</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO10enumeratedyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/enumerated" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO10enumeratedyA2CmF">enumerated</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is Enumeration/enumerated</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    unsupported
+
+</div>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">enumerated</span> <span class="o">=</span> <span class="mh">0x0a</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO8sequenceyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/sequence" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO8sequenceyA2CmF">sequence</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is a Sequence of sub-asn1-objects</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">sequence</span> <span class="o">=</span> <span class="mh">0x10</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO3setyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/set" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO3setyA2CmF">set</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is a Set of sub-asn1-objects (Un-ordered sequence)</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="k">set</span> <span class="o">=</span> <span class="mh">0x11</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO13numericStringyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/numericString" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO13numericStringyA2CmF">numericString</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is Numeric String (1, 2, 3, 4, 5, 6, 7, 8, 9, 0, and SPACE)</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    unsupported
+
+</div>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">numericString</span> <span class="o">=</span> <span class="mh">0x12</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO15printableStringyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/printableString" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO15printableStringyA2CmF">printableString</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is a printable string (a-z, A-Z, &lsquo; () +,-.?:/= and SPACE)</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    unsupported
+
+</div>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">printableString</span> <span class="o">=</span> <span class="mh">0x13</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO9t61StringyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/t61String" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO9t61StringyA2CmF">t61String</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>/ Tag is a T61 String</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    unsupported
+
+</div>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">t61String</span> <span class="o">=</span> <span class="mh">0x14</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO14videotexStringyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/videotexString" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO14videotexStringyA2CmF">videotexString</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is Videotex String (CCITT&rsquo;s T.100 and T.101 character sets)</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    unsupported
+
+</div>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">videotexString</span> <span class="o">=</span> <span class="mh">0x15</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO9ia5StringyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/ia5String" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO9ia5StringyA2CmF">ia5String</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is a ia5 String (International ASCII characters (International Alphabet 5))</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">ia5String</span> <span class="o">=</span> <span class="mh">0x16</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO7utcTimeyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/utcTime" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO7utcTimeyA2CmF">utcTime</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is UTC Time</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">utcTime</span> <span class="o">=</span> <span class="mh">0x17</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO15generalizedTimeyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/generalizedTime" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO15generalizedTimeyA2CmF">generalizedTime</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is Generalized Time</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">generalizedTime</span> <span class="o">=</span> <span class="mh">0x18</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO13graphicStringyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/graphicString" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO13graphicStringyA2CmF">graphicString</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is Graphic String (all registered G sets and SPACE)</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    unsupported
+
+</div>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">graphicString</span> <span class="o">=</span> <span class="mh">0x19</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO13visibleStringyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/visibleString" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO13visibleStringyA2CmF">visibleString</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is Visible String (International ASCII printing character sets)</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    unsupported
+
+</div>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">visibleString</span> <span class="o">=</span> <span class="mh">0x1a</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO13generalStringyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/generalString" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO13generalStringyA2CmF">generalString</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is General String (all registered graphic and character sets plus SPACE and DELETE)</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    unsupported
+
+</div>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">generalString</span> <span class="o">=</span> <span class="mh">0x1b</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO15universalStringyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/universalString" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO15universalStringyA2CmF">universalString</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is Universal String (ISO10646 character set)</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">universalString</span> <span class="o">=</span> <span class="mh">0x1c</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO9bmpStringyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/bmpString" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO9bmpStringyA2CmF">bmpString</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is BMP String (Basic Multilingual Plane of ISO/IEC/ITU 10646-1)</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">bmpString</span> <span class="o">=</span> <span class="mh">0x1e</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO10utf8StringyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/utf8String" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO10utf8StringyA2CmF">utf8String</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is UTF8 String (any character from a recognized alphabet (including ASCII control characters)</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">utf8String</span> <span class="o">=</span> <span class="mh">0x0c</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO11relativeOIDyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/relativeOID" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO11relativeOIDyA2CmF">relativeOID</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is Relative OID</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    unsupported
+
+</div>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">relativeOID</span> <span class="o">=</span> <span class="mh">0x0d</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO4timeyA2CmF"></a>
+                      <a name="//apple_ref/swift/Element/time" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO4timeyA2CmF">time</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Tag is TIME</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Added in X.680 in 08/2015
+
+</div>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    unsupported
+
+</div>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">case</span> <span class="n">time</span> <span class="o">=</span> <span class="mh">0x0e</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO9universals5UInt8VvpZ"></a>
+                      <a name="//apple_ref/swift/Variable/universal" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO9universals5UInt8VvpZ">universal</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">universal</span><span class="p">:</span> <span class="kt">UInt8</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO11constructeds5UInt8VvpZ"></a>
+                      <a name="//apple_ref/swift/Variable/constructed" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO11constructeds5UInt8VvpZ">constructed</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">constructed</span><span class="p">:</span> <span class="kt">UInt8</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO11applications5UInt8VvpZ"></a>
+                      <a name="//apple_ref/swift/Variable/application" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO11applications5UInt8VvpZ">application</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UInt8</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO7privates5UInt8VvpZ"></a>
+                      <a name="//apple_ref/swift/Variable/private" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO7privates5UInt8VvpZ">private</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">let</span> <span class="err">`</span><span class="kd">private</span><span class="err">`</span><span class="p">:</span> <span class="kt">UInt8</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO6taggeds5UInt8VvpZ"></a>
+                      <a name="//apple_ref/swift/Variable/tagged" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO6taggeds5UInt8VvpZ">tagged</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">tagged</span><span class="p">:</span> <span class="kt">UInt8</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="task-group">
+                <ul>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO11toPrimitive4withAA0A6Object_p10Foundation4DataV_tF"></a>
+                      <a name="//apple_ref/swift/Method/toPrimitive(with:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO11toPrimitive4withAA0A6Object_p10Foundation4DataV_tF">toPrimitive(with:)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">toPrimitive</span><span class="p">(</span><span class="n">with</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/ASN1Object.html">ASN1Object</a></span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO13toConstructed4withAA0A6Object_pSayAaF_pG_tF"></a>
+                      <a name="//apple_ref/swift/Method/toConstructed(with:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO13toConstructed4withAA0A6Object_pSayAaF_pG_tF">toConstructed(with:)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">toConstructed</span><span class="p">(</span><span class="n">with</span> <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/ASN1Object.html">ASN1Object</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/ASN1Object.html">ASN1Object</a></span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="task-group">
+                <ul>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO13dateFormatterSS10Foundation4DateVc_AGSgSSctSgvp"></a>
+                      <a name="//apple_ref/swift/Property/dateFormatter" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO13dateFormatterSS10Foundation4DateVc_AGSgSSctSgvp">dateFormatter</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">dateFormatter</span><span class="p">:</span> <span class="kt">ASN1DateFormatter</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="task-group">
+                <ul>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7ASN1Kit0A3TagO14stringEncodingSS10FoundationE0E0VSgvp"></a>
+                      <a name="//apple_ref/swift/Property/stringEncoding" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7ASN1Kit0A3TagO14stringEncodingSS10FoundationE0E0VSgvp">stringEncoding</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">stringEncoding</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Encoding</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </section>
+          </section>
+        </article>
+      </div>
+      <div class="nav-wrapper">
+        <nav class="nav-bottom">
+          <ul class="nav-groups">
+            <li class="nav-group-name">
+              <a href="../Classes.html">Classes</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="../Classes/ASN1Decoder.html">ASN1Decoder</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/GeneralizedTimeDateFormatter.html">GeneralizedTimeDateFormatter</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="../Enums.html">Enumerations</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="../Enums/ASN1Data.html">ASN1Data</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Enums/ASN1DecodedTag.html">ASN1DecodedTag</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Enums/ASN1Error.html">ASN1Error</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Enums/ASN1Tag.html">ASN1Tag</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="../Extensions.html">Extensions</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="../Extensions/ASN1Primitive.html">ASN1Primitive</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Extensions/Array.html">Array</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Extensions/Bool.html">Bool</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Extensions/Data.html">Data</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Extensions/Date.html">Date</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Extensions/Int.html">Int</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Extensions/OutputStream.html">OutputStream</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Extensions/Sequence.html">Sequence</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Extensions/String.html">String</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Extensions/String/Encoding.html">– Encoding</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Extensions/StringProtocol.html">StringProtocol</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="../Functions.html">Functions</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="../Functions.html#/s:7ASN1Kit6create3tag4dataAA0A6Object_pAA0A10DecodedTagO_AA0A4DataOtF">create(tag:data:)</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="../Protocols.html">Protocols</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="../Protocols/ASN1DecodableType.html">ASN1DecodableType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/ASN1EncodableType.html">ASN1EncodableType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/ASN1Object.html">ASN1Object</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="../Structs.html">Structures</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="../Structs/ASN1Int.html">ASN1Int</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/ObjectIdentifier.html">ObjectIdentifier</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="../Typealiases.html">Type Aliases</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="../Typealiases.html#/s:7ASN1Kit0A11CodableTypea">ASN1CodableType</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-wrapper">
+        <section id="footer">
+          <p>&copy; 2021 <a class="link" href="http://www.gematik.de" target="_blank" rel="external">gematik GmbH</a>. All rights reserved. (Last updated: 2021-07-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </div>
+    </div>
+  </body>
+</div>
+</html>
