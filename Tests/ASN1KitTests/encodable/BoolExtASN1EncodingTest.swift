@@ -1,14 +1,14 @@
 //
-// Copyright (c) 2020 gematik GmbH
+// Copyright (c) 2021 gematik GmbH
 // 
-// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the Apache License, Version 2.0 (the License);
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 // 
-//    http://www.apache.org/licenses/LICENSE-2.0
+//     http://www.apache.org/licenses/LICENSE-2.0
 // 
 // Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
+// distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
@@ -23,27 +23,19 @@ class BoolExtASN1EncodingTest: XCTestCase {
     func testBoolEncodingTrue() {
         let expected = Data([0x1, 0x1, 0xff])
         // test encoding
-        expect {
-            try (true as Bool).asn1encode().serialize()
-        } == expected
+        expect(try (true as Bool).asn1encode().serialize()) == expected
 
         // test decoding
-        expect {
-            try Bool(from: ASN1Decoder.decode(asn1: expected))
-        } == true
+        expect(try Bool(from: ASN1Decoder.decode(asn1: expected))) == true
     }
 
     func testBoolEncodingFalse() {
         let expected = Data([0x1, 0x1, 0x0])
         // test encoding
-        expect {
-            try (false as Bool).asn1encode().serialize()
-        } == expected
+        expect(try (false as Bool).asn1encode().serialize()) == expected
 
         // test decoding
-        expect {
-            try Bool(from: ASN1Decoder.decode(asn1: expected))
-        } == false
+        expect(try Bool(from: ASN1Decoder.decode(asn1: expected))) == false
     }
 
     func testBoolDecoding() {

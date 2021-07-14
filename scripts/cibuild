@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# scripts/cibuild: Setup environment for CI to run tests. This is primarily
+#                 designed to run on the continuous integration server.
+
+BUILD_TYPE=${1-Release}
+
+set -ev
+
+cd "$(dirname "$0")/.."
+
+echo "CI started at…"
+date "+%H:%M:%S"
+
+# Setup project
+scripts/setup ${BUILD_TYPE}
+
+# Build
+scripts/build ${BUILD_TYPE}
+
+# CI Build
+bundle exec fastlane cibuild configuration:Debug
+
+# CLI
+bundle exec fastlane build_cli configuration:${BUILD_TYPE}
+
+echo "Done"
+date "+%H:%M:%S"

@@ -1,0 +1,61 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Commandant",
+        "repositoryURL": "http://github.com/Carthage/Commandant",
+        "state": {
+          "branch": null,
+          "revision": "a1671cf728db837cf5ec1980a80d276bbba748f6",
+          "version": "0.18.0"
+        }
+      },
+      {
+        "package": "CwlCatchException",
+        "repositoryURL": "https://github.com/mattgallagher/CwlCatchException.git",
+        "state": {
+          "branch": null,
+          "revision": "682841464136f8c66e04afe5dbd01ab51a3a56f2",
+          "version": "2.1.0"
+        }
+      },
+      {
+        "package": "CwlPreconditionTesting",
+        "repositoryURL": "https://github.com/mattgallagher/CwlPreconditionTesting.git",
+        "state": {
+          "branch": null,
+          "revision": "02b7a39a99c4da27abe03cab2053a9034379639f",
+          "version": "2.0.0"
+        }
+      },
+      {
+        "package": "DataKit",
+        "repositoryURL": "https://github.com/SwiftCommon/DataKit.git",
+        "state": {
+          "branch": null,
+          "revision": "08cc443adbe1103ba36e1c187fa313b8e412ad60",
+          "version": "1.1.0"
+        }
+      },
+      {
+        "package": "Nimble",
+        "repositoryURL": "http://github.com/Quick/Nimble",
+        "state": {
+          "branch": null,
+          "revision": "af1730dde4e6c0d45bf01b99f8a41713ce536790",
+          "version": "9.2.0"
+        }
+      },
+      {
+        "package": "GemCommonsKit",
+        "repositoryURL": "https://github.com/gematik/ref-GemCommonsKit",
+        "state": {
+          "branch": "1.2.0",
+          "revision": "699ab9c6813c4c9c6764ee6822bb9c59d8fd23af",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

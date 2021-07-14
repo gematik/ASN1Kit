@@ -1,14 +1,14 @@
 //
-// Copyright (c) 2020 gematik GmbH
+// Copyright (c) 2021 gematik GmbH
 // 
-// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the Apache License, Version 2.0 (the License);
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 // 
-//    http://www.apache.org/licenses/LICENSE-2.0
+//     http://www.apache.org/licenses/LICENSE-2.0
 // 
 // Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
+// distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
@@ -42,28 +42,12 @@ extension String: ASN1CodableType {
     }
 
     public init(from asn1: ASN1Object) throws {
-        switch asn1.tag {
-        case .universal(let tag):
-            switch tag {
-            case .bitString:
-                self.init(String.from(bitString: asn1))
-            default:
-                self.init(try String.from(asn1: asn1))
-            }
-        case .taggedTag: fallthrough //swiftlint:disable:this no_fallthrough_only
-        case .applicationTag: fallthrough //swiftlint:disable:this no_fallthrough_only
-        case .privateTag:
-            self.init(try String.from(asn1: asn1))
-        }
-    }
-
-    private static func from(asn1: ASN1Object) throws -> String {
         guard let encoding = asn1.tag.stringEncoding,
               let data = asn1.data.primitive,
-              let string = String(data: data, encoding: encoding) else {
+              let value = String(data: data, encoding: encoding) else {
             throw ASN1Error.malformedEncoding("Could not decode ASN.1 String [\(String(describing: asn1))]")
         }
-        return string
+        self.init(value)
     }
 }
 
@@ -113,6 +97,8 @@ extension ASN1Tag {
             return .utf32BigEndian
         case .bmpString:
             return .utf16BigEndian
+        case .printableString:
+            return .ascii
         default:
             return nil
         }

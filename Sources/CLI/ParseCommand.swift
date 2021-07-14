@@ -1,14 +1,14 @@
 //
-// Copyright (c) 2020 gematik GmbH
+// Copyright (c) 2021 gematik GmbH
 // 
-// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the Apache License, Version 2.0 (the License);
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 // 
-//    http://www.apache.org/licenses/LICENSE-2.0
+//     http://www.apache.org/licenses/LICENSE-2.0
 // 
 // Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
+// distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
@@ -29,14 +29,22 @@ struct ParseCommand: CommandProtocol {
     let function: String = "Parse ASN.1 encoded file or from cmd-line input"
 
     func run(_ options: Options) -> Result<(), Error> {
-        guard !options.string.isEmpty else {
-            return .failure(.unsupportedMode("No string passed, file is unsupported for the moment"))
+        let file = URL(fileURLWithPath: (options.file as NSString).expandingTildeInPath)
+        let fileContents = try? file.readFileContents()
+        guard !options.string.isEmpty || fileContents != nil else {
+            return .failure(.unsupportedMode("No string or valid file path passed"))
         }
 
         do {
-            let sanitized = options.string.sanitize()
-            let data = try Data(hex: sanitized)
+            let data: Data
+            if let fileContents = fileContents {
+                data = fileContents
+            } else {
+                let sanitized = options.string.sanitize()
+                data = try Data(hex: sanitized)
+            }
             let asn1 = try ASN1Decoder.decode(asn1: data)
+
             print("ASN1: [\(asn1)]")
 
             return .success(())

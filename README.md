@@ -33,30 +33,18 @@ ASN1Kit requires Swift 5.1.
 You will need [Bundler](https://bundler.io/), [XcodeGen](https://github.com/yonaskolb/XcodeGen)
 and [fastlane](https://fastlane.tools) to conveniently use the established development environment.
 
-1.  Update ruby gems necessary for build commands
+1.  Checkout (and build) dependencies and generate the xcodeproject
 
-        $ bundle install --path vendor/gems
+        $ make setup
 
-2.  Checkout (and build) dependencies and generate the xcodeproject
+2.  Build the project
 
-        $ bundle exec fastlane setup
-
-3.  Build the project
-
-        $ bundle exec fastlane build_all [build_mac, build_ios]
+        $ make cibuild
 
 ## Code Samples
 
 Use `ASN1Decoder.decode(asn1:)` to decode serialized data
 and `String(from:)` to get a hex representation of it:
-
-    let expected = "0A3B5F291CD"
-    let serialized = Data([0x23, 0xc, 0x3, 0x3, 0x0, 0x0A, 0x3B, 0x3, 0x5, 0x4, 0x5F, 0x29, 0x1C, 0xD0])
-
-    expect {
-        let asn1 = try ASN1Decoder.decode(asn1: serialized)
-        return try String(from: asn1)
-    } == expected
 
 Construct an `ASN1Object` of your choice and serialize it:
 
@@ -65,17 +53,13 @@ Construct an `ASN1Object` of your choice and serialize it:
     let array = [data, data2]
 
     let expected = Data([0x30, 0xc, 0x4, 0x4, 0x0, 0x1, 0x2, 0x4, 0x4, 0x4, 0x4, 0x3, 0x2, 0x1])
-    expect {
-        try array.asn1encode().serialize()
-    } == expected
+    expect(try array.asn1encode().serialize()) == expected
 
 ASN.1-encode Swift primitives and extract the encoded value(s):
 
     //0x0080 = 128
     let expected = Data([0x00, 0x80])
-    expect {
-        try 128.asn1encode(tag: nil).data.primitive
-    } == expected
+    expect(try 128.asn1encode(tag: nil).data.primitive) == expected
 
 Extract the tag of the first element of a constructed `ASN1Object`:
 
@@ -84,6 +68,4 @@ Extract the tag of the first element of a constructed `ASN1Object`:
     let tag2 = ASN1Primitive(data: .primitive(data), tag: .universal(ASN1Tag.octetString))
     let implicitTag = ASN1Primitive(data: .constructed([tag1, tag2]), tag: .taggedTag(83))
 
-    expect {
-        implicitTag.data.items?.first?.tag
-    } == .taggedTag(3)
+    expect(implicitTag.data.items?.first?.tag) == .taggedTag(3)

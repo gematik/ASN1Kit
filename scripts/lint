@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# scripts/lint: Run lint for application.
+
+set -ev
+
+cd "$(dirname "$0")/.."
+
+[ -z "$DEBUG" ] || set -x
+
+echo "==> Running static analysis…"
+
+swiftlint lint --config .swiftlint.yml --strict --quiet

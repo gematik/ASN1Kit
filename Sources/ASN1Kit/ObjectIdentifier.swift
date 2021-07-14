@@ -1,14 +1,14 @@
 //
-// Copyright (c) 2020 gematik GmbH
+// Copyright (c) 2021 gematik GmbH
 // 
-// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the Apache License, Version 2.0 (the License);
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 // 
-//    http://www.apache.org/licenses/LICENSE-2.0
+//     http://www.apache.org/licenses/LICENSE-2.0
 // 
 // Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
+// distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
@@ -24,6 +24,11 @@ public struct ObjectIdentifier: Equatable, Hashable {
     }
 
     /// Parse ASN.1 OID from String
+    ///
+    /// Supports OID formats: ASN.1 notation (http://oid-info.com/faq.htm#17)
+    /// and dot notation (http://oid-info.com/faq.htm#14)
+    ///
+    /// - Note: does not support OID-IRI notation (http://oid-info.com/faq.htm#iri)
     ///
     /// - Parameters:
     ///     - string: OID encoded string e.g. "1.3.6.1.4.1 ", "{1 3 6 1 4 1}", "urn:oid:1.3.6.1.4.1"
@@ -55,7 +60,7 @@ extension ObjectIdentifier: ASN1CodableType {
     /// - Parameter tag: ignored and set to `.universal(.objectIdentifier)`
     /// - Throws: ASN1Error when SIDs are not Int Parsable
     /// - Returns: The ASN1Primitive from ASN1 serializing
-    public func asn1encode(tag: ASN1DecodedTag?) throws -> ASN1Object {
+    public func asn1encode(tag: ASN1DecodedTag? = nil) throws -> ASN1Object {
         var sids = self.rawValue.split(separator: ".").map(String.init).map(UInt.init)
         guard sids.count > 1 else {
             throw ASN1Error.internalInconsistency("Invalid SID encountered [Empty]")

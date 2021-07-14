@@ -3,7 +3,7 @@ author: gematik GmbH
 author_url: http://www.gematik.de
 exclude: /*/internal*
 module: ASN1Kit
-github_url: http://www.github.com/gematik/ASN1Kit
+github_url: https://www.github.com/gematik/ASN1Kit
 theme: jony
 xcodebuild_arguments:
   - "-project"

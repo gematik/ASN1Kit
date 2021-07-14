@@ -1,14 +1,14 @@
 //
-// Copyright (c) 2020 gematik GmbH
+// Copyright (c) 2021 gematik GmbH
 // 
-// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the Apache License, Version 2.0 (the License);
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 // 
-//    http://www.apache.org/licenses/LICENSE-2.0
+//     http://www.apache.org/licenses/LICENSE-2.0
 // 
 // Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
+// distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
@@ -27,18 +27,8 @@ class ObjectIdentifierTest: XCTestCase {
                        "00001.0", "0.", "1.", "2.", "0.40", "1.40", "1.1.-30", "{}", "{1 -3}"]
 
     func testParsingInvalidOIDsParameterized() {
-        invalidOIDs.forEach { oid in
-            let errors = Nimble.gatherFailingExpectations(silently: true) {
-                expect {
-                    try ObjectIdentifier.from(string: oid)
-                }.to(throwError(errorType: ASN1Error.self))
-            }
-            if !errors.isEmpty {
-                Nimble.fail("OID (parsing): [\(oid)] should have failed!")
-                errors.forEach { assertion in
-                    Nimble.fail(String(describing: assertion))
-                }
-            }
+        for oid in invalidOIDs {
+            expect(try ObjectIdentifier.from(string: oid)).to(throwError())
         }
     }
 
@@ -98,9 +88,7 @@ class ObjectIdentifierTest: XCTestCase {
     }
 
     func encodingTest(oid: String, expected asn1: Data) {
-        expect {
-            try ObjectIdentifier.from(string: oid).asn1encode(tag: nil).serialize()
-        } == asn1
+        expect(try ObjectIdentifier.from(string: oid).asn1encode(tag: nil).serialize()) == asn1
     }
 
     func testDecodingParameterized() {
@@ -119,6 +107,34 @@ class ObjectIdentifierTest: XCTestCase {
                 }
             }
         }
+    }
+
+    func testBrainpoolP256r1OID() throws {
+        let asn1data = Data([0x06, 0x09, 0x2B, 0x24, 0x03, 0x03, 0x02, 0x08, 0x01, 0x01, 0x07])
+        let expectedOid = try ObjectIdentifier.from(string: "1.3.36.3.3.2.8.1.1.7")
+        expect(try ObjectIdentifier(from: ASN1Decoder.decode(asn1: asn1data))) == expectedOid
+        expect { try expectedOid.asn1encode().serialize() } == asn1data
+    }
+
+    func testSecp256primev1OID() throws {
+        let asn1data = Data([0x6, 0x8, 0x2a, 0x86, 0x48, 0xce, 0x3d, 0x03, 0x01, 0x07])
+        let expectedOid = try ObjectIdentifier.from(string: "1 2 840 10045 3 1 7")
+        expect(try ObjectIdentifier(from: ASN1Decoder.decode(asn1: asn1data))) == expectedOid
+        expect { try expectedOid.asn1encode().serialize() } == asn1data
+    }
+
+    func testCreateSEC1ASN1PrivateKeyBrainpoolP256r1() throws {
+        // swiftlint:disable line_length
+        let asn1structure = create(tag: .universal(.sequence), data: ASN1Data.constructed([
+            try (1 as Int).asn1encode(tag: nil),
+            try Data(hex: "83456d98dea3435c166385a4e644ebca588e8a0aa7c811f51fcc736368630206").asn1encode(),
+            create(tag: .taggedTag(0x0), data: try ASN1Data.constructed([ObjectIdentifier.from(string: "1.3.36.3.3.2.8.1.1.7").asn1encode()])),
+            create(tag: .taggedTag(0x1), data: try ASN1Data.constructed([Data(hex: "04ab68e9435dca456983930a62770461ac7f0c5e5dfc6d93032702e32131682480a21e1df599ccd1832037101def5926069de865ee48bbc3ed92da273efe935cc7").asn1bitStringEncode()]))
+        ]))
+
+        let expectedSerializedKey = try Data(hex: "3078020101042083456D98DEA3435C166385A4E644EBCA588E8A0AA7C811F51FCC736368630206A00B06092B2403030208010107A14403420004AB68E9435DCA456983930A62770461AC7F0C5E5DFC6D93032702E32131682480A21E1DF599CCD1832037101DEF5926069DE865EE48BBC3ED92DA273EFE935CC7")
+        // swiftlint:enable line_length
+        expect(try asn1structure.serialize()) == expectedSerializedKey
     }
 
     func decodingTest(oid asn1: Data, expected oid: String) {

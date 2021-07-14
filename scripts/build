@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# scripts/build: Build the application
+
+set -ev
+
+CONFIG=$(echo ${1-debug} | tr '[:upper:]' '[:lower:]')
+MACOSX_DEPLOYMENT_TARGET=${2-'x86_64-apple-macosx10.12'}
+
+cd "$(dirname "$0")/.."
+
+[ -z "$DEBUG" ] || set -x
+
+echo "==> Building…"
+
+swift build -c "${CONFIG}" -Xswiftc "-target" -Xswiftc "${MACOSX_DEPLOYMENT_TARGET}"

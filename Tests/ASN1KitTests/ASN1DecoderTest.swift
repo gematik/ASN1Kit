@@ -1,14 +1,14 @@
 //
-// Copyright (c) 2020 gematik GmbH
+// Copyright (c) 2021 gematik GmbH
 // 
-// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the Apache License, Version 2.0 (the License);
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 // 
-//    http://www.apache.org/licenses/LICENSE-2.0
+//     http://www.apache.org/licenses/LICENSE-2.0
 // 
 // Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
+// distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
@@ -47,25 +47,19 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
     func testASN1DecodeLength_short_notation() {
         let data = Data([0x3]) // length = 3
         let scanner = DataScanner(data: data)
-        expect {
-            try ASN1Decoder.decodeLength(from: scanner)
-        } == 3
+        expect(try ASN1Decoder.decodeLength(from: scanner)) == 3
     }
 
     func testASN1DecodeLength_long_notation() {
         let data = Data([0x82, 0x01, 0xb3]) // length = 435
         let scanner = DataScanner(data: data)
-        expect {
-            try ASN1Decoder.decodeLength(from: scanner)
-        } == 435
+        expect(try ASN1Decoder.decodeLength(from: scanner)) == 435
     }
 
     func testASN1DecodeLength_indefinite() {
         let data = Data([0x80, 0x01, 0xb3]) // length = infinite (0x80)
         let scanner = DataScanner(data: data)
-        expect {
-            try ASN1Decoder.decodeLength(from: scanner)
-        } == -1
+        expect(try ASN1Decoder.decodeLength(from: scanner)) == -1
     }
 
     func testASN1DecodeLength_too_long_notation() {
@@ -75,9 +69,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
 
         let data = Data([lengthByte, 0x01, 0xb3, 0xff, 0xe1, 0x10, 0x9, 0x8, 0x7, 0x6]) // length = too long for UInt
         let scanner = DataScanner(data: data)
-        expect {
-            try ASN1Decoder.decodeLength(from: scanner)
-        }.to(throwError(ASN1Error.unsupported(
+        expect(try ASN1Decoder.decodeLength(from: scanner)).to(throwError(ASN1Error.unsupported(
                 "Length data invalid(/too long): [0x\(data[1..<data.count].hexString())]"
         )))
     }
@@ -85,65 +77,50 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
     func testASN1DecodeTagNumber_applicationTag_1() {
         // Application tag 0x2
         let data = Data([0x82, 0x01, 0x34]) // tag should be 0x2
-        expect {
-            try ASN1Decoder.decodeTagNumber(from: 0x62, with: DataScanner(data: data))
-        } == .applicationTag(0x2)
+        expect(try ASN1Decoder.decodeTagNumber(from: 0x62, with: DataScanner(data: data))) == .applicationTag(0x2)
     }
 
     func testASN1DecodeTagNumber_applicationTag_2() {
         // Application tag 0x11
         let data = Data([0x04, 0x3F, 0xFF, 0x2F, 0x06])
-        expect {
-            try ASN1Decoder.decodeTagNumber(from: 0x51, with: DataScanner(data: data))
-        } == .applicationTag(0x11)
+        expect(try ASN1Decoder.decodeTagNumber(from: 0x51, with: DataScanner(data: data))) == .applicationTag(0x11)
     }
 
     func testASN1DecodeTagNumber_taggedObject_1() {
         // Tagged object
         let data = Data([0x03, 0x01, 0x05, 0x01])
-        expect {
-            try ASN1Decoder.decodeTagNumber(from: 0x91, with: DataScanner(data: data))
-        } == .taggedTag(0x11)
+        expect(try ASN1Decoder.decodeTagNumber(from: 0x91, with: DataScanner(data: data))) == .taggedTag(0x11)
     }
 
     func testASN1DecodeTagNumber_taggedObject_2() {
         // Tagged object
         let data = Data([0x81, 0x83])
-        expect {
-            try ASN1Decoder.decodeTagNumber(from: 0xAB, with: DataScanner(data: data))
-        } == .taggedTag(11)
+        expect(try ASN1Decoder.decodeTagNumber(from: 0xAB, with: DataScanner(data: data))) == .taggedTag(11)
     }
 
     func testASN1DecodeTagNumber_universalTag() {
         // Universal tagged object
         let data = Data([0x81, 0x83])
-        expect {
-            try ASN1Decoder.decodeTagNumber(from: 0x10, with: DataScanner(data: data))
-        } == .universal(ASN1Tag.sequence)
+        expect(try ASN1Decoder.decodeTagNumber(from: 0x10, with: DataScanner(data: data)))
+            == .universal(ASN1Tag.sequence)
     }
 
     func testASN1DecodeTagNumber_privateTag() {
         let data = Data([0x3, 0x2, 0x1, 03])
         let scanner = DataScanner(data: data)
-        expect {
-            try ASN1Decoder.decodeTagNumber(from: 0xcd, with: scanner)
-        } == .privateTag(0xd)
+        expect(try ASN1Decoder.decodeTagNumber(from: 0xcd, with: scanner)) == .privateTag(0xd)
     }
 
     func testASN1DecodeTagNumber_long() {
         // Application specific object
         let data = Data([0x4C, 0x13])
-        expect {
-            try ASN1Decoder.decodeTagNumber(from: 0x7F, with: DataScanner(data: data))
-        } == .applicationTag(76)
+        expect(try ASN1Decoder.decodeTagNumber(from: 0x7F, with: DataScanner(data: data))) == .applicationTag(76)
     }
 
     func testASN1DecodeTagNumber_longer() {
         // Application specific object
         let data = Data([0xCC, 0x13])
-        expect {
-            try ASN1Decoder.decodeTagNumber(from: 0x7F, with: DataScanner(data: data))
-        } == .applicationTag(9747)
+        expect(try ASN1Decoder.decodeTagNumber(from: 0x7F, with: DataScanner(data: data))) == .applicationTag(9747)
     }
 
     func testASN1DecodeTagNumber_too_long() {
@@ -155,9 +132,8 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         }
         let data = Data(bytes)
 
-        expect {
-            try ASN1Decoder.decodeTagNumber(from: 0x7F, with: DataScanner(data: data))
-        }.to(throwError(ASN1Error.unsupported("ASN1Decoder bounced on too big Tag number (> UInt.max)")))
+        expect(try ASN1Decoder.decodeTagNumber(from: 0x7F, with: DataScanner(data: data)))
+            .to(throwError(ASN1Error.unsupported("ASN1Decoder bounced on too big Tag number (> UInt.max)")))
     }
 
     func testASN1DecodeTagNumber_unsupported_long_notation() {
@@ -165,49 +141,43 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         let data = Data([0x1d, 0x2, 0x2, 0x1])
         let scanner = DataScanner(data: data)
 
-        expect {
-            try ASN1Decoder.decodeTagNumber(from: 0x1f, with: scanner)
-        }.to(throwError(ASN1Error.malformedEncoding("Tag value is invalid: [0x1d]")))
+        expect(try ASN1Decoder.decodeTagNumber(from: 0x1f, with: scanner))
+            .to(throwError(ASN1Error.malformedEncoding("Tag value is invalid: [0x1d]")))
     }
 
     func testASN1DecodeTagNumber_Bool() {
         // Primitive Bool
         let data = Data([0x1, 0xff])
-        expect {
-            try ASN1Decoder.decodeTagNumber(from: 0x1, with: DataScanner(data: data))
-        } == .universal(ASN1Tag.boolean)
+        expect(try ASN1Decoder.decodeTagNumber(from: 0x1, with: DataScanner(data: data)))
+            == .universal(ASN1Tag.boolean)
     }
 
     func testASN1DecodeTagNumber_Integer() {
         // Primitive Integer
         let data = Data([0x3, 0x3, 0xd4, 0xff])
-        expect {
-            try ASN1Decoder.decodeTagNumber(from: 0x2, with: DataScanner(data: data))
-        } == .universal(ASN1Tag.integer)
+        expect(try ASN1Decoder.decodeTagNumber(from: 0x2, with: DataScanner(data: data)))
+            == .universal(ASN1Tag.integer)
     }
 
     func testASN1DecodeTagNumber_IA5String() {
         // Primitive IA5String
         let data = Data([0x5, 0x53, 0x6d, 0x69, 0x74, 0x68]) // "Smith"
-        expect {
-            try ASN1Decoder.decodeTagNumber(from: 0x16, with: DataScanner(data: data))
-        } == .universal(ASN1Tag.ia5String)
+        expect(try ASN1Decoder.decodeTagNumber(from: 0x16, with: DataScanner(data: data)))
+            == .universal(ASN1Tag.ia5String)
     }
 
     func testASN1DecodeTagNumber_OctetString_constructed() {
         // Constructed OctetString
         let data = Data([0x7, 0x4, 0x5, 0x53, 0x6d, 0x69, 0x74, 0x68]) // Constructed Octet "536D697468"
-        expect {
-            try ASN1Decoder.decodeTagNumber(from: 0x24, with: DataScanner(data: data))
-        } == .universal(ASN1Tag.octetString)
+        expect(try ASN1Decoder.decodeTagNumber(from: 0x24, with: DataScanner(data: data)))
+            == .universal(ASN1Tag.octetString)
     }
 
     func testASN1DecodeTagNumber_OctetString() {
         // Primitive OctetString
         let data = Data([0x5, 0x53, 0x6d, 0x69, 0x74, 0x68]) // Octet "536D697468"
-        expect {
-            try ASN1Decoder.decodeTagNumber(from: 0x4, with: DataScanner(data: data))
-        } == .universal(ASN1Tag.octetString)
+        expect(try ASN1Decoder.decodeTagNumber(from: 0x4, with: DataScanner(data: data)))
+            == .universal(ASN1Tag.octetString)
     }
 
     func testASN1DecodeTagNumber_Sequence() {
@@ -217,9 +187,8 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         //  IA5String "Hello"
         // )
         let data = Data([0x6, 0x2, 0x1, 0x84, 0x16, 0x5, 0x48, 0x65, 0x6c, 0x6c, 0x6f])
-        expect {
-            try ASN1Decoder.decodeTagNumber(from: 0x30, with: DataScanner(data: data))
-        } == .universal(ASN1Tag.sequence)
+        expect(try ASN1Decoder.decodeTagNumber(from: 0x30, with: DataScanner(data: data)))
+            == .universal(ASN1Tag.sequence)
     }
 
     func testASN1DecodeTagNumber_Set() {
@@ -229,17 +198,15 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         //  [2] IMPLICIT Bool false
         // )
         let data = Data([0x6, 0x81, 0x1, 0x69, 0x82, 0x1, 0x0])
-        expect {
-            try ASN1Decoder.decodeTagNumber(from: 0x31, with: DataScanner(data: data))
-        } == .universal(ASN1Tag.set)
+        expect(try ASN1Decoder.decodeTagNumber(from: 0x31, with: DataScanner(data: data)))
+            == .universal(ASN1Tag.set)
     }
 
     func testASN1DecodeIndefiniteLengthObject() {
         // expect exception for now - unsupported
         let data = Data([0x6, 0x80, 0x40, 0x20, 0x50, 0x0, 0x0])
-        expect {
-            try ASN1Decoder.decode(asn1: data)
-        }.to(throwError(ASN1Error.unsupported("BER indefinite length encoding is unsupported")))
+        expect(try ASN1Decoder.decode(asn1: data))
+            .to(throwError(ASN1Error.unsupported("BER indefinite length encoding is unsupported")))
     }
 
     func testASN1DecodeConstructedObject() {
@@ -277,9 +244,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         )
 
         let data = Data([0x95, 0x0])
-        expect {
-            try ASN1Decoder.decode(asn1: data).asEquatable()
-        } == expected.asEquatable()
+        expect(try ASN1Decoder.decode(asn1: data).asEquatable()) == expected.asEquatable()
     }
 
     func testASN1DecodeTaggedNull_long() {
@@ -287,9 +252,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         let expected: ASN1Object = ASN1Primitive(data: .primitive(Data.empty), tag: .taggedTag(0x45))
 
         let data = Data([0x9f, 0x45, 0x0])
-        expect {
-            try ASN1Decoder.decode(asn1: data).asEquatable()
-        } == expected.asEquatable()
+        expect(try ASN1Decoder.decode(asn1: data).asEquatable()) == expected.asEquatable()
     }
 
     func testASN1DecodeTaggedImplicit() {
@@ -298,9 +261,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         let expected: ASN1Object = ASN1Primitive(data: .primitive(octets), tag: .taggedTag(0x1))
 
         let data = Data([0x81, 0x4]) + octets
-        expect {
-            try ASN1Decoder.decode(asn1: data).asEquatable()
-        } == expected.asEquatable()
+        expect(try ASN1Decoder.decode(asn1: data).asEquatable()) == expected.asEquatable()
     }
 
     func testASN1DecodeTaggedImplicit_long() {
@@ -309,9 +270,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         let expected: ASN1Object = ASN1Primitive(data: .primitive(octets), tag: .taggedTag(0x22c5))
 
         let data = Data([0x9f, 0xc5, 0x45, 0x4]) + octets
-        expect {
-            try ASN1Decoder.decode(asn1: data).asEquatable()
-        } == expected.asEquatable()
+        expect(try ASN1Decoder.decode(asn1: data).asEquatable()) == expected.asEquatable()
     }
 
     func testASN1DecodeTaggedConstructed() {
@@ -325,9 +284,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         ]
         let expected = ASN1Primitive(data: .constructed(items), tag: .taggedTag(0x18))
         let data = Data([0xb8, 0xa, 0x16, 0x5, 0x53, 0x6d, 0x69, 0x74, 0x68, 0x1, 0x1, 0xff])
-        expect {
-            try ASN1Decoder.decode(asn1: data).asEquatable()
-        } == expected.asEquatable()
+        expect(try ASN1Decoder.decode(asn1: data).asEquatable()) == expected.asEquatable()
     }
 
     func testASN1DecodeTaggedConstructed_long() {
@@ -341,18 +298,14 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         ]
         let expected = ASN1Primitive(data: .constructed(items), tag: .taggedTag(0x3f79))
         let data = Data([0xbf, 0xfe, 0x79, 0xa, 0x16, 0x5, 0x53, 0x6d, 0x69, 0x74, 0x68, 0x1, 0x1, 0xff])
-        expect {
-            try ASN1Decoder.decode(asn1: data).asEquatable()
-        } == expected.asEquatable()
+        expect(try ASN1Decoder.decode(asn1: data).asEquatable()) == expected.asEquatable()
     }
 
     func testASN1DecodePrimitiveBool() {
         let expected: ASN1Object = ASN1Primitive(data: .primitive(Data([0xff])), tag: .universal(.boolean))
 
         let data = Data([0x1, 0x1, 0xff])
-        expect {
-            try ASN1Decoder.decode(asn1: data).asEquatable()
-        } == expected.asEquatable()
+        expect(try ASN1Decoder.decode(asn1: data).asEquatable()) == expected.asEquatable()
     }
 
     func testASN1DecodePrimitiveIA5String() {
@@ -361,9 +314,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
                 tag: .universal(.ia5String)
         )
         let data = Data([0x16, 0x5, 0x48, 0x65, 0x6c, 0x6c, 0x6f])
-        expect {
-            try ASN1Decoder.decode(asn1: data).asEquatable()
-        } == expected.asEquatable()
+        expect(try ASN1Decoder.decode(asn1: data).asEquatable()) == expected.asEquatable()
     }
 
     func testASN1DecodePrimitiveInteger() {
@@ -379,9 +330,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
                 tag: .universal(.integer)
         )
         let data = Data([0x2, 0x3, 0x1, 0xd5, 0x80])
-        expect {
-            try ASN1Decoder.decode(asn1: data).asEquatable()
-        } == expected.asEquatable()
+        expect(try ASN1Decoder.decode(asn1: data).asEquatable()) == expected.asEquatable()
         expect(expected.tag.isUniversal) == true
         expect(expected.tag.isApplicationSpecific) == false
         expect(expected.tag.isContextSpecific) == false
@@ -390,17 +339,13 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
     func testASN1DecodePrimitiveNull() {
         let expected = ASN1Primitive(data: .primitive(Data.empty), tag: .universal(.null))
         let data = Data([0x5, 0x0])
-        expect {
-            try ASN1Decoder.decode(asn1: data).asEquatable()
-        } == expected.asEquatable()
+        expect(try ASN1Decoder.decode(asn1: data).asEquatable()) == expected.asEquatable()
     }
 
     func testASN1DecodePrimitiveOctetString() {
         let expected = ASN1Primitive(data: .primitive(Data([0xdf, 0x0])), tag: .universal(.octetString))
         let data = Data([0x4, 0x2, 0xdf, 0x0])
-        expect {
-            try ASN1Decoder.decode(asn1: data).asEquatable()
-        } == expected.asEquatable()
+        expect(try ASN1Decoder.decode(asn1: data).asEquatable()) == expected.asEquatable()
     }
 
     func testASN1DecodeConstructedOctetString() {
@@ -413,9 +358,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
                 tag: .universal(.octetString)
         )
         let data = Data([0x24, 0xc, 0x4, 0x2, 0xdf, 0x0, 0x4, 0x2, 0xef, 0xff, 0x4, 0x2, 0xcf, 0x7f])
-        expect {
-            try ASN1Decoder.decode(asn1: data).asEquatable()
-        } == expected.asEquatable()
+        expect(try ASN1Decoder.decode(asn1: data).asEquatable()) == expected.asEquatable()
     }
 
     func testASN1DecodeConstructedSet() {
@@ -429,9 +372,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         ]
         let expected = ASN1Primitive(data: .constructed(items), tag: .universal(.set))
         let data = Data([0x31, 0xa, 0x16, 0x5, 0x53, 0x6d, 0x69, 0x74, 0x68, 0x1, 0x1, 0xff])
-        expect {
-            try ASN1Decoder.decode(asn1: data).asEquatable()
-        } == expected.asEquatable()
+        expect(try ASN1Decoder.decode(asn1: data).asEquatable()) == expected.asEquatable()
     }
 
     func testASN1DecodeConstructedSequence() {
@@ -445,9 +386,7 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         ]
         let expected = ASN1Primitive(data: .constructed(items), tag: .universal(.sequence))
         let data = Data([0x30, 0xa, 0x16, 0x5, 0x53, 0x6d, 0x69, 0x74, 0x68, 0x1, 0x1, 0xff])
-        expect {
-            try ASN1Decoder.decode(asn1: data).asEquatable()
-        } == expected.asEquatable()
+        expect(try ASN1Decoder.decode(asn1: data).asEquatable()) == expected.asEquatable()
     }
 
     static var allTests = [

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# scripts/setup: Set up application for the first time after cloning, or set it
+#               back to the initial first unused state.
+
+set -ev
+
+cd "$(dirname "$0")/.."
+
+scripts/bootstrap
+
+# Install Carthage dependencies
+if [ -f "Cartfile" ]; then
+  CONFIG=${1-Debug}
+  bundle exec fastlane carthage_resolve_dependencies configuration:${CONFIG}
+fi
+
+echo "==> Setting up xcodeproj…"
+xcodegen --spec project.yml
+
+echo "==> Project is now ready to go!"

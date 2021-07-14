@@ -1,14 +1,14 @@
 //
-// Copyright (c) 2020 gematik GmbH
+// Copyright (c) 2021 gematik GmbH
 // 
-// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the Apache License, Version 2.0 (the License);
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 // 
-//    http://www.apache.org/licenses/LICENSE-2.0
+//     http://www.apache.org/licenses/LICENSE-2.0
 // 
 // Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
+// distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
@@ -32,14 +32,11 @@ class StringExtASN1EncodingTest: XCTestCase {
             return
         }
 
-        expect {
-            try StringExtASN1EncodingTest.asciiText.asn1encode(tag: .universal(.ia5String)).serialize()
-        } == data
+        expect(try StringExtASN1EncodingTest.asciiText.asn1encode(tag: .universal(.ia5String)).serialize()) == data
 
         let nonAscii = "🔔⬇️🛂🐱😂"
-        expect {
-            try nonAscii.asn1encode(tag: .universal(.ia5String)).serialize()
-        }.to(throwError(errorType: ASN1Error.self))
+        expect(try nonAscii.asn1encode(tag: .universal(.ia5String)).serialize())
+            .to(throwError(errorType: ASN1Error.self))
     }
 
     func testStringASCIIDecoding() {
@@ -102,9 +99,7 @@ class StringExtASN1EncodingTest: XCTestCase {
             return
         }
 
-        expect {
-            try string.asn1encode(tag: tag).serialize()
-        } == encodedData
+        expect(try string.asn1encode(tag: tag).serialize()) == encodedData
 
         expect {
             let asn1object = try ASN1Decoder.decode(asn1: encodedData)

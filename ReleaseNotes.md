@@ -1,3 +1,8 @@
+# Release 1.0.16
+- Update dependencies
+- Support for Xcode >= 12.2
+- Introduce mint for build tooling
+
 # Release 1.0.7
 - API documentation on gh-pages branch for GitHub.io page - user guide
 

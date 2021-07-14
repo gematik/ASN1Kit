@@ -15,14 +15,10 @@ ASN1Kit requires Swift 5.1.
 You will need https://bundler.io/[Bundler], https://github.com/yonaskolb/XcodeGen[XcodeGen]
 and https://fastlane.tools[fastlane] to conveniently use the established development environment.
 
-. Update ruby gems necessary for build commands
-[source,Shell]
-$ bundle install --path vendor/gems
-
 . Checkout (and build) dependencies and generate the xcodeproject
 [source,Shell]
-$ bundle exec fastlane setup
+$ make setup
 
 . Build the project
 [source,Shell]
-$ bundle exec fastlane build_all [build_mac, build_ios]
+$ make cibuild
