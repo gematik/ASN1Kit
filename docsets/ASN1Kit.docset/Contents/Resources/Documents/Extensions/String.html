@@ -17,12 +17,12 @@
       <div class="content-wrapper">
         <p>
           <a href="../index.html">ASN1Kit Docs</a>
-          <span class="no-mobile"> (80% documented)</span>
+          <span class="no-mobile"> (89% documented)</span>
         </p>
     
         <p class="header-right">
           <a href="https://www.github.com/gematik/ASN1Kit">
-            <img src="../img/gh.png"/>
+            <img src="../img/gh.png" alt="GitHub"/>
             <span class="no-mobile">View on GitHub</span>
           </a>
         </p>
@@ -34,7 +34,7 @@
         <p id="breadcrumbs">
           <span class="no-mobile">
             <a href="../index.html">ASN1Kit Reference</a>
-            <img id="carat" src="../img/carat.png" />
+            <img id="carat" src="../img/carat.png" alt=""/>
           </span>
           String Extension Reference
         </p>
@@ -48,8 +48,9 @@
               <h1>String</h1>
                 <div class="declaration">
                   <div class="language">
-                    <pre class="highlight swift"><code><span class="kd">@frozen</span>
-<span class="kd">extension</span> <span class="kt">String</span></code></pre>
+                    
+                    <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">String</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">String</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:7ASN1Kit0A11CodableTypea">ASN1CodableType</a></span></code></pre>
 
                   </div>
                 </div>
@@ -58,64 +59,6 @@
             <section class="section task-group-section">
               <div class="task-group">
                 <ul>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:SS7ASN1KitE8oidRegexSo19NSRegularExpressionCvpZ"></a>
-                      <a name="//apple_ref/swift/Variable/oidRegex" class="dashAnchor"></a>
-                      <a class="token" href="#/s:SS7ASN1KitE8oidRegexSo19NSRegularExpressionCvpZ">oidRegex</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>Undocumented</p>
-
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">oidRegex</span><span class="p">:</span> <span class="kt">NSRegularExpression</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:SS7ASN1KitE5isOIDSbvp"></a>
-                      <a name="//apple_ref/swift/Property/isOID" class="dashAnchor"></a>
-                      <a class="token" href="#/s:SS7ASN1KitE5isOIDSbvp">isOID</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>Check if <code>self</code> could be a valid ASN.1 OID</p>
-
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">isOID</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                          </div>
-                        </div>
-                        <div>
-                          <h4>Return Value</h4>
-                          <p><code>true</code> when matching the oidRegex</p>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
                   <li class="item">
                     <div>
                       <code>
@@ -143,16 +86,12 @@
                       </section>
                     </div>
                   </li>
-                </ul>
-              </div>
-              <div class="task-group">
-                <ul>
                   <li class="item">
                     <div>
                       <code>
                       <a name="/s:7ASN1Kit0A13EncodableTypeP10asn1encode3tagAA0A6Object_pAA0A10DecodedTagOSg_tKF"></a>
                       <a name="//apple_ref/swift/Method/asn1encode(tag:)" class="dashAnchor"></a>
-                      <a class="token" href="#/s:7ASN1Kit0A13EncodableTypeP10asn1encode3tagAA0A6Object_pAA0A10DecodedTagOSg_tKF">asn1encode(tag:)</a>
+                      <a class="token" href="#/s:7ASN1Kit0A13EncodableTypeP10asn1encode3tagAA0A6Object_pAA0A10DecodedTagOSg_tKF">asn1encode(tag:<wbr>)</a>
                       </code>
                     </div>
                     <div class="height-container">
@@ -178,7 +117,7 @@
                       <code>
                       <a name="/s:7ASN1Kit0A13DecodableTypeP4fromxAA0A6Object_p_tKcfc"></a>
                       <a name="//apple_ref/swift/Method/init(from:)" class="dashAnchor"></a>
-                      <a class="token" href="#/s:7ASN1Kit0A13DecodableTypeP4fromxAA0A6Object_p_tKcfc">init(from:)</a>
+                      <a class="token" href="#/s:7ASN1Kit0A13DecodableTypeP4fromxAA0A6Object_p_tKcfc">init(from:<wbr>)</a>
                       </code>
                     </div>
                     <div class="height-container">
@@ -193,95 +132,6 @@
                           <div class="language">
                             <p class="aside-title">Swift</p>
                             <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">from</span> <span class="nv">asn1</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ASN1Object.html">ASN1Object</a></span><span class="p">)</span> <span class="k">throws</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="task-group">
-                <ul>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:SS10FoundationE8EncodingV"></a>
-                      <a name="//apple_ref/swift/Extension/Encoding" class="dashAnchor"></a>
-                      <a class="token" href="#/s:SS10FoundationE8EncodingV">Encoding</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          
-                          <a href="../Extensions/String/Encoding.html" class="slightly-smaller">See more</a>
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Encoding</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="task-group">
-                <ul>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:SS7ASN1KitEySSSNySiGcip"></a>
-                      <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
-                      <a class="token" href="#/s:SS7ASN1KitEySSSNySiGcip">subscript(_:)</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>Undocumented</p>
-
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="nf">subscript</span><span class="p">(</span><span class="nv">bounds</span><span class="p">:</span> <span class="kt">CountableClosedRange</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:SS7ASN1KitEySSSnySiGcip"></a>
-                      <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
-                      <a class="token" href="#/s:SS7ASN1KitEySSSnySiGcip">subscript(_:)</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>Undocumented</p>
-
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="nf">subscript</span><span class="p">(</span><span class="nv">bounds</span><span class="p">:</span> <span class="kt">CountableRange</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                           </div>
                         </div>
@@ -329,9 +179,6 @@
               <a href="../Extensions.html">Extensions</a>
               <ul class="nav-group-tasks">
                 <li class="nav-group-task">
-                  <a href="../Extensions/ASN1Primitive.html">ASN1Primitive</a>
-                </li>
-                <li class="nav-group-task">
                   <a href="../Extensions/Array.html">Array</a>
                 </li>
                 <li class="nav-group-task">
@@ -354,12 +201,6 @@
                 </li>
                 <li class="nav-group-task">
                   <a href="../Extensions/String.html">String</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Extensions/String/Encoding.html">– Encoding</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Extensions/StringProtocol.html">StringProtocol</a>
                 </li>
               </ul>
             </li>
@@ -409,11 +250,10 @@
       </div>
       <div class="footer-wrapper">
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="http://www.gematik.de" target="_blank" rel="external">gematik GmbH</a>. All rights reserved. (Last updated: 2021-07-14)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2022 <a class="link" href="http://www.gematik.de" target="_blank" rel="external noopener">gematik GmbH</a>. All rights reserved. (Last updated: 2022-05-10)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </div>
     </div>
   </body>
-</div>
 </html>

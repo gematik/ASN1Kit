@@ -1,41 +1,6 @@
 {
   "warnings": [
     {
-      "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/ASN1Decoder.swift",
-      "line": 226,
-      "symbol": "ASN1Tag.toPrimitive(with:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/ASN1Decoder.swift",
-      "line": 230,
-      "symbol": "ASN1Tag.toConstructed(with:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/ASN1Object.swift",
-      "line": 8,
-      "symbol": "ASN1Primitive",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/ASN1Object.swift",
-      "line": 15,
-      "symbol": "ASN1Primitive",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/ASN1Object.swift",
-      "line": 53,
-      "symbol": "ASN1Primitive",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/ASN1Tag.swift",
       "line": 105,
       "symbol": "ASN1Tag.universal",
@@ -92,13 +57,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/ObjectIdentifier.swift",
-      "line": 122,
-      "symbol": "String.oidRegex",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/encodable/Bool+ASN1Encoding.swift",
       "line": 20,
       "symbol": "Bool.asn1decoded(_:)",
@@ -128,86 +86,9 @@
     },
     {
       "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/encodable/Date+ASN1Encoding.swift",
-      "line": 13,
-      "symbol": "Date.utcTimeFormatter",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/encodable/Date+ASN1Encoding.swift",
-      "line": 29,
-      "symbol": "Date.generalizedTimeFormatter",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/encodable/Date+ASN1Encoding.swift",
       "line": 50,
       "symbol": "Date.asn1decoded(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/encodable/Date+ASN1Encoding.swift",
-      "line": 64,
-      "symbol": "ASN1DecodedTag.dateFormatter",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/encodable/Date+ASN1Encoding.swift",
-      "line": 75,
-      "symbol": "ASN1Tag.dateFormatter",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/encodable/String+ASN1Encoding.swift",
-      "line": 43,
-      "symbol": "ASN1DecodedTag.stringEncoding",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/encodable/String+ASN1Encoding.swift",
-      "line": 54,
-      "symbol": "String.Encoding.asn1tag",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/encodable/String+ASN1Encoding.swift",
-      "line": 69,
-      "symbol": "String.Encoding.asn1decoded",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/encodable/String+ASN1Encoding.swift",
-      "line": 78,
-      "symbol": "ASN1Tag.stringEncoding",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/extension/String+Subscript.swift",
-      "line": 9,
-      "symbol": "StringProtocol.subscript(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.subscript",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/extension/String+Subscript.swift",
-      "line": 15,
-      "symbol": "String.subscript(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.subscript",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/tst_tt_build/jenkins/workspace/ASN1Kit-GitHub-Publish-Prepare/Sources/ASN1Kit/extension/String+Subscript.swift",
-      "line": 21,
-      "symbol": "String.subscript(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.subscript",
       "warning": "undocumented"
     }
   ],
