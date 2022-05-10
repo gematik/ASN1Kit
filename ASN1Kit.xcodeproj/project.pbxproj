@@ -198,17 +198,17 @@
 		0B56DBEE6D521DCA07780157 /* UInt+TagNo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt+TagNo.swift"; sourceTree = "<group>"; };
 		0B9B5B5EF9D8D523A3DA5AA2 /* BitStringASN1EncodingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitStringASN1EncodingTest.swift; sourceTree = "<group>"; };
 		0D076069191DF89E13AE3EE9 /* OutputStream+UInt8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutputStream+UInt8.swift"; sourceTree = "<group>"; };
-		1195CA0CCDEEC9DD286640CE /* GemCommonsKit.xcframework */ = {isa = PBXFileReference; name = GemCommonsKit.xcframework; path = Carthage/Build/GemCommonsKit.xcframework; sourceTree = "<group>"; };
+		1195CA0CCDEEC9DD286640CE /* GemCommonsKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GemCommonsKit.xcframework; path = Carthage/Build/GemCommonsKit.xcframework; sourceTree = "<group>"; };
 		129B2100778B001C7D6F193B /* DataExtUIntTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtUIntTest.swift; sourceTree = "<group>"; };
 		1B7E3F5ED0AD2F7AE7791664 /* ASN1Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1Error.swift; sourceTree = "<group>"; };
 		1E2EAB03DFE2F370514F7C02 /* GeneralizedTimeDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralizedTimeDateFormatter.swift; sourceTree = "<group>"; };
 		20F75C80274863637D66895E /* Date+ASN1Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ASN1Encoding.swift"; sourceTree = "<group>"; };
 		23FB6D4A9A39457FB4F41F28 /* Data+ASN1Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+ASN1Int.swift"; sourceTree = "<group>"; };
-		29688B379044C6353A547914 /* ObjCCommonsKit.xcframework */ = {isa = PBXFileReference; name = ObjCCommonsKit.xcframework; path = Carthage/Build/ObjCCommonsKit.xcframework; sourceTree = "<group>"; };
+		29688B379044C6353A547914 /* ObjCCommonsKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ObjCCommonsKit.xcframework; path = Carthage/Build/ObjCCommonsKit.xcframework; sourceTree = "<group>"; };
 		29F936BE5E521F5EBDF2C5B0 /* Array+ASN1Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ASN1Encoding.swift"; sourceTree = "<group>"; };
 		2DF88A2A92C0219F9499C709 /* ASN1Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1Data.swift; sourceTree = "<group>"; };
 		2E59EDC7B029DB06F8E1F43D /* StringExtASN1EncodingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtASN1EncodingTest.swift; sourceTree = "<group>"; };
-		2F74452A4040AC0BEACAE527 /* Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resources.bundle; sourceTree = "<group>"; };
+		2F74452A4040AC0BEACAE527 /* Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = wrapper.cfbundle; path = Resources.bundle; sourceTree = "<group>"; };
 		3B27876AB4FF2F286108979A /* UIntExtTagNoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIntExtTagNoTest.swift; sourceTree = "<group>"; };
 		3B3565C1EF3F5358CB63989B /* ASN1Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1Object.swift; sourceTree = "<group>"; };
 		3EBAFBDD359F51A1632C7D09 /* BoolExtASN1EncodingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolExtASN1EncodingTest.swift; sourceTree = "<group>"; };
@@ -220,7 +220,7 @@
 		61C1D3C1FF03C75FE439C1DE /* ParseCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseCommand.swift; sourceTree = "<group>"; };
 		6356E857834185E8A2AAC586 /* Int+Length.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Length.swift"; sourceTree = "<group>"; };
 		651A74D459078AEE91E77A12 /* ASN1DecoderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1DecoderTest.swift; sourceTree = "<group>"; };
-		67959C4111EE1EF55B0DA0D2 /* DataKit.xcframework */ = {isa = PBXFileReference; name = DataKit.xcframework; path = Carthage/Build/DataKit.xcframework; sourceTree = "<group>"; };
+		67959C4111EE1EF55B0DA0D2 /* DataKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DataKit.xcframework; path = Carthage/Build/DataKit.xcframework; sourceTree = "<group>"; };
 		682CA9461C4C8EC88F531612 /* ASN1CodableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1CodableType.swift; sourceTree = "<group>"; };
 		6BD6BC0258334E692989ACFD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		6CA0F933F8D96281292B9804 /* OutputStreamBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputStreamBuffer.swift; sourceTree = "<group>"; };
@@ -234,14 +234,14 @@
 		91DD74E01ECD7D6B36A8DD5C /* ASN1Object+Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASN1Object+Encoding.swift"; sourceTree = "<group>"; };
 		95E69CEBA06059B7CE7BDD86 /* String+ASN1Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ASN1Encoding.swift"; sourceTree = "<group>"; };
 		A659A6785BA96384890F6CB3 /* DataScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScanner.swift; sourceTree = "<group>"; };
-		A8878DCC21AFC93BB2564634 /* Commandant.xcframework */ = {isa = PBXFileReference; name = Commandant.xcframework; path = Carthage/Build/Commandant.xcframework; sourceTree = "<group>"; };
+		A8878DCC21AFC93BB2564634 /* Commandant.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Commandant.xcframework; path = Carthage/Build/Commandant.xcframework; sourceTree = "<group>"; };
 		A9781C2A34B69ED0B9AAAED3 /* asn1c */ = {isa = PBXFileReference; includeInIndex = 0; path = asn1c; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5ECA8126459D5803D20DAB /* Nimbe+ASN1Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nimbe+ASN1Data.swift"; sourceTree = "<group>"; };
 		B0EB690DB57F739093557F15 /* String+Subscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Subscript.swift"; sourceTree = "<group>"; };
 		B5B7141F9BEAC2201CE5D6C6 /* ObjectIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectIdentifier.swift; sourceTree = "<group>"; };
 		B773A1D71BE54F4B12038A79 /* ASN1DecodedTagEncodingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1DecodedTagEncodingTest.swift; sourceTree = "<group>"; };
 		BE486480A900E1343206642F /* DateExtASN1EncodingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtASN1EncodingTest.swift; sourceTree = "<group>"; };
-		BF61706FCE50D5985198456D /* Nimble.xcframework */ = {isa = PBXFileReference; name = Nimble.xcframework; path = Carthage/Build/Nimble.xcframework; sourceTree = "<group>"; };
+		BF61706FCE50D5985198456D /* Nimble.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Nimble.xcframework; path = Carthage/Build/Nimble.xcframework; sourceTree = "<group>"; };
 		C0375FD76819501822510FF9 /* DataExtASN1IntTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtASN1IntTest.swift; sourceTree = "<group>"; };
 		CA6D1422AAD40249BFE7689C /* ASN1ObjectExtEncodingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1ObjectExtEncodingTest.swift; sourceTree = "<group>"; };
 		CB599D1E4B26C96101A2DF9B /* ASN1Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1Decoder.swift; sourceTree = "<group>"; };
@@ -555,7 +555,9 @@
 		1499C78E18CE0089E24463EF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = A8AD84FCA0AD964412756D0E /* Build configuration list for PBXProject "ASN1Kit" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -768,6 +770,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -783,6 +786,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -809,8 +813,9 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1018,6 +1023,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -1033,6 +1039,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1053,11 +1060,13 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -1114,7 +1123,7 @@
 				A60E878B7A96771D8B732537 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "";
+			defaultConfigurationName = Debug;
 		};
 		7B319C71329005898C706C64 /* Build configuration list for PBXNativeTarget "ASN1Kit_macOS" */ = {
 			isa = XCConfigurationList;
@@ -1123,7 +1132,7 @@
 				7E7ED196B6459A9CCFF60AED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "";
+			defaultConfigurationName = Debug;
 		};
 		81406BE605E47DA1BEF83ECC /* Build configuration list for PBXNativeTarget "asn1c" */ = {
 			isa = XCConfigurationList;
@@ -1132,7 +1141,7 @@
 				3F139137A2FBAB54D23ED063 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "";
+			defaultConfigurationName = Debug;
 		};
 		A8AD84FCA0AD964412756D0E /* Build configuration list for PBXProject "ASN1Kit" */ = {
 			isa = XCConfigurationList;
@@ -1150,7 +1159,7 @@
 				355B3F0A7EBE5C83127BF03A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "";
+			defaultConfigurationName = Debug;
 		};
 		B702F553C26DE541B4E81AD8 /* Build configuration list for PBXNativeTarget "ASN1KitTests_iOS" */ = {
 			isa = XCConfigurationList;
@@ -1159,7 +1168,7 @@
 				834BF3143C48F3C16E994498 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "";
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2021 gematik GmbH
+# Copyright (c) 2022 gematik GmbH
 # 
 # Licensed under the Apache License, Version 2.0 (the License);
 # you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-xcversion(version: ENV["FL_XCODE_VERSION"] || "12.5")
+xcversion(version: ENV["FL_XCODE_VERSION"] || "13.3.1")
 
 schemes_mac = ["ASN1Kit_macOS"]
 schemes_ios = ["ASN1Kit_iOS"]
@@ -31,8 +31,8 @@ lane :carthage_resolve_dependencies do
 carthage_mint="mint run carthage"
 carthage(executable: carthage_mint, command: "bootstrap", no_build: true)
 # Create Xcodeproj when necessary for Carthage dependencies
-sh("find", "../Carthage/Checkouts/", "-type", "d", "-mindepth", "1", "-maxdepth", "1", "!", "-exec", "sh", "-c", "test -e {}/*.xcodeproj", ";", "-execdir", "sh", "-c", "cd {}; if [ -e project.yml ]; then xcodegen; fi;", ";")
-sh("find", "../Carthage/Checkouts/", "-type", "d", "-mindepth", "1", "-maxdepth", "1", "!", "-exec", "sh", "-c", "test -e {}/*.xcodeproj", ";", "-execdir", "sh", "-c", "cd {}; if [ -e Package.swift ] && [ -e Package.xcconfig ]; then swift package generate-xcodeproj --xcconfig-overrides Package.xcconfig; elif [ -e Package.swift ]; then swift package generate-xcodeproj; fi;", ";")
+sh("find", "../Carthage/Checkouts/", "-type", "d", "-mindepth", "1", "-maxdepth", "1", "!", "-exec", "sh", "-c", "test -e {}/*.xcodeproj/project.pbxproj", ";", "-execdir", "sh", "-c", "cd {}; if [ -e project.yml ]; then mint run xcodegen; fi;", ";")
+sh("find", "../Carthage/Checkouts/", "-type", "d", "-mindepth", "1", "-maxdepth", "1", "!", "-exec", "sh", "-c", "test -e {}/*.xcodeproj/project.pbxproj", ";", "-execdir", "sh", "-c", "cd {}; if [ -e Package.swift ] && [ -e Package.xcconfig ]; then swift package generate-xcodeproj --xcconfig-overrides Package.xcconfig; elif [ -e Package.swift ]; then swift package generate-xcodeproj; fi;", ";")
 
 carthage(
   executable: carthage_mint,

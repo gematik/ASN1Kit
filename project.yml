@@ -2,7 +2,7 @@ name: ASN1Kit
 options:
   bundleIdPrefix: de.gematik.ti.common
   deploymentTarget:
-    macOS: 10.12
+    macOS: 11.0
     iOS: 12.1
 settings:
   base:

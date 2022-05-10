@@ -1,3 +1,9 @@
+# Release 1.1.0
+
+- Update Xcode Version to 13.3.1
+- Update dependencies
+- Change mac deployment target to macOS 11
+
 # Release 1.0.16
 - Update dependencies
 - Support for Xcode >= 12.2
