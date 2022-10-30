@@ -29,6 +29,7 @@ class ObjectIdentifierTest: XCTestCase {
     func testParsingInvalidOIDsParameterized() {
         for oid in invalidOIDs {
             expect(try ObjectIdentifier.from(string: oid)).to(throwError())
+            expect(try ObjectIdentifier(rawValue: oid)).to(beNil())
         }
     }
 
@@ -89,6 +90,7 @@ class ObjectIdentifierTest: XCTestCase {
 
     func encodingTest(oid: String, expected asn1: Data) {
         expect(try ObjectIdentifier.from(string: oid).asn1encode(tag: nil).serialize()) == asn1
+        expect(try ObjectIdentifier(rawValue: oid)?.asn1encode(tag: nil).serialize()) == asn1
     }
 
     func testDecodingParameterized() {

@@ -16,13 +16,40 @@
 
 import Foundation
 
-public struct ObjectIdentifier: Equatable, Hashable {
+public struct ObjectIdentifier: Equatable, Hashable, RawRepresentable {
     public let rawValue: String
 
-    private init(value: String) {
+    private init(withValidated value: String) {
         self.rawValue = value
     }
+    
+    private init(withUnvalidated value: String) throws {
+        // check ASN.1 syntax
+        let regex = try! NSRegularExpression( //swiftlint:disable:this force_try
+                pattern: "^((urn:oid:)|\\{)?(([0-2]((\\.|\\s)([1-9]([0-9]*)|0))+)|(\\w+\\W?\\w*\\(\\d+\\)\\s*)+)(\\})?$"
+        )
+        guard !regex.matches(in: value, options: [], range: value.fullRange).isEmpty else {
+            throw ASN1Error.malformedEncoding("Invalid OID [\(value)]")
+        }
+        // Transform OID to internal (simple) representation
+        let allowedCharacters = ".0123456789 ".characterSet
+        let transformedOID = String(value.filter(allowedCharacters.contains)).replacingOccurrences(of: " ", with: ".")
 
+        guard transformedOID.isOID else {
+            throw ASN1Error.malformedEncoding("Invalid (transformed) OID [\(transformedOID)]")
+        }
+        
+        self.init(withValidated: transformedOID)
+    }
+    
+    public init?(rawValue: String) {
+        do {
+            try self.init(withUnvalidated: rawValue)
+        } catch {
+            return nil
+        }
+    }
+    
     /// Parse ASN.1 OID from String
     ///
     /// Supports OID formats: ASN.1 notation (http://oid-info.com/faq.htm#17)
@@ -35,22 +62,8 @@ public struct ObjectIdentifier: Equatable, Hashable {
     ///               or even "{iso(1) identified-organisation(3) dod(6) internet(1) private(4) enterprise(1)}"
     /// - Throws: ASN1Error when string is malformed
     /// - Returns: The parsed ObjectIdentifier as OID
-    public static func from(string: String) throws -> ObjectIdentifier {
-        // check ASN.1 syntax
-        let regex = try! NSRegularExpression( //swiftlint:disable:this force_try
-                pattern: "^((urn:oid:)|\\{)?(([0-2]((\\.|\\s)([1-9]([0-9]*)|0))+)|(\\w+\\W?\\w*\\(\\d+\\)\\s*)+)(\\})?$"
-        )
-        guard !regex.matches(in: string, options: [], range: string.fullRange).isEmpty else {
-            throw ASN1Error.malformedEncoding("Invalid OID [\(string)]")
-        }
-        // Transform OID to internal (simple) representation
-        let allowedCharacters = ".0123456789 ".characterSet
-        let transformedOID = String(string.filter(allowedCharacters.contains)).replacingOccurrences(of: " ", with: ".")
-
-        guard transformedOID.isOID else {
-            throw ASN1Error.malformedEncoding("Invalid (transformed) OID [\(transformedOID)]")
-        }
-        return ObjectIdentifier(value: transformedOID)
+    public static func from(string value: String) throws -> ObjectIdentifier {
+        return try ObjectIdentifier(withUnvalidated: value)
     }
 }
 
@@ -126,7 +139,7 @@ extension ObjectIdentifier: ASN1CodableType {
             }
         }
 
-        self.init(value: value)
+        self.init(withValidated: value)
     }
 }
 
@@ -143,5 +156,13 @@ extension String {
     /// Create a Character set of self
     public var characterSet: Set<Character> {
         return Set(self)
+    }
+}
+
+extension ObjectIdentifier: Codable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let value = try container.decode(String.self)
+        try self.init(withUnvalidated: value)
     }
 }
