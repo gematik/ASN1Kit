@@ -73,6 +73,34 @@ final class IntExtASN1EncodingTest: XCTestCase {
         let expected = Data(bytes)
         expect { try Int.max.asn1encode(tag: nil).data.primitive } == expected
     }
+    
+    func testUInt_0x0080_toASN1() {
+        // tag::encodeSwiftPrimitives[]
+        //0x0080 = 128
+        let expected = Data([0x00, 0x80])
+        expect(try UInt(128).asn1encode(tag: nil).data.primitive) == expected
+        // end::encodeSwiftPrimitives[]
+    }
+
+    func testUInt_0x7FFFFF_toASN1() {
+        //0x7FFFFF = 8388607
+        let expected = Data([0x7F, 0xFF, 0xFF])
+        expect { try UInt(8388607).asn1encode(tag: nil).data.primitive } == expected
+    }
+
+    func testMinUInt_toASN1() {
+        // Test ASN1Integer UInt.min
+        let expected = Data([0x00])
+        expect { try UInt.min.asn1encode(tag: nil).data.primitive } == expected
+    }
+
+    func testMaxUInt_toASN1() {
+        // Test ASN1Integer UInt.max
+        let size = MemoryLayout<UInt>.size
+        let bytes = [UInt8](repeating: 0xff, count: size)
+        let expected = Data([0x00] + bytes)
+        expect { try UInt.max.asn1encode(tag: nil).data.primitive } == expected
+    }
 
     static var allTests = [
         ("testInt_0x80_toASN1", testInt_0x80_toASN1),
@@ -82,6 +110,10 @@ final class IntExtASN1EncodingTest: XCTestCase {
         ("testInt_0xff78_toASN1", testInt_0xff78_toASN1),
         ("testInt_0x800001_toASN1", testInt_0x800001_toASN1),
         ("testMinInt_toASN1", testMinInt_toASN1),
-        ("testMaxInt_toASN1", testMaxInt_toASN1)
+        ("testMaxInt_toASN1", testMaxInt_toASN1),
+        ("testUInt_0x0080_toASN1", testInt_0x0080_toASN1),
+        ("testIInt_0x7FFFFF_toASN1", testInt_0x7FFFFF_toASN1),
+        ("testMinUInt_toASN1", testMinUInt_toASN1),
+        ("testMaxUInt_toASN1", testMaxUInt_toASN1)
     ]
 }
