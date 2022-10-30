@@ -25,6 +25,7 @@ internal class DataScanner {
 
     /// The current position of the scanning head
     private var position = 0
+    private var marker: Int?
 
     required init(data: Data) {
         self.data = data
@@ -81,5 +82,20 @@ internal class DataScanner {
         }
 
         return data.subdata(in: position..<position + bytes)
+    }
+
+    func mark() {
+        self.marker = position
+    }
+
+    func unmark() {
+        self.marker = nil
+    }
+
+    var marked: Data? {
+        guard let marker = self.marker else {
+            return nil
+        }
+        return self.data.subdata(in: marker..<position)
     }
 }

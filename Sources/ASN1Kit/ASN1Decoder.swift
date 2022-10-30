@@ -41,7 +41,10 @@ public class ASN1Decoder {
         return try decode(from: scanner)
     }
 
-    class func decode(from scanner: DataScanner) throws -> ASN1Object {
+    private class func decode(from scanner: DataScanner) throws -> ASN1Primitive {
+        scanner.mark()
+        defer { scanner.unmark() }
+        
         guard let firstByte = scanner.scan(distance: 1)?[0] else {
             throw ASN1Error.malformedEncoding("Scanner has no bytes left to decode")
         }
@@ -59,7 +62,9 @@ public class ASN1Decoder {
             throw ASN1Error.unsupported("BER indefinite length encoding is unsupported")
         }
 
-        return try tagNo.createObject(tag: tagNo, length: length, constructed: constructed, scanner: scanner)
+        var object = try tagNo.createObject(tag: tagNo, length: length, constructed: constructed, scanner: scanner)
+        object.originalEncoding = scanner.marked
+        return object
     }
 
     class func decodeLength(from scanner: DataScanner) throws -> Int {
@@ -153,8 +158,8 @@ public class ASN1Decoder {
         return .universal(tag)
     }
 
-    class func createTaggedObject(tag: ASN1DecodedTag, length: Int, constructed: Bool, scanner: DataScanner) throws
-                    -> ASN1Object {
+    fileprivate class func createTaggedObject(tag: ASN1DecodedTag, length: Int, constructed: Bool, scanner: DataScanner) throws
+                    -> ASN1Primitive {
         if constructed {
             let constructedObject = try createConstructedObject(
                     tag: ASN1Tag.set,
@@ -183,7 +188,7 @@ public class ASN1Decoder {
         }
     }
 
-    class func createConstructedObject(tag: ASN1Tag, length: Int, scanner: DataScanner) throws -> ASN1Object {
+    fileprivate class func createConstructedObject(tag: ASN1Tag, length: Int, scanner: DataScanner) throws -> ASN1Primitive {
         switch tag {
         case .set:
             return tag.toConstructed(with: try decodeItems(from: scanner, length: length))
@@ -203,11 +208,11 @@ public class ASN1Decoder {
         }
     }
 
-    class func decodeItems(from scanner: DataScanner, length: Int) throws -> [ASN1Object] {
+    private class func decodeItems(from scanner: DataScanner, length: Int) throws -> [ASN1Primitive] {
         if length == 0 {
             // allow empty sequences as for example can occur in certificates with
             // zero-length subject names
-            return [ASN1Object]()
+            return [ASN1Primitive]()
         }
 
         guard let data = scanner.scan(distance: length) else {
@@ -216,7 +221,7 @@ public class ASN1Decoder {
         }
 
         let sequenceScanner = DataScanner(data: data)
-        var items = [ASN1Object]()
+        var items = [ASN1Primitive]()
 
         while !sequenceScanner.isComplete {
             let object = try decode(from: sequenceScanner)
@@ -226,7 +231,7 @@ public class ASN1Decoder {
         return items
     }
 
-    class func createPrimitive(tag: ASN1Tag, length: Int, scanner: DataScanner) throws -> ASN1Object {
+    fileprivate class func createPrimitive(tag: ASN1Tag, length: Int, scanner: DataScanner) throws -> ASN1Primitive {
         guard length > 0 else {
             let tag: ASN1Tag = tag == .octetString ? .octetString : .null
             return tag.toPrimitive(with: Data.empty)
@@ -242,19 +247,19 @@ public class ASN1Decoder {
 }
 
 extension ASN1Tag {
-    func toPrimitive(with data: Data) -> ASN1Object {
+    fileprivate func toPrimitive(with data: Data) -> ASN1Primitive {
         return ASN1Primitive(data: .primitive(data), tag: .universal(self))
     }
 
-    func toConstructed(with items: [ASN1Object]) -> ASN1Object {
+    fileprivate func toConstructed(with items: [ASN1Primitive]) -> ASN1Primitive {
         return ASN1Primitive(data: .constructed(items), tag: .universal(self))
     }
 }
 
 extension ASN1DecodedTag {
 
-    internal func createObject(tag: ASN1DecodedTag, length len: Int, constructed flag: Bool, scanner: DataScanner)
-    throws -> ASN1Object {
+    fileprivate func createObject(tag: ASN1DecodedTag, length len: Int, constructed flag: Bool, scanner: DataScanner)
+    throws -> ASN1Primitive {
         switch self {
         case .applicationTag: fallthrough //swiftlint:disable:this no_fallthrough_only
         case .taggedTag: fallthrough //swiftlint:disable:this no_fallthrough_only
