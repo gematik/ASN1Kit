@@ -58,6 +58,7 @@ extension ASN1Tag {
         case .universalString: fallthrough
         case .printableString: fallthrough
         case .ia5String: fallthrough
+        case .generalString: fallthrough
         case .utf8String:
             return (try? String(from: create(tag: .universal(self), data: .primitive(data)))) ??
                     "Invalid string: [\(data.hexString())]"
