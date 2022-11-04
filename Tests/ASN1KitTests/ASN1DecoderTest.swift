@@ -388,6 +388,13 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         let data = Data([0x30, 0xa, 0x16, 0x5, 0x53, 0x6d, 0x69, 0x74, 0x68, 0x1, 0x1, 0xff])
         expect(try ASN1Decoder.decode(asn1: data).asEquatable()) == expected.asEquatable()
     }
+    
+    func testASN1DecodeEmptySequence() {
+        //SEQUENCE {}
+        let expected = ASN1Primitive(data: .constructed([]), tag: .universal(.sequence))
+        let data = Data([0x30, 0x00])
+        expect(try ASN1Decoder.decode(asn1: data).asEquatable()) == expected.asEquatable()
+    }
 
     static var allTests = [
         ("testASN1Decoder", testASN1Decoder),
@@ -427,7 +434,8 @@ final class ASN1DecoderTest: XCTestCase { //swiftlint:disable:this type_body_len
         ("testASN1DecodePrimitiveOctetString", testASN1DecodePrimitiveOctetString),
         ("testASN1DecodeConstructedOctetString", testASN1DecodeConstructedOctetString),
         ("testASN1DecodeConstructedSet", testASN1DecodeConstructedSet),
-        ("testASN1DecodeConstructedSequence", testASN1DecodeConstructedSequence)
+        ("testASN1DecodeConstructedSequence", testASN1DecodeConstructedSequence),
+        ("testASN1DecodeEmptySequence", testASN1DecodeEmptySequence)
     ]
 }
 

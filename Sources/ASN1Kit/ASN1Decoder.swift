@@ -204,6 +204,12 @@ public class ASN1Decoder {
     }
 
     class func decodeItems(from scanner: DataScanner, length: Int) throws -> [ASN1Object] {
+        if length == 0 {
+            // allow empty sequences as for example can occur in certificates with
+            // zero-length subject names
+            return [ASN1Object]()
+        }
+
         guard let data = scanner.scan(distance: length) else {
             DLog("Scanner has no bytes left to decode sequence")
             throw ASN1Error.malformedEncoding("Scanner has no bytes left to decode sequence")
