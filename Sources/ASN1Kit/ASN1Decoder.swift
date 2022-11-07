@@ -222,7 +222,8 @@ public class ASN1Decoder {
 
     class func createPrimitive(tag: ASN1Tag, length: Int, scanner: DataScanner) throws -> ASN1Object {
         guard length > 0 else {
-            return ASN1Tag.null.toPrimitive(with: Data.empty)
+            let tag: ASN1Tag = tag == .octetString ? .octetString : .null
+            return tag.toPrimitive(with: Data.empty)
         }
         guard let data = scanner.scan(distance: length) else {
             DLog("Decoding ASN.1 Scanner has no bytes left")
