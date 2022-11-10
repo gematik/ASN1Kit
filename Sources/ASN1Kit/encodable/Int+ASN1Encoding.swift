@@ -40,7 +40,7 @@ extension Int: ASN1EncodableType {
                 let data = Data(bytes: bytes, count: shift)
                 return Data(data.reversed()) // Return BigEndian
             }
-        }.asn1encode(tag: .universal(.integer))
+        }.asn1encode(tag: tag ?? .universal(.integer))
     }
 }
 
@@ -63,6 +63,6 @@ extension UInt: ASN1EncodableType {
                 }
                 return Data(data.reversed()) // Return BigEndian
             }
-        }.asn1encode(tag: .universal(.integer))
+        }.asn1encode(tag: tag ?? .universal(.integer))
     }
 }

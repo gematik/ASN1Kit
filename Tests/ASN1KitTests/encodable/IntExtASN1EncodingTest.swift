@@ -20,6 +20,12 @@ import XCTest
 
 // https://www.strozhevsky.com/free_docs/asn1_by_simple_words.pdf
 final class IntExtASN1EncodingTest: XCTestCase {
+    func testEnumerated_toASN1() {
+        //0x0080 = 8388607
+        let expected = Data([0x0A, 0x03, 0x7F, 0xFF, 0xFF])
+        expect(try 8388607.asn1encode(tag: .universal(.enumerated)).serialize()) == expected
+    }
+
     func testInt_0x80_toASN1() {
         //0x80 = -128
         let expected = Data([0x80])
@@ -103,6 +109,7 @@ final class IntExtASN1EncodingTest: XCTestCase {
     }
 
     static var allTests = [
+        ("testEnumerated_toASN1", testEnumerated_toASN1),
         ("testInt_0x80_toASN1", testInt_0x80_toASN1),
         ("testInt_0x0080_toASN1", testInt_0x0080_toASN1),
         ("testInt_0x7FFFFF_toASN1", testInt_0x7FFFFF_toASN1),
@@ -114,6 +121,6 @@ final class IntExtASN1EncodingTest: XCTestCase {
         ("testUInt_0x0080_toASN1", testInt_0x0080_toASN1),
         ("testIInt_0x7FFFFF_toASN1", testInt_0x7FFFFF_toASN1),
         ("testMinUInt_toASN1", testMinUInt_toASN1),
-        ("testMaxUInt_toASN1", testMaxUInt_toASN1)
+        ("testMaxUInt_toASN1", testMaxUInt_toASN1),
     ]
 }
