@@ -143,6 +143,12 @@ extension ObjectIdentifier: ASN1CodableType {
     }
 }
 
+extension ObjectIdentifier: CustomStringConvertible {
+    public var description: String {
+        return self.rawValue
+    }
+}
+
 extension String {
     static let oidRegex = try! NSRegularExpression(pattern: "^(((0|1)\\.([1-3][0-9]|[0-9])(\\.([1-9]([0-9])*|0))?)|(2\\.([1-9]([0-9]*)|[0-9])))(\\.([1-9]([0-9])*|0))*$")
     //swiftlint:disable:previous force_try line_length

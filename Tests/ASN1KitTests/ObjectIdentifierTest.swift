@@ -144,6 +144,10 @@ class ObjectIdentifierTest: XCTestCase {
             let decodedOID = try ASN1Decoder.decode(asn1: asn1)
             return try ObjectIdentifier(from: decodedOID).rawValue
         } == oid
+        expect {
+            let decodedOID = try ASN1Decoder.decode(asn1: asn1)
+            return String(describing: try ObjectIdentifier(from: decodedOID))
+        } == oid
     }
 
     static var allTests = [
