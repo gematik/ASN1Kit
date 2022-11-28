@@ -32,14 +32,24 @@ extension Data: ASN1CodableType {
     }
 
     public init(bitString: Data) throws {
-        guard bitString.count > 1 else {
+        guard !bitString.isEmpty else {
             throw ASN1Error.malformedEncoding("BitString: insufficient bytes")
         }
         guard let firstByte = bitString.first, firstByte < 8 else {
             throw ASN1Error.malformedEncoding("BitString: missing or invalid unused bits")
         }
-        var data = Data(bitString[1...])
-        data[data.count - 1] = (data.last ?? 0x0) & 0xff << firstByte
+
+        var data: Data
+
+        if bitString.count == 1 {
+            guard firstByte == 0 else {
+                throw ASN1Error.malformedEncoding("BitString: invalid encoding of empty string")
+            }
+            data = Data()
+        } else {
+            data = Data(bitString[1...])
+            data[data.count - 1] = (data.last ?? 0x0) & 0xff << firstByte
+        }
         self.init(data)
     }
 
