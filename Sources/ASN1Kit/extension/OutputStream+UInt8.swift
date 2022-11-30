@@ -20,6 +20,8 @@ extension OutputStream {
     /// Write a single byte to the output stream
     /// - Returns: the written byte length or 0 upon failure
     public func write(byte: UInt8) -> Int {
-        return self.write(UnsafePointer<UInt8>([byte]), maxLength: 1)
+        [byte].withUnsafeBufferPointer {
+            self.write($0.baseAddress!, maxLength: $0.count)
+        }
     }
 }
