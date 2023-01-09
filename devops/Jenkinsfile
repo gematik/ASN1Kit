@@ -1,0 +1,35 @@
+import org.jenkinsci.plugins.pipeline.modeldefinition.Utils
+
+pipeline {
+    agent { label 'IOSDEV' }
+
+    triggers {
+        gitlab(
+            triggerOnNoteRequest: true,
+            noteRegex: "[jJ]enkins"
+        )
+    }
+
+    environment {
+        KEYCHAIN_PASSWORD = credentials('KEYCHAIN_PASSWORD')
+    }
+
+    options {
+        ansiColor('xterm')
+        copyArtifactPermission('*')
+    }
+
+    stages {
+        stage('Fastlane cibuild') {
+            steps {
+                sh label: 'starting ios test run', script: '''#!/bin/bash -l
+                    if [ -f $HOME/.bash_profile ]; then source $HOME/.bash_profile; fi
+
+                    security -v unlock-keychain -p "${KEYCHAIN_PASSWORD}" ~/Library/Keychains/login.keychain
+
+                    make cibuild
+                    '''
+            }
+        }
+    }
+}
