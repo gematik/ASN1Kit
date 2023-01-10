@@ -6,10 +6,6 @@ ASN.1 Decoder for Swift
 
 Generated API docs are available at <https://gematik.github.io/ASN1Kit>.
 
-## License
-
-Licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
-
 ## Overview
 
 This library can be used for ASN.1 (Abstract Syntax Notation One) encoding/decoding
@@ -69,3 +65,11 @@ Extract the tag of the first element of a constructed `ASN1Object`:
     let implicitTag = ASN1Primitive(data: .constructed([tag1, tag2]), tag: .taggedTag(83))
 
     expect(implicitTag.data.items?.first?.tag) == .taggedTag(3)
+
+## License
+
+Copyright 2023 gematik GmbH
+
+Licensed under the **Apache License, Version 2.0** (the "License"); you may not use this file except in compliance with the License.
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the [LICENSE](./LICENSE) for the specific language governing permissions and limitations under the License.

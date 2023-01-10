@@ -8,6 +8,7 @@ docs/
 
 # AppCode project files
 .idea/
+.vscode/
 
 # Third party files
 vendor/
