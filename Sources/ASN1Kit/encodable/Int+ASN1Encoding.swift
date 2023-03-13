@@ -1,12 +1,12 @@
 //
 // Copyright (c) 2023 gematik GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the License);
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
+//
 //     http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -22,7 +22,7 @@ extension Int: ASN1EncodableType {
         let intSize = MemoryLayout<Int>.size
         var littleEndian = self.littleEndian
         return withUnsafePointer(to: &littleEndian) { unbound -> Data in
-            return unbound.withMemoryRebound(to: UInt8.self, capacity: intSize) { bytes -> Data in
+            unbound.withMemoryRebound(to: UInt8.self, capacity: intSize) { bytes -> Data in
                 var shift = 0
                 if self == Int.min {
                     shift = intSize
@@ -33,8 +33,8 @@ extension Int: ASN1EncodableType {
                         shift += 1
                         value >>= 8
                     } while value > 0 || (
-                            (self >= 0 && bytes[shift - 1] & 0x80 == 0x80) || // Check positive bounds
-                                    (self < 0 && bytes[shift - 1] & 0x80 != 0x80) // Check negative bounds
+                        (self >= 0 && bytes[shift - 1] & 0x80 == 0x80) || // Check positive bounds
+                            (self < 0 && bytes[shift - 1] & 0x80 != 0x80) // Check negative bounds
                     )
                 }
                 let data = Data(bytes: bytes, count: shift)
@@ -49,7 +49,7 @@ extension UInt: ASN1EncodableType {
         let uintSize = MemoryLayout<UInt>.size
         var littleEndian = self.littleEndian
         return withUnsafePointer(to: &littleEndian) { unbound -> Data in
-            return unbound.withMemoryRebound(to: UInt8.self, capacity: uintSize) { bytes -> Data in
+            unbound.withMemoryRebound(to: UInt8.self, capacity: uintSize) { bytes -> Data in
                 var shift = 0
                 // find out how many bytes we need (minimum) for DER-encoding
                 var value = UInt(self)

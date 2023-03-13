@@ -1,12 +1,12 @@
 //
 // Copyright (c) 2023 gematik GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the License);
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
+//
 //     http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -20,13 +20,13 @@ public struct ObjectIdentifier: Equatable, Hashable, RawRepresentable {
     public let rawValue: String
 
     private init(withValidated value: String) {
-        self.rawValue = value
+        rawValue = value
     }
-    
+
     private init(withUnvalidated value: String) throws {
         // check ASN.1 syntax
-        let regex = try! NSRegularExpression( //swiftlint:disable:this force_try
-                pattern: "^((urn:oid:)|\\{)?(([0-2]((\\.|\\s)([1-9]([0-9]*)|0))+)|(\\w+\\W?\\w*\\(\\d+\\)\\s*)+)(\\})?$"
+        let regex = try! NSRegularExpression( // swiftlint:disable:this force_try
+            pattern: "^((urn:oid:)|\\{)?(([0-2]((\\.|\\s)([1-9]([0-9]*)|0))+)|(\\w+\\W?\\w*\\(\\d+\\)\\s*)+)(\\})?$"
         )
         guard !regex.matches(in: value, options: [], range: value.fullRange).isEmpty else {
             throw ASN1Error.malformedEncoding("Invalid OID [\(value)]")
@@ -38,10 +38,10 @@ public struct ObjectIdentifier: Equatable, Hashable, RawRepresentable {
         guard transformedOID.isOID else {
             throw ASN1Error.malformedEncoding("Invalid (transformed) OID [\(transformedOID)]")
         }
-        
+
         self.init(withValidated: transformedOID)
     }
-    
+
     public init?(rawValue: String) {
         do {
             try self.init(withUnvalidated: rawValue)
@@ -49,7 +49,7 @@ public struct ObjectIdentifier: Equatable, Hashable, RawRepresentable {
             return nil
         }
     }
-    
+
     /// Parse ASN.1 OID from String
     ///
     /// Supports OID formats: ASN.1 notation (http://oid-info.com/faq.htm#17)
@@ -63,7 +63,7 @@ public struct ObjectIdentifier: Equatable, Hashable, RawRepresentable {
     /// - Throws: ASN1Error when string is malformed
     /// - Returns: The parsed ObjectIdentifier as OID
     public static func from(string value: String) throws -> ObjectIdentifier {
-        return try ObjectIdentifier(withUnvalidated: value)
+        try ObjectIdentifier(withUnvalidated: value)
     }
 }
 
@@ -73,8 +73,8 @@ extension ObjectIdentifier: ASN1CodableType {
     /// - Parameter tag: ignored and set to `.universal(.objectIdentifier)`
     /// - Throws: ASN1Error when SIDs are not Int Parsable
     /// - Returns: The ASN1Primitive from ASN1 serializing
-    public func asn1encode(tag: ASN1DecodedTag? = nil) throws -> ASN1Object {
-        var sids = self.rawValue.split(separator: ".").map(String.init).map(UInt.init)
+    public func asn1encode(tag _: ASN1DecodedTag? = nil) throws -> ASN1Object {
+        var sids = rawValue.split(separator: ".").map(String.init).map(UInt.init)
         guard sids.count > 1 else {
             throw ASN1Error.internalInconsistency("Invalid SID encountered [Empty]")
         }
@@ -127,9 +127,9 @@ extension ObjectIdentifier: ASN1CodableType {
             // Treat first two (2) SIDs differently
             if value.isEmpty {
                 switch subId {
-                case 0...39:
+                case 0 ... 39:
                     value = "0.\(subId)"
-                case 40...79:
+                case 40 ... 79:
                     value = "1.\(subId - 40)"
                 default:
                     value = "2.\(subId - 80)"
@@ -145,23 +145,27 @@ extension ObjectIdentifier: ASN1CodableType {
 
 extension ObjectIdentifier: CustomStringConvertible {
     public var description: String {
-        return self.rawValue
+        rawValue
     }
 }
 
 extension String {
-    static let oidRegex = try! NSRegularExpression(pattern: "^(((0|1)\\.([1-3][0-9]|[0-9])(\\.([1-9]([0-9])*|0))?)|(2\\.([1-9]([0-9]*)|[0-9])))(\\.([1-9]([0-9])*|0))*$")
-    //swiftlint:disable:previous force_try line_length
+    // swiftlint:disable force_try line_length
+    static let oidRegex =
+        try! NSRegularExpression(
+            pattern: "^(((0|1)\\.([1-3][0-9]|[0-9])(\\.([1-9]([0-9])*|0))?)|(2\\.([1-9]([0-9]*)|[0-9])))(\\.([1-9]([0-9])*|0))*$"
+        )
+    // swiftlint:enable force_try line_length
 
     /// Check if `self` could be a valid ASN.1 OID
     /// - Returns: `true` when matching the oidRegex
     var isOID: Bool {
-        return !String.oidRegex.matches(in: self, options: [], range: self.fullRange).isEmpty
+        !String.oidRegex.matches(in: self, options: [], range: fullRange).isEmpty
     }
 
     /// Create a Character set of self
     public var characterSet: Set<Character> {
-        return Set(self)
+        Set(self)
     }
 }
 

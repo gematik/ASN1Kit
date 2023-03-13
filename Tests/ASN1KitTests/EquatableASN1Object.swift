@@ -1,12 +1,12 @@
 //
 // Copyright (c) 2023 gematik GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the License);
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
+//
 //     http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,23 +18,23 @@ import ASN1Kit
 
 extension ASN1Object {
     func asEquatable() -> EquatableASN1Object {
-        return EquatableASN1Object(item: self)
+        EquatableASN1Object(item: self)
     }
 
     func equal(to other: ASN1Object) -> Bool {
-        return self.tag == other.tag &&
-                self.length == other.length &&
-                self.constructed == other.constructed &&
-                self.data.equal(to: other.data)
+        tag == other.tag &&
+            length == other.length &&
+            constructed == other.constructed &&
+            data.equal(to: other.data)
     }
 }
 
 extension ASN1Data {
     func equal(to other: ASN1Data) -> Bool {
         switch (self, other) {
-        case (.primitive(let lhs), .primitive(let rhs)):
+        case let (.primitive(lhs), .primitive(rhs)):
             return lhs == rhs
-        case (.constructed(let lhs), .constructed(let rhs)):
+        case let (.constructed(lhs), .constructed(rhs)):
             return lhs.map { $0.asEquatable() } == rhs.map { $0.asEquatable() }
         default:
             return false
@@ -48,7 +48,7 @@ struct EquatableASN1Object: Equatable {
 
     /// Check equality between ASN1Objects
     static func ==(lhs: EquatableASN1Object, rhs: EquatableASN1Object) -> Bool {
-        //swiftlint:disable:previous operator_whitespace
-        return lhs.item.equal(to: rhs.item)
+        // swiftlint:disable:previous operator_whitespace
+        lhs.item.equal(to: rhs.item)
     }
 }

@@ -1,12 +1,12 @@
 //
 // Copyright (c) 2023 gematik GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the License);
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
+//
 //     http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -27,14 +27,14 @@ extension String: ASN1CodableType {
 
         guard let data = data(using: encoding) else {
             throw ASN1Error.malformedEncoding(
-                    "String: [\(self)] could not be encoded with encoding: [\(String(describing: encoding))]"
+                "String: [\(self)] could not be encoded with encoding: [\(String(describing: encoding))]"
             )
         }
 
         guard let stag = tag ?? encoding.asn1decoded else {
             throw ASN1Error.malformedEncoding(
-                    "No ASN.1 tag found for tag: [\(String(describing: tag))] " +
-                            "and/or encoding: [\(String(describing: encoding))]"
+                "No ASN.1 tag found for tag: [\(String(describing: tag))] " +
+                    "and/or encoding: [\(String(describing: encoding))]"
             )
         }
 
@@ -54,7 +54,7 @@ extension String: ASN1CodableType {
 extension ASN1DecodedTag {
     var stringEncoding: String.Encoding? {
         switch self {
-        case .universal(let tag):
+        case let .universal(tag):
             return tag.stringEncoding
         default:
             return nil

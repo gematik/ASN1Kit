@@ -1,12 +1,12 @@
 //
 // Copyright (c) 2023 gematik GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the License);
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
+//
 //     http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -21,7 +21,6 @@ import GemCommonsKit
     Date formatting (encoding only) as described in X.680-201508 Chapter 46 Generalized time
  */
 public class GeneralizedTimeDateFormatter {
-
     private init() {}
 
     /**
@@ -40,7 +39,7 @@ public class GeneralizedTimeDateFormatter {
         decodingFormatter.dateFormat = dateFormat
         decodingFormatter.timeZone = generalizedTime.timeZone
 
-        guard let date = decodingFormatter.date(from: generalizedTime[0..<dateFormat.count]) else {
+        guard let date = decodingFormatter.date(from: generalizedTime[0 ..< dateFormat.count]) else {
             return nil
         }
 
@@ -52,6 +51,7 @@ public class GeneralizedTimeDateFormatter {
         return date
     }
 }
+
 // swiftlint:disable strict_fileprivate
 
 extension Date {
@@ -63,7 +63,7 @@ extension Date {
 
         var strFraction = ""
         let index = separatorIndex.utf16Offset(in: date)
-        for idx in index..<date.count {
+        for idx in index ..< date.count {
             let str = String(date[idx])
             if str.isNumerical {
                 strFraction += str
@@ -72,17 +72,17 @@ extension Date {
             }
         }
         guard let fraction = TimeInterval(strFraction) else {
-            //meh? Not Double/TimeInterval parse-able
+            // meh? Not Double/TimeInterval parse-able
             return self
         }
         if date.hasSeconds {
-            return Date(timeIntervalSince1970: self.timeIntervalSince1970 + fraction)
+            return Date(timeIntervalSince1970: timeIntervalSince1970 + fraction)
         }
         if date.hasMinutes {
-            return Date(timeIntervalSince1970: self.timeIntervalSince1970 + (fraction * 60))
+            return Date(timeIntervalSince1970: timeIntervalSince1970 + (fraction * 60))
         }
 
-        return Date(timeIntervalSince1970: self.timeIntervalSince1970 + (fraction * 3600))
+        return Date(timeIntervalSince1970: timeIntervalSince1970 + (fraction * 3600))
     }
 }
 
@@ -91,9 +91,9 @@ extension String {
     /// GeneralizedTime date-format for parsing the part before the (possible) fraction
     fileprivate var dateFormat: String {
         var dateFormat = "yyyyMMddHH"
-        if self.hasMinutes {
+        if hasMinutes {
             dateFormat += "mm"
-            if self.hasSeconds {
+            if hasSeconds {
                 dateFormat += "ss"
             }
         }
@@ -102,16 +102,16 @@ extension String {
 
     /// Get the indicated time zone when available, else assume GMT
     fileprivate var timeZone: TimeZone? {
-        if !self.hasTimeZone || self.hasSuffix("Z") {
+        if !hasTimeZone || hasSuffix("Z") {
             return TimeZone(secondsFromGMT: 0)
         }
         /// +/- hours (evt. also minutes)
-        guard let digits = self.lastDigits else {
+        guard let digits = lastDigits else {
             return nil
         }
         var offset = digits.gmtOffset
         /// Figure out if its + or -
-        if self[self.count - digits.count - 1] == "-" {
+        if self[count - digits.count - 1] == "-" {
             offset = 0 - offset
         }
         return TimeZone(secondsFromGMT: offset)
@@ -119,8 +119,8 @@ extension String {
 
     /// Minutes should be at index-position 10 and 11
     fileprivate var hasMinutes: Bool {
-        if self.count > 11 {
-            guard let index = self.firstIndex(of: ".") else {
+        if count > 11 {
+            guard let index = firstIndex(of: ".") else {
                 return true
             }
             return index.utf16Offset(in: self) > 10
@@ -130,8 +130,8 @@ extension String {
 
     /// Seconds should be at index-position 12 and 13
     fileprivate var hasSeconds: Bool {
-        if self.count > 13 {
-            guard let index = self.firstIndex(of: ".") else {
+        if count > 13 {
+            guard let index = firstIndex(of: ".") else {
                 return true
             }
             return index.utf16Offset(in: self) > 12
@@ -140,19 +140,19 @@ extension String {
     }
 
     fileprivate var hasFraction: Bool {
-        return self.contains(".")
+        contains(".")
     }
 
-    fileprivate var hasTimeZone: Bool {
-        return self.hasSuffix("Z") || self.contains("+") || self.contains("-")
+    private var hasTimeZone: Bool {
+        hasSuffix("Z") || contains("+") || contains("-")
     }
 }
 
 extension String {
     /// Get the all the digits from the end of `self` until a non-digit is encountered
-    fileprivate var lastDigits: String? {
+    private var lastDigits: String? {
         var hoursMinutes = ""
-        for idx in (0..<self.count).reversed() {
+        for idx in (0 ..< count).reversed() {
             let digit = String(self[idx])
             if digit.isDigitsOnly {
                 hoursMinutes = digit + hoursMinutes
@@ -164,11 +164,11 @@ extension String {
     }
 
     /// Seconds from GMT while `self` is interpreted as HHmm
-    fileprivate var gmtOffset: Int {
+    private var gmtOffset: Int {
         var value = 0
-        if self.count == 4 {
-            value = (Int(self[0..<2]) ?? 0) * 3600
-            value += (Int(self[2..<4]) ?? 0) * 60
+        if count == 4 {
+            value = (Int(self[0 ..< 2]) ?? 0) * 3600
+            value += (Int(self[2 ..< 4]) ?? 0) * 60
         }
         return value
     }

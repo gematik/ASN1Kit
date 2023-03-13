@@ -1,12 +1,12 @@
 //
 // Copyright (c) 2023 gematik GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the License);
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
+//
 //     http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,8 +17,8 @@
 import Foundation
 
 /**
-    DataScanner - scan over a Data object as a stream
-*/
+ DataScanner - scan over a Data object as a stream
+ */
 internal class DataScanner {
     /// The complete data to scan
     private let data: Data
@@ -33,7 +33,7 @@ internal class DataScanner {
 
     /// `true` if there are no more bytes available to scan.
     var isComplete: Bool {
-        return position >= data.count
+        position >= data.count
     }
 
     /**
@@ -59,7 +59,7 @@ internal class DataScanner {
         - Returns: the read bytes or nil when no bytes available of requested distance
      */
     func scan(distance: Int) -> Data? {
-        return pop(bytes: distance)
+        pop(bytes: distance)
     }
 
     /**
@@ -68,7 +68,7 @@ internal class DataScanner {
         - Returns: the read bytes or nil when no bytes left
      */
     func scanToEnd() -> Data? {
-        return scan(distance: data.count - position)
+        scan(distance: data.count - position)
     }
 
     private func pop(bytes: Int = 1) -> Data? {
@@ -81,21 +81,21 @@ internal class DataScanner {
             position += bytes
         }
 
-        return data.subdata(in: position..<position + bytes)
+        return data.subdata(in: position ..< position + bytes)
     }
 
     func mark() {
-        self.marker = position
+        marker = position
     }
 
     func unmark() {
-        self.marker = nil
+        marker = nil
     }
 
     var marked: Data? {
-        guard let marker = self.marker else {
+        guard let marker = marker else {
             return nil
         }
-        return self.data.subdata(in: marker..<position)
+        return data.subdata(in: marker ..< position)
     }
 }
