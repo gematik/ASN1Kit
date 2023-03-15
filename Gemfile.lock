@@ -299,13 +299,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  fastlane (~> 2.114)
-  jazzy (~> 0.11)
+  fastlane (~> 2.187)
+  jazzy (~> 0.13)
   xcode-install (~> 2.6.6)
   xcodeproj (~> 1.7)
 
 RUBY VERSION
-   ruby 2.6.5p114
+   ruby 3.1.2p20
 
 BUNDLED WITH
    2.3.11

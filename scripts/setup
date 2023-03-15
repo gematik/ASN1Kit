@@ -9,13 +9,6 @@ cd "$(dirname "$0")/.."
 
 scripts/bootstrap
 
-# Install Carthage dependencies
-if [ -f "Cartfile" ]; then
-  CONFIG=${1-Debug}
-  bundle exec fastlane carthage_resolve_dependencies configuration:${CONFIG}
-fi
-
-echo "==> Setting up xcodeproj…"
-xcodegen --spec project.yml
+bundle exec fastlane setup
 
 echo "==> Project is now ready to go!"
