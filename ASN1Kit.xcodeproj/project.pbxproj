@@ -560,7 +560,7 @@
 				};
 			};
 			buildConfigurationList = A8AD84FCA0AD964412756D0E /* Build configuration list for PBXProject "ASN1Kit" */;
-			compatibilityVersion = "Xcode 10.0";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (

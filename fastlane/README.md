@@ -115,6 +115,28 @@ Lane that sets up the SPM/Carthage dependencies and xcodeproj.
 
 
 
+### xcodegen_generate_xcodeproj
+
+```sh
+[bundle exec] fastlane xcodegen_generate_xcodeproj
+```
+
+Generate xcodeproj from project.yml file
+
+The lane to run when project.yml has changed and this should be reflected
+
+in the xcodeproj.
+
+
+
+###Example:
+
+```
+fastlane xcodegen_generate_xcodeproj
+```
+
+
+
 ### cibuild
 
 ```sh

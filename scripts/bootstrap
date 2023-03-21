@@ -17,11 +17,10 @@ brew bundle check >/dev/null 2>&1  || {
   brew bundle
 }
 
-mint bootstrap
-
 hash bundle 2>/dev/null || {
   echo "==> Installing Bundler 2.1.4…"
   gem install bundler -v 2.1.4 --no-document --quiet
 }
 echo "==> Installing gem dependencies…"
 bundle install --system
+

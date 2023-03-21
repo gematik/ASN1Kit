@@ -1,7 +1,7 @@
 import org.jenkinsci.plugins.pipeline.modeldefinition.Utils
 
 pipeline {
-    agent { label 'IOSDEV' }
+    agent { label 'IOSDEV2' }
 
     triggers {
         gitlab(
