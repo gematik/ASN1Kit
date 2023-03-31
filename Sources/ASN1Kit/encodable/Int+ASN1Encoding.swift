@@ -40,6 +40,29 @@ extension Int: ASN1EncodableType {
                 let data = Data(bytes: bytes, count: shift)
                 return Data(data.reversed()) // Return BigEndian
             }
-        }.asn1encode(tag: .universal(.integer))
+        }.asn1encode(tag: tag ?? .universal(.integer))
+    }
+}
+
+extension UInt: ASN1EncodableType {
+    public func asn1encode(tag: ASN1DecodedTag?) throws -> ASN1Object {
+        let uintSize = MemoryLayout<UInt>.size
+        var littleEndian = self.littleEndian
+        return withUnsafePointer(to: &littleEndian) { unbound -> Data in
+            return unbound.withMemoryRebound(to: UInt8.self, capacity: uintSize) { bytes -> Data in
+                var shift = 0
+                // find out how many bytes we need (minimum) for DER-encoding
+                var value = UInt(self)
+                repeat {
+                    shift += 1
+                    value >>= 8
+                } while value > 0
+                var data = Data(bytes: bytes, count: shift)
+                if shift > 0, bytes[shift - 1] & 0x80 != 0 {
+                    data.append(contentsOf: [0x00])
+                }
+                return Data(data.reversed()) // Return BigEndian
+            }
+        }.asn1encode(tag: tag ?? .universal(.integer))
     }
 }
