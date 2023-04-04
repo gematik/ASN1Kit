@@ -99,6 +99,8 @@ extension ASN1Tag {
             return .utf16BigEndian
         case .printableString:
             return .ascii
+        case .generalString:
+            return .ascii
         default:
             return nil
         }
