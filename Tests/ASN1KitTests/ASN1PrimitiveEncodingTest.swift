@@ -41,6 +41,7 @@ class ASN1PrimitiveEncodingTest: XCTestCase {
         expect(output.buffer) == expected
 
         expect(try ASN1Decoder.decode(asn1: output.buffer).asEquatable()) == implicitTag.asEquatable()
+        expect(try ASN1Decoder.decode(asn1: output.buffer).originalEncoding) == expected
     }
 
     static var allTests = [

@@ -37,6 +37,9 @@ public protocol ASN1Object {
 
     /// Whether the object is a constructed object.
     var constructed: Bool { get }
+    
+    /// The original encoding
+    var originalEncoding: Data? { get }
 }
 
 extension ASN1Object {
@@ -60,6 +63,7 @@ public func create(tag: ASN1DecodedTag, data: ASN1Data) -> ASN1Object {
 internal struct ASN1Primitive {
     let data: ASN1Data
     let tag: ASN1DecodedTag
+    var originalEncoding: Data?
 }
 
 extension ASN1Primitive: ASN1Object {
