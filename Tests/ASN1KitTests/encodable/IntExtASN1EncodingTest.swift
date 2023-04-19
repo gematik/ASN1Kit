@@ -1,12 +1,12 @@
 //
 // Copyright (c) 2023 gematik GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the License);
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
+//
 //     http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -21,29 +21,29 @@ import XCTest
 // https://www.strozhevsky.com/free_docs/asn1_by_simple_words.pdf
 final class IntExtASN1EncodingTest: XCTestCase {
     func testEnumerated_toASN1() {
-        //0x0080 = 8388607
+        // 0x0080 = 8388607
         let expected = Data([0x0A, 0x03, 0x7F, 0xFF, 0xFF])
-        expect(try 8388607.asn1encode(tag: .universal(.enumerated)).serialize()) == expected
+        expect(try 8_388_607.asn1encode(tag: .universal(.enumerated)).serialize()) == expected
     }
 
     func testInt_0x80_toASN1() {
-        //0x80 = -128
+        // 0x80 = -128
         let expected = Data([0x80])
         expect(try (-128).asn1encode(tag: nil).data.primitive) == expected
     }
 
     func testInt_0x0080_toASN1() {
         // tag::encodeSwiftPrimitives[]
-        //0x0080 = 128
+        // 0x0080 = 128
         let expected = Data([0x00, 0x80])
         expect(try 128.asn1encode(tag: nil).data.primitive) == expected
         // end::encodeSwiftPrimitives[]
     }
 
     func testInt_0x7FFFFF_toASN1() {
-        //0x7FFFFF = 8388607
+        // 0x7FFFFF = 8388607
         let expected = Data([0x7F, 0xFF, 0xFF])
-        expect { try 8388607.asn1encode(tag: nil).data.primitive } == expected
+        expect { try 8_388_607.asn1encode(tag: nil).data.primitive } == expected
     }
 
     func testInt_min_32639_toASN1() {
@@ -52,15 +52,15 @@ final class IntExtASN1EncodingTest: XCTestCase {
     }
 
     func testInt_0xff78_toASN1() {
-        //0xff78 = -136
-        let expected = Data([0xff, 0x78])
+        // 0xff78 = -136
+        let expected = Data([0xFF, 0x78])
         expect { try (-136).asn1encode(tag: nil).data.primitive } == expected
     }
 
     func testInt_0x800001_toASN1() {
-        //0x800001 = -8388607
+        // 0x800001 = -8388607
         let expected = Data([0x80, 0x00, 0x01])
-        expect { try (-8388607).asn1encode(tag: nil).data.primitive } == expected
+        expect { try (-8_388_607).asn1encode(tag: nil).data.primitive } == expected
     }
 
     func testMinInt_toASN1() {
@@ -74,24 +74,24 @@ final class IntExtASN1EncodingTest: XCTestCase {
     func testMaxInt_toASN1() {
         // Test ASN1Integer Int.max
         let size = MemoryLayout<Int>.size
-        var bytes = [UInt8](repeating: 0xff, count: size)
+        var bytes = [UInt8](repeating: 0xFF, count: size)
         bytes[0] = 0x80 ^ bytes[0]
         let expected = Data(bytes)
         expect { try Int.max.asn1encode(tag: nil).data.primitive } == expected
     }
-    
+
     func testUInt_0x0080_toASN1() {
         // tag::encodeSwiftPrimitives[]
-        //0x0080 = 128
+        // 0x0080 = 128
         let expected = Data([0x00, 0x80])
         expect(try UInt(128).asn1encode(tag: nil).data.primitive) == expected
         // end::encodeSwiftPrimitives[]
     }
 
     func testUInt_0x7FFFFF_toASN1() {
-        //0x7FFFFF = 8388607
+        // 0x7FFFFF = 8388607
         let expected = Data([0x7F, 0xFF, 0xFF])
-        expect { try UInt(8388607).asn1encode(tag: nil).data.primitive } == expected
+        expect { try UInt(8_388_607).asn1encode(tag: nil).data.primitive } == expected
     }
 
     func testMinUInt_toASN1() {
@@ -103,7 +103,7 @@ final class IntExtASN1EncodingTest: XCTestCase {
     func testMaxUInt_toASN1() {
         // Test ASN1Integer UInt.max
         let size = MemoryLayout<UInt>.size
-        let bytes = [UInt8](repeating: 0xff, count: size)
+        let bytes = [UInt8](repeating: 0xFF, count: size)
         let expected = Data([0x00] + bytes)
         expect { try UInt.max.asn1encode(tag: nil).data.primitive } == expected
     }

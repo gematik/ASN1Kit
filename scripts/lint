@@ -10,4 +10,5 @@ cd "$(dirname "$0")/.."
 
 echo "==> Running static analysis…"
 
-swiftlint lint --config .swiftlint.yml --strict --quiet
+mint run swiftformat . --config .swiftformat --lint
+mint run swiftlint lint --strict --quiet

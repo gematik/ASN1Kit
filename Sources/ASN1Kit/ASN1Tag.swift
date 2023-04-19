@@ -1,12 +1,12 @@
 //
 // Copyright (c) 2023 gematik GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the License);
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
+//
 //     http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,11 +17,11 @@
 import Foundation
 
 /**
-    ASN.1 Tag implementation according to the X.690-0207 specification
+ ASN.1 Tag implementation according to the X.690-0207 specification
 
-    For more information see the
-    [X.690-0207.pdf](https://www.itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf) specification.
-*/
+ For more information see the
+ [X.690-0207.pdf](https://www.itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf) specification.
+ */
 public enum ASN1Tag: UInt8 {
     /// 'Placeholder' type for Tagged objects
     case implicit = 0x0
@@ -51,7 +51,7 @@ public enum ASN1Tag: UInt8 {
 
     /// Tag is Enumeration/enumerated
     /// - Warning: unsupported
-    case enumerated = 0x0a
+    case enumerated = 0x0A
 
     /// Tag is a Sequence of sub-asn1-objects
     case sequence = 0x10
@@ -90,33 +90,33 @@ public enum ASN1Tag: UInt8 {
 
     /// Tag is Visible String (International ASCII printing character sets)
     /// - Warning: unsupported
-    case visibleString = 0x1a
+    case visibleString = 0x1A
 
     /// Tag is General String (all registered graphic and character sets plus SPACE and DELETE)
     /// - Warning: unsupported
-    case generalString = 0x1b
+    case generalString = 0x1B
 
     /// Tag is Universal String (ISO10646 character set)
-    case universalString = 0x1c
+    case universalString = 0x1C
 
     /// Tag is BMP String (Basic Multilingual Plane of ISO/IEC/ITU 10646-1)
-    case bmpString = 0x1e
+    case bmpString = 0x1E
 
     /// Tag is UTF8 String (any character from a recognized alphabet (including ASCII control characters)
-    case utf8String = 0x0c
+    case utf8String = 0x0C
 
     /// Tag is Relative OID
     /// - Warning: unsupported
-    case relativeOID = 0x0d
+    case relativeOID = 0x0D
 
     /// Tag is TIME
     /// - Note: Added in X.680 in 08/2015
     /// - Warning: unsupported
-    case time = 0x0e
+    case time = 0x0E
 
     public static let universal: UInt8 = 0x0
     public static let constructed: UInt8 = 0x20
     public static let application: UInt8 = 0x40
-    public static let `private`: UInt8 = 0xc0
+    public static let `private`: UInt8 = 0xC0
     public static let tagged: UInt8 = 0x80
 }

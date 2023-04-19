@@ -1,12 +1,12 @@
 //
 // Copyright (c) 2023 gematik GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the License);
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
+//
 //     http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -27,7 +27,7 @@ extension ASN1Object {
             return ASN1Primitive(data: .constructed([self]), tag: tag)
         }
         /// Implicit
-        return ASN1Primitive(data: self.data, tag: tag)
+        return ASN1Primitive(data: data, tag: tag)
     }
 }
 
@@ -49,23 +49,23 @@ extension ASN1Object {
         guard bytesWritten == len else {
             buffer.deallocate()
             throw ASN1Error.internalInconsistency(
-                    "Internal inconsistency error: Number of bytes written [\(bytesWritten)] " +
-                            "is not equal to required length [\(len)]"
+                "Internal inconsistency error: Number of bytes written [\(bytesWritten)] " +
+                    "is not equal to required length [\(len)]"
             )
         }
         return Data(bytesNoCopy: buffer, count: len, deallocator: .free)
     }
 
     internal func write(to output: OutputStream) -> Int {
-        return Self.write(tag: tag, constructed: data.constructed, to: output) +
-                Self.write(length: length, to: output) +
-                Self.write(data: data, to: output)
+        Self.write(tag: tag, constructed: data.constructed, to: output) +
+            Self.write(length: length, to: output) +
+            Self.write(data: data, to: output)
     }
 
     private static func write(tag: ASN1DecodedTag,
                               constructed: Bool,
                               to output: OutputStream) -> Int {
-        return tag.write(to: output, constructed: constructed)
+        tag.write(to: output, constructed: constructed)
     }
 
     internal static func write(length: Int, to output: OutputStream) -> Int {
@@ -77,29 +77,29 @@ extension ASN1Object {
             // long notation
             let len = length.lengthSize - 1
             var bytes = [UInt8(0x80 | len)]
-            for idx in (0..<len).reversed() {
-                bytes.append(UInt8((length & Int(0xff << (idx * 8))) >> (idx * 8)))
+            for idx in (0 ..< len).reversed() {
+                bytes.append(UInt8((length & Int(0xFF << (idx * 8))) >> (idx * 8)))
             }
             return output.write(&bytes, maxLength: bytes.count)
         }
     }
 
     private static func write(data: ASN1Data, to output: OutputStream) -> Int {
-        return data.write(to: output)
+        data.write(to: output)
     }
 }
 
 extension ASN1DecodedTag {
     internal func write(to output: OutputStream, constructed: Bool) -> Int {
         switch self {
-        case .universal(let tag):
+        case let .universal(tag):
             let byte = tag.rawValue | UInt8(constructed ? ASN1Tag.constructed : ASN1Tag.universal)
             return output.write(byte: byte)
-        case .applicationTag(let tag):
+        case let .applicationTag(tag):
             return tag.write(to: output, clazz: ASN1Tag.application, constructed: constructed)
-        case .taggedTag(let tag):
+        case let .taggedTag(tag):
             return tag.write(to: output, clazz: ASN1Tag.tagged, constructed: constructed)
-        case .privateTag(let tag):
+        case let .privateTag(tag):
             return tag.write(to: output, clazz: ASN1Tag.private, constructed: constructed)
         }
     }
@@ -109,25 +109,25 @@ extension UInt {
     internal func write(to output: OutputStream,
                         clazz: UInt8,
                         constructed: Bool) -> Int {
-        if self < 0x1f {
+        if self < 0x1F {
             // short notation
             var byte = [UInt8(self) |
-                    clazz |
-                    UInt8(constructed ? ASN1Tag.constructed : ASN1Tag.universal)]
+                clazz |
+                UInt8(constructed ? ASN1Tag.constructed : ASN1Tag.universal)]
             return output.write(&byte, maxLength: 1)
         } else {
             // Long notation
-            let len = self.tagNoLength
+            let len = tagNoLength
             let firstByte = clazz |
-                    UInt8(constructed ? ASN1Tag.constructed : ASN1Tag.universal) |
-                    0x1f
+                UInt8(constructed ? ASN1Tag.constructed : ASN1Tag.universal) |
+                0x1F
             var byteCount = output.write(byte: firstByte)
 
-            for idx in (0..<len - 1).reversed() {
-                var byte = UInt8((self >> UInt(idx * 7)) & 0x7f) | UInt8(0x80)
+            for idx in (0 ..< len - 1).reversed() {
+                var byte = UInt8((self >> UInt(idx * 7)) & 0x7F) | UInt8(0x80)
                 // unset the 8th bit in the last written byte
                 if idx == 0 {
-                    byte &= 0x7f
+                    byte &= 0x7F
                 }
                 byteCount += output.write(byte: byte)
             }
@@ -140,7 +140,7 @@ extension UInt {
 extension ASN1Data {
     internal func write(to output: OutputStream) -> Int {
         switch self {
-        case .primitive(let data):
+        case let .primitive(data):
             // Write primitive
             if !data.isEmpty {
                 return data.withUnsafeBytes { bytes in
@@ -152,7 +152,7 @@ extension ASN1Data {
                 // Not writing NULL
                 return 0
             }
-        case .constructed(let items):
+        case let .constructed(items):
             // Write constructed items
             return items.reduce(0) { acc, item in
                 acc + item.write(to: output)

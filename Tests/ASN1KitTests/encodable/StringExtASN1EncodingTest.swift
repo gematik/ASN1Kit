@@ -1,12 +1,12 @@
 //
 // Copyright (c) 2023 gematik GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the License);
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
+//
 //     http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,7 +23,7 @@ class StringExtASN1EncodingTest: XCTestCase {
 
     static let bundleName = "Resources"
     static let asciiText = "\0 01234567890\tabcdefghijklmnopqrstuvwxyz" +
-            " ABCDEFGHIJKLMNOPQRSTUVWXYZ \n\r []{}`\"!@#$%^&*()_+=/\\>.,< ~;:"
+        " ABCDEFGHIJKLMNOPQRSTUVWXYZ \n\r []{}`\"!@#$%^&*()_+=/\\>.,< ~;:"
 
     func testStringASCIIEncoding() {
         let path = bundle.testResourceFilePath(in: StringExtASN1EncodingTest.bundleName, for: "ascii_text.txt.der")
@@ -52,18 +52,19 @@ class StringExtASN1EncodingTest: XCTestCase {
         } == StringExtASN1EncodingTest.asciiText
     }
 
+    // swiftlint:disable:next large_tuple
     typealias TestCase = (String, String, String, ASN1DecodedTag, String.Encoding)
 
     static let tests: [TestCase] = [
         ("UTF8 to ASN.1 Test", "text.utf8.txt.der", "text.utf8.txt", .universal(.utf8String), .utf8),
         ("UTF16 to ASN.1 Test", "text.utf16BE.txt.der", "text.utf16BE.txt", .universal(.bmpString), .utf16BigEndian),
         ("UTF32 to ASN.1 Test", "text.utf32BE.txt.der", "text.utf32BE.txt", .universal(.universalString),
-                .utf32BigEndian),
+         .utf32BigEndian),
         ("UTF8 (special) to ASN.1 Test", "special.utf8.txt.der", "special.utf8.txt", .universal(.utf8String), .utf8),
         ("UTF16 (special) to ASN.1 Test", "special.utf16BE.txt.der", "special.utf16BE.txt", .universal(.bmpString),
-                .utf16BigEndian),
+         .utf16BigEndian),
         ("UTF32 (special) to ASN.1 Test", "special.utf32BE.txt.der", "special.utf32BE.txt",
-                .universal(.universalString), .utf32BigEndian)
+         .universal(.universalString), .utf32BigEndian),
     ]
 
     func testParameterized() {
@@ -71,10 +72,10 @@ class StringExtASN1EncodingTest: XCTestCase {
             let testName = testCase.0
             let errors = Nimble.gatherFailingExpectations(silently: true) {
                 encodingTest(
-                        encodedFileName: testCase.1,
-                        contentsFileName: testCase.2,
-                        tag: testCase.3,
-                        encoding: testCase.4
+                    encodedFileName: testCase.1,
+                    contentsFileName: testCase.2,
+                    tag: testCase.3,
+                    encoding: testCase.4
                 )
             }
             if !errors.isEmpty {
@@ -93,9 +94,9 @@ class StringExtASN1EncodingTest: XCTestCase {
         guard let encodedData = try? encodedFilePath.readFileContents(),
               let stringData = try? contentsFilePath.readFileContents(),
               let string = String(data: stringData, encoding: encoding)
-                else {
+        else {
             Nimble.fail("Could not read test data [\(bundleName)/\(encodedFileName)] " +
-                    "or [\(bundleName)/\(contentsFileName)]")
+                "or [\(bundleName)/\(contentsFileName)]")
             return
         }
 
@@ -110,6 +111,6 @@ class StringExtASN1EncodingTest: XCTestCase {
     static var allTests = [
         ("testStringASCIIEncoding", testStringASCIIEncoding),
         ("testStringASCIIDecoding", testStringASCIIDecoding),
-        ("testParameterized", testParameterized)
+        ("testParameterized", testParameterized),
     ]
 }

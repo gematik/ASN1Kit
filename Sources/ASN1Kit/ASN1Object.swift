@@ -1,12 +1,12 @@
 //
 // Copyright (c) 2023 gematik GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the License);
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
+//
 //     http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,13 +17,13 @@
 import Foundation
 
 /**
-    ASN.1 Object implementation according to the X.690-0207 specification
+ ASN.1 Object implementation according to the X.690-0207 specification
 
-    For more information see the
-    [X.690-0207.pdf](https://www.itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf) specification.
+ For more information see the
+ [X.690-0207.pdf](https://www.itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf) specification.
 
-    ASN1Object protocol that represents any ASN.1 Tag or Sequence
-*/
+ ASN1Object protocol that represents any ASN.1 Tag or Sequence
+ */
 public protocol ASN1Object {
     /// Type of the object
     var tag: ASN1DecodedTag { get }
@@ -37,7 +37,7 @@ public protocol ASN1Object {
 
     /// Whether the object is a constructed object.
     var constructed: Bool { get }
-    
+
     /// The original encoding
     var originalEncoding: Data? { get }
 }
@@ -45,7 +45,7 @@ public protocol ASN1Object {
 extension ASN1Object {
     /// Tag No in case of Context-Specific or Application class
     public var tagNo: UInt? {
-        return tag.tagNo
+        tag.tagNo
     }
 }
 
@@ -55,7 +55,7 @@ extension ASN1Object {
 ///     - data: constructed/primitive content
 /// - Returns: instance of ASN1Object
 public func create(tag: ASN1DecodedTag, data: ASN1Data) -> ASN1Object {
-    return ASN1Primitive(data: data, tag: tag)
+    ASN1Primitive(data: data, tag: tag)
 }
 
 // MARK: - Primitive
@@ -69,10 +69,10 @@ internal struct ASN1Primitive {
 extension ASN1Primitive: ASN1Object {
     /// - Note: this length does not include its own tag and length bytes needed for encoding
     var length: Int {
-        return data.length
+        data.length
     }
 
     public var constructed: Bool {
-        return data.constructed
+        data.constructed
     }
 }

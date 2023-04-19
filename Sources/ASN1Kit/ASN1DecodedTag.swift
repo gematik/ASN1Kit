@@ -1,12 +1,12 @@
 //
 // Copyright (c) 2023 gematik GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the License);
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
+//
 //     http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -31,7 +31,7 @@ public enum ASN1DecodedTag: Equatable {
 extension ASN1DecodedTag {
     /// Whether the Tag is tagged Application specific
     public var isApplicationSpecific: Bool {
-        if case .applicationTag(_) = self {
+        if case .applicationTag = self {
             return true
         }
         return false
@@ -39,7 +39,7 @@ extension ASN1DecodedTag {
 
     /// Whether the Tag is tagged Context-Specific
     public var isContextSpecific: Bool {
-        if case .taggedTag(_) = self {
+        if case .taggedTag = self {
             return true
         }
         return false
@@ -47,7 +47,7 @@ extension ASN1DecodedTag {
 
     /// Whether the tag is Universal
     public var isUniversal: Bool {
-        if case .universal(_) = self {
+        if case .universal = self {
             return true
         }
         return false

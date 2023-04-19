@@ -22,6 +22,9 @@ test:
 build:
 	$(PROJECT_DIR)/scripts/build ${BUILD_TYPE} ${MACOSX_DEPLOYMENT_TARGET}
 
+format:
+	$(PROJECT_DIR)/scripts/format
+
 lint:
 	$(PROJECT_DIR)/scripts/lint
 
