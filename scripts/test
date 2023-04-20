@@ -11,4 +11,4 @@ cd "$(dirname "$0")/.."
 
 echo "==> Running tests…"
 
-bundle exec fastlane build_all
+bundle exec fastlane test_all

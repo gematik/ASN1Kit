@@ -94,54 +94,9 @@ lane :test_all do
   test_ios
 end
 
-desc "Lane that (auto) genarates API documentation from inline comments."
-lane :generate_documentation do
-  jazzy(
-    config: ".jazzy.yml"
-  )
-end
-
-desc "Lane that runs the static code analyzer(s) for the project."
-desc "CI builds should run this lane on every commit"
-desc "Currently swiftlint is used as static analyzer"
-desc ""
-lane :static_code_analysis do
-  # TODO: un-comment later
-  #swiftlint_mint="mint run swiftlint"
-  #swiftlint(
-  #  executable: swiftlint_mint,
-  #  config_file: ".swiftlint.yml",
-  #  mode: :lint,
-  #  ignore_exit_status: false,
-  #  quiet: true,
-  #  strict: true
-  #)
-end
-
 desc "Lane that sets up the SPM/Carthage dependencies and xcodeproj."
 desc ""
 lane :setup do
   carthage_resolve_dependencies
-  xcodegen_generate_xcodeproj
 end
 
-desc "Generate xcodeproj from project.yml file"
-desc "The lane to run when project.yml has changed and this should be reflected"
-desc "in the xcodeproj."
-desc ""
-desc "###Example:"
-desc "```\nfastlane xcodegen_generate_xcodeproj\n```"
-desc ""
-lane :xcodegen_generate_xcodeproj do
-  sh("pushd ..; mint run xcodegen generate --spec project.yml; popd")
-end
-
-desc "Lane that the ci build should invoke directly to do a complete build/test/analysis."
-desc "This lane calls `setup`, `static_code_analysis`, `test_all`, `generate_documentation`."
-desc ""
-lane :cibuild do
-  setup
-  static_code_analysis
-  test_all
-  generate_documentation
-end
