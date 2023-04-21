@@ -11,7 +11,7 @@ ifeq ($(CIBUILD), true)
   BUILD_TYPE = Release
 endif
 
-.PHONY: setup test build lint cibuild cli
+.PHONY: setup test build lint cibuild cli readme
 
 setup:
 	$(PROJECT_DIR)/scripts/setup ${BUILD_TYPE}
@@ -33,3 +33,6 @@ cibuild:
 
 cli:
 	bundle exec fastlane build_cli configuration:${BUILD_TYPE}
+
+readme:
+	$(PROJECT_DIR)/scripts/readme

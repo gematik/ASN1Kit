@@ -20,14 +20,14 @@ import XCTest
 
 class ArrayExtASN1EncodingTest: XCTestCase {
     func testArrayEncoding() {
-        // tag::decodeSerializedData[]
+        // tag::constructAndEncode[]
         let data = Data([0x0, 0x1, 0x2, 0x4]) as ASN1EncodableType
         let data2 = Data([0x4, 0x3, 0x2, 0x1]) as ASN1EncodableType
         let array = [data, data2]
 
         let expected = Data([0x30, 0xC, 0x4, 0x4, 0x0, 0x1, 0x2, 0x4, 0x4, 0x4, 0x4, 0x3, 0x2, 0x1])
         expect(try array.asn1encode().serialize()) == expected
-        // end::decodeSerializedData[]
+        // end::constructAndEncode[]
 
         expect(try Array(from: ASN1Decoder.decode(asn1: expected)).map(Data.asn1decoded)) == array as? [Data]
     }
