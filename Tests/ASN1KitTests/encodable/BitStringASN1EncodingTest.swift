@@ -41,12 +41,14 @@ class BitStringASN1EncodingTest: XCTestCase {
     }
 
     func testBitStringDecodingConstructed() {
+        // tag::decodeSerializedData[]
         let expected = Data([0xB, 0xB, 0x0])
         let serialized = Data([0x23, 0x0C,
                                0x03, 0x02, 0x00, 0x0B,
                                0x03, 0x02, 0x00, 0x0B,
                                0x03, 0x02, 0x04, 0x0F])
         expect(try Data(from: ASN1Decoder.decode(asn1: serialized))) == expected
+        // end::decodeSerializedData[]
     }
 
     static var allTests = [

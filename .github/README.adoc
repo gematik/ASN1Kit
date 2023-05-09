@@ -1,0 +1,105 @@
+////
+Execute `make readme` after editing <project_root>/README.adoc
+////
+:testdir: Tests
+
+= ASN1Kit
+
+ASN.1 Decoder for Swift
+
+
+== API Documentation
+
+Generated API docs are available at <https://gematik.github.io/ASN1Kit>.
+
+
+== Overview
+
+This library can be used for ASN.1 (Abstract Syntax Notation One) encoding/decoding
+using distinguished encoding rules (DER) according to the ITU-T X.690
+
+For more info, please find the complete https://www.itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf[X.690-0207.pdf]
+specification.
+
+
+== Getting Started
+
+ASN1Kit requires Swift 5.1.
+
+=== Setup for integration
+
+==== Carthage
+Put this in your `Cartfile`:
+
+    github "gematik/ASN1Kit" ~> 1.0
+
+=== Setup for development
+
+You will need https://bundler.io/[Bundler], https://github.com/yonaskolb/XcodeGen[XcodeGen]
+and https://fastlane.tools[fastlane] to conveniently use the established development environment.
+
+. Checkout (and build) dependencies and generate the xcodeproject
+[source,Shell]
+$ make setup
+
+. Build the project
+[source,Shell]
+$ make cibuild
+
+
+== Code Samples
+
+Use `ASN1Decoder.decode(asn1:)` to decode serialized data:
+
+[source,swift]
+----
+let expected = Data([0xB, 0xB, 0x0])
+let serialized = Data([0x23, 0x0C,
+                       0x03, 0x02, 0x00, 0x0B,
+                       0x03, 0x02, 0x00, 0x0B,
+                       0x03, 0x02, 0x04, 0x0F])
+expect(try Data(from: ASN1Decoder.decode(asn1: serialized))) == expected
+----
+
+Construct an `ASN1Object` of your choice and serialize it:
+
+[source,swift]
+----
+let data = Data([0x0, 0x1, 0x2, 0x4]) as ASN1EncodableType
+let data2 = Data([0x4, 0x3, 0x2, 0x1]) as ASN1EncodableType
+let array = [data, data2]
+
+let expected = Data([0x30, 0xC, 0x4, 0x4, 0x0, 0x1, 0x2, 0x4, 0x4, 0x4, 0x4, 0x3, 0x2, 0x1])
+expect(try array.asn1encode().serialize()) == expected
+----
+
+ASN.1-encode Swift primitives and extract the encoded value(s):
+
+[source,swift]
+----
+// 0x0080 = 128
+let expected = Data([0x00, 0x80])
+expect(try 128.asn1encode(tag: nil).data.primitive) == expected
+// 0x0080 = 128
+let expected = Data([0x00, 0x80])
+expect(try UInt(128).asn1encode(tag: nil).data.primitive) == expected
+----
+
+Extract the tag of the first element of a constructed `ASN1Object`:
+
+[source,swift]
+----
+let data = Data([0x1, 0x2, 0x3, 0x4, 0x8])
+let tag1 = ASN1Primitive(data: .primitive(data), tag: .taggedTag(3)) // context-specific class tag
+let tag2 = ASN1Primitive(data: .primitive(data), tag: .universal(ASN1Tag.octetString))
+let implicitTag = ASN1Primitive(data: .constructed([tag1, tag2]), tag: .taggedTag(83))
+
+expect(implicitTag.data.items?.first?.tag) == .taggedTag(3)
+----
+
+
+== License
+
+Apache License Version 2.0
+
+See link:./LICENSE[LICENSE].

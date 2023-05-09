@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# scripts/readme: Run readme for README.adoc generation in .github/
+
+set -ev
+
+cd "$(dirname "$0")/.."
+
+[ -z "$DEBUG" ] || set -x
+
+echo "==> Generate README.adoc in .github/"
+
+bundle exec asciidoctor-reducer -o ./.github/README.adoc README.adoc
