@@ -128,7 +128,9 @@
 		F93831715ADC6AC030CF452C /* ASN1Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7E3F5ED0AD2F7AE7791664 /* ASN1Error.swift */; };
 		F98ED991C169EFD79FC12D34 /* DataScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A659A6785BA96384890F6CB3 /* DataScanner.swift */; };
 		FAC877B733818A87D5486BB3 /* VersionCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE188072EC317B93DC93A87 /* VersionCommand.swift */; };
+		FB7E017B159B07C6E935949D /* ASN1Kit.docc in Sources */ = {isa = PBXBuildFile; fileRef = 9A8427D30FFDE81EEE9EA077 /* ASN1Kit.docc */; };
 		FDF6CAA23C651A9352381BA2 /* String+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EB690DB57F739093557F15 /* String+Subscript.swift */; };
+		FE04A9A74EACC632D6A6FC3C /* ASN1Kit.docc in Sources */ = {isa = PBXBuildFile; fileRef = 9A8427D30FFDE81EEE9EA077 /* ASN1Kit.docc */; };
 		FEAC4104F2271A1AA5DCEE6E /* ASN1Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCDE5B661AB69E4CC34002E /* ASN1Int.swift */; };
 /* End PBXBuildFile section */
 
@@ -233,6 +235,7 @@
 		9116DA6374C920818E67DCA3 /* EquatableASN1Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquatableASN1Object.swift; sourceTree = "<group>"; };
 		91DD74E01ECD7D6B36A8DD5C /* ASN1Object+Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASN1Object+Encoding.swift"; sourceTree = "<group>"; };
 		95E69CEBA06059B7CE7BDD86 /* String+ASN1Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ASN1Encoding.swift"; sourceTree = "<group>"; };
+		9A8427D30FFDE81EEE9EA077 /* ASN1Kit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = ASN1Kit.docc; sourceTree = "<group>"; };
 		A659A6785BA96384890F6CB3 /* DataScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScanner.swift; sourceTree = "<group>"; };
 		A8878DCC21AFC93BB2564634 /* Commandant.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Commandant.xcframework; path = Carthage/Build/Commandant.xcframework; sourceTree = "<group>"; };
 		A9781C2A34B69ED0B9AAAED3 /* asn1c */ = {isa = PBXFileReference; includeInIndex = 0; path = asn1c; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -382,6 +385,7 @@
 				CB599D1E4B26C96101A2DF9B /* ASN1Decoder.swift */,
 				1B7E3F5ED0AD2F7AE7791664 /* ASN1Error.swift */,
 				4CCDE5B661AB69E4CC34002E /* ASN1Int.swift */,
+				9A8427D30FFDE81EEE9EA077 /* ASN1Kit.docc */,
 				3B3565C1EF3F5358CB63989B /* ASN1Object.swift */,
 				5147C7BA70B61862A7B1B5C7 /* ASN1Tag.swift */,
 				A659A6785BA96384890F6CB3 /* DataScanner.swift */,
@@ -611,6 +615,7 @@
 				3EDD132DAC034CF4DE8F34DF /* ASN1Decoder.swift in Sources */,
 				F93831715ADC6AC030CF452C /* ASN1Error.swift in Sources */,
 				FEAC4104F2271A1AA5DCEE6E /* ASN1Int.swift in Sources */,
+				FE04A9A74EACC632D6A6FC3C /* ASN1Kit.docc in Sources */,
 				DBC03CEAD521DE42C693BE47 /* ASN1Object+Encoding.swift in Sources */,
 				4FE81CF90BB440EA399BA9F3 /* ASN1Object+Subscript.swift in Sources */,
 				B7431E3E68585A29DAA552C2 /* ASN1Object.swift in Sources */,
@@ -685,6 +690,7 @@
 				607E363A5AB30754E6E253D0 /* ASN1Decoder.swift in Sources */,
 				5160C1EC09178FCFA637AE90 /* ASN1Error.swift in Sources */,
 				1CB55A4AC9602C33703C94FD /* ASN1Int.swift in Sources */,
+				FB7E017B159B07C6E935949D /* ASN1Kit.docc in Sources */,
 				E8D561E5747988360C6F0B03 /* ASN1Object+Encoding.swift in Sources */,
 				C5AD011E58AC18C57D4CCBEE /* ASN1Object+Subscript.swift in Sources */,
 				D4B306FC8ADDBCF028D3C458 /* ASN1Object.swift in Sources */,

@@ -10,7 +10,7 @@ ASN.1 Decoder for Swift
 
 == API Documentation
 
-Generated API docs are available at <https://gematik.github.io/ASN1Kit>.
+Generated API docs are available at https://swiftpackageindex.com/gematik/ASN1Kit/documentation/.
 
 
 == Overview

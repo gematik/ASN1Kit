@@ -48,6 +48,8 @@ targets:
       - framework: Carthage/Build/DataKit.xcframework
       - framework: Carthage/Build/GemCommonsKit.xcframework
       - framework: Carthage/Build/ObjCCommonsKit.xcframework
+    scheme:
+     gatherCoverageData: true 
   ASN1KitTests:
     type: bundle.unit-test
     platform: [macOS,iOS]

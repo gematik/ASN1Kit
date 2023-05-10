@@ -15,11 +15,18 @@ date "+%H:%M:%S"
 # Setup project
 scripts/setup ${BUILD_TYPE}
 
+# Lint
+echo "Linting"
+date "+%H:%M:%S"
+scripts/lint
+
+# run tests
+echo "Running tests…"
+date "+%H:%M:%S"
+scripts/test
+
 # Build
 scripts/build ${BUILD_TYPE}
-
-# CI Build
-bundle exec fastlane cibuild configuration:Debug
 
 # CLI
 bundle exec fastlane build_cli configuration:${BUILD_TYPE}

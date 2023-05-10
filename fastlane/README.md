@@ -83,28 +83,6 @@ Build the project for macOS and iOS by calling `build_mac` and `build_ios`
 
 Build and test (scan) the project for macOS and iOS by calling `test_mac` and `test_ios`
 
-### generate_documentation
-
-```sh
-[bundle exec] fastlane generate_documentation
-```
-
-Lane that (auto) genarates API documentation from inline comments.
-
-### static_code_analysis
-
-```sh
-[bundle exec] fastlane static_code_analysis
-```
-
-Lane that runs the static code analyzer(s) for the project.
-
-CI builds should run this lane on every commit
-
-Currently swiftlint is used as static analyzer
-
-
-
 ### setup
 
 ```sh
@@ -112,40 +90,6 @@ Currently swiftlint is used as static analyzer
 ```
 
 Lane that sets up the SPM/Carthage dependencies and xcodeproj.
-
-
-
-### xcodegen_generate_xcodeproj
-
-```sh
-[bundle exec] fastlane xcodegen_generate_xcodeproj
-```
-
-Generate xcodeproj from project.yml file
-
-The lane to run when project.yml has changed and this should be reflected
-
-in the xcodeproj.
-
-
-
-###Example:
-
-```
-fastlane xcodegen_generate_xcodeproj
-```
-
-
-
-### cibuild
-
-```sh
-[bundle exec] fastlane cibuild
-```
-
-Lane that the ci build should invoke directly to do a complete build/test/analysis.
-
-This lane calls `setup`, `static_code_analysis`, `test_all`, `generate_documentation`.
 
 
 

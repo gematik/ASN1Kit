@@ -1,0 +1,22 @@
+#!/bin/sh
+
+set -e  # exit on a non-zero return code from a command
+set -x  # print a trace of commands as they execute
+
+# Generate docc documentation to be hosted on GitHub
+
+GEN_DOCS_DIR=./docs
+GITHUB_BASE_PATH=ASN1Kit
+
+rm -rf $GEN_DOCS_DIR
+
+swift package \
+    --allow-writing-to-directory $GEN_DOCS_DIR \
+    generate-documentation \
+    --target ASN1Kit \
+    --output-path $GEN_DOCS_DIR \
+    --transform-for-static-hosting \
+    --hosting-base-path $GITHUB_BASE_PATH
+
+# Preview the documentation locally:
+# swift package --disable-sandbox preview-documentation --target ASN1Kit
