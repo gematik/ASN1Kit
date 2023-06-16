@@ -1,3 +1,12 @@
+# Release 1.2.0
+
+- Allow empty (zero item) sequences
+- Add support for encoding UInt
+- Demote zero-length octet strings to null values
+- Decode BIT STRING with zero bits set
+- Fix dangling unsafe pointer
+- Update documentation to Docc and AsciiDoc
+
 # Release 1.1.0
 
 - Update Xcode Version to 13.3.1
