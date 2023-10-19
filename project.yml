@@ -16,6 +16,14 @@ settings:
       SWIFT_COMPILATION_MODE: wholemodule
     Debug:
       SWIFT_COMPILATION_MODE: incremental
+
+packages:
+  Commandant:
+    url: https://github.com/Carthage/Commandant
+    majorVersion: 0.18.0
+  Nimble:
+    url: https://github.com/Quick/Nimble/
+    majorVersion: 11.0.0
 targets:
   ASN1Kit:
     type: framework
@@ -44,7 +52,7 @@ targets:
     dependencies:
       - target: ASN1Kit_macOS
         embed: true
-      - framework: Carthage/Build/Commandant.xcframework
+      - package: Commandant
       - framework: Carthage/Build/DataKit.xcframework
       - framework: Carthage/Build/GemCommonsKit.xcframework
       - framework: Carthage/Build/ObjCCommonsKit.xcframework
@@ -55,9 +63,12 @@ targets:
     platform: [macOS,iOS]
     info:
       path: Resources/ASN1Kit_Tests_Info.plist
+    settings:
+      base:
+        OTHER_SWIFT_FLAGS: -no-verify-emitted-module-interface
     sources:
       - path: Tests/ASN1KitTests
     dependencies:
       - target: ASN1Kit_${platform}
-      - framework: Carthage/Build/Nimble.xcframework
+      - package: Nimble
 buildImplicitDependencies: true
