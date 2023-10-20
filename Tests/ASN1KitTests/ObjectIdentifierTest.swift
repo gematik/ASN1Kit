@@ -28,7 +28,7 @@ class ObjectIdentifierTest: XCTestCase {
     func testParsingInvalidOIDsParameterized() {
         for oid in invalidOIDs {
             expect(try ObjectIdentifier.from(string: oid)).to(throwError())
-            expect(try ObjectIdentifier(rawValue: oid)).to(beNil())
+            expect(ObjectIdentifier(rawValue: oid)).to(beNil())
         }
     }
 

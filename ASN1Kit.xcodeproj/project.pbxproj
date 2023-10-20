@@ -33,6 +33,7 @@
 		4270B66FDA31476D547F8B72 /* Int+Length.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6356E857834185E8A2AAC586 /* Int+Length.swift */; };
 		432991C0CB86AEE45066070C /* ASN1DecodedTagEncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773A1D71BE54F4B12038A79 /* ASN1DecodedTagEncodingTest.swift */; };
 		4530A1B17AAD4CE9920FCFFA /* BitStringASN1EncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9B5B5EF9D8D523A3DA5AA2 /* BitStringASN1EncodingTest.swift */; };
+		466AA73D378EE0178855B409 /* Data+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CAFEFAD934E8BECF14588 /* Data+Hex.swift */; };
 		48460F5B83DE8A67A9A258CB /* ASN1CodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682CA9461C4C8EC88F531612 /* ASN1CodableType.swift */; };
 		4CFBA022F216EA1BC860C008 /* OutputStreamBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F933F8D96281292B9804 /* OutputStreamBuffer.swift */; };
 		4EDE83BF61F1A24C49E50BC8 /* ParseCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C1D3C1FF03C75FE439C1DE /* ParseCommand.swift */; };
@@ -78,7 +79,6 @@
 		955ED7B1ED45891AF2155F95 /* DataScannerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4414BF62063B4067B098F2C /* DataScannerTest.swift */; };
 		95DA7E82D2A5CB38FF38BB45 /* DateExtASN1EncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE486480A900E1343206642F /* DateExtASN1EncodingTest.swift */; };
 		9934BC8D009331500F7DE798 /* ASN1ConstructedEncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E411CBC6B2363A7718BB855C /* ASN1ConstructedEncodingTest.swift */; };
-		9C2DC013AB774853109A7B51 /* DataKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67959C4111EE1EF55B0DA0D2 /* DataKit.xcframework */; };
 		9D17EE10FE61BB4A5037E572 /* ASN1CodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682CA9461C4C8EC88F531612 /* ASN1CodableType.swift */; };
 		9D999CC08525AB514861034F /* ASN1Kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA715287F36358662131FFEE /* ASN1Kit.framework */; };
 		A2D59E4F69851795C669A0FD /* Data+UInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81A14559C0096076BBF8F7B /* Data+UInt.swift */; };
@@ -95,12 +95,13 @@
 		BBAB7A26A9818E2A28F6963B /* ArrayExtASN1EncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F054CF8662ED12DB4C32D44 /* ArrayExtASN1EncodingTest.swift */; };
 		BCF7B199F110C6B2B5C51BBB /* BoolExtASN1EncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBAFBDD359F51A1632C7D09 /* BoolExtASN1EncodingTest.swift */; };
 		C364D6A567BF63E4D6083659 /* ASN1Kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB2F1C0CA35F0DC4C840B06 /* ASN1Kit.framework */; };
-		C456C2C3495240017102D40F /* DataKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67959C4111EE1EF55B0DA0D2 /* DataKit.xcframework */; };
 		C50A22F8834F725A844AA7B5 /* ASN1DecodedTag+Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42798FCD566F160C179F4D00 /* ASN1DecodedTag+Encoding.swift */; };
 		C5AD011E58AC18C57D4CCBEE /* ASN1Object+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57696B242CEC1135B95932D3 /* ASN1Object+Subscript.swift */; };
+		C66DC189EB58AF88864FB244 /* Helper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35E0FD4375ACFB39D1404CED /* Helper.framework */; };
 		C9F763B61F090ED20EAA93C1 /* IntExtLengthTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6D5090D6A516C0C7A29A46 /* IntExtLengthTest.swift */; };
 		CB07BFE95771270B6CEDB252 /* EquatableASN1Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116DA6374C920818E67DCA3 /* EquatableASN1Object.swift */; };
 		CB4DBFBCB1BCAEA6E5800668 /* String+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EB690DB57F739093557F15 /* String+Subscript.swift */; };
+		CDCC151B8D8A6CC1D2DA40A6 /* Data+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CAFEFAD934E8BECF14588 /* Data+Hex.swift */; };
 		CE1752D5BFF7E57A2AE7BDDD /* ASN1DecoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651A74D459078AEE91E77A12 /* ASN1DecoderTest.swift */; };
 		D2A69AAB1AC9AAAE4F4C0D6C /* DataExtASN1EncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7721A2E275F531E9D69AAE59 /* DataExtASN1EncodingTest.swift */; };
 		D3DD79C066DE100851035A4A /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 865F424137E154BB4527466E /* Nimble */; };
@@ -110,12 +111,12 @@
 		DBC03CEAD521DE42C693BE47 /* ASN1Object+Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DD74E01ECD7D6B36A8DD5C /* ASN1Object+Encoding.swift */; };
 		DCF105D37FD0913EF191FB23 /* ASN1DecodedTag+Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42798FCD566F160C179F4D00 /* ASN1DecodedTag+Encoding.swift */; };
 		DD84CEBA4D68B30AF9C796CA /* UIntExtTagNoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B27876AB4FF2F286108979A /* UIntExtTagNoTest.swift */; };
+		DDA7445D5B3C5AB5B103F3C1 /* Helper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62809DBF680A07BB90E79FA /* Helper.framework */; };
 		DFD7C12D471555BE02CFA8D8 /* Int+ASN1Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F552908E1DD373AD6498D714 /* Int+ASN1Encoding.swift */; };
 		E38C3D899B7406706AF492D4 /* DataExtASN1IntTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0375FD76819501822510FF9 /* DataExtASN1IntTest.swift */; };
 		E412302F15252C57DB4BD6CF /* Date+ASN1Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F75C80274863637D66895E /* Date+ASN1Encoding.swift */; };
 		E514E3DC3E3F88DEAC3632A1 /* ASN1ObjectExtEncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D1422AAD40249BFE7689C /* ASN1ObjectExtEncodingTest.swift */; };
 		E88E0E7B879F8C80D99AD743 /* DataScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A659A6785BA96384890F6CB3 /* DataScanner.swift */; };
-		E89462F4B6AA0EFEC43D1923 /* DataKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67959C4111EE1EF55B0DA0D2 /* DataKit.xcframework */; };
 		E8D561E5747988360C6F0B03 /* ASN1Object+Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DD74E01ECD7D6B36A8DD5C /* ASN1Object+Encoding.swift */; };
 		EF5E13FA3EDC342F7348ED22 /* DataExtASN1EncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7721A2E275F531E9D69AAE59 /* DataExtASN1EncodingTest.swift */; };
 		EF979B0218F4137107A0A0F6 /* OutputStreamBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F933F8D96281292B9804 /* OutputStreamBuffer.swift */; };
@@ -145,12 +146,26 @@
 			remoteGlobalIDString = 1C876C47CB6FF5E554E61A88;
 			remoteInfo = ASN1Kit_macOS;
 		};
+		87094296B0DC701C3B875D34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1499C78E18CE0089E24463EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D47B88656CB7B90BAF0A450;
+			remoteInfo = Helper_iOS;
+		};
 		BB8E1A015825658AACE0169C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1499C78E18CE0089E24463EF /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = ADF48795950D497705C1D029;
 			remoteInfo = ASN1Kit_iOS;
+		};
+		F4C3E0C5136D7FA7BD412CBC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1499C78E18CE0089E24463EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 61521055430BC97E013C74D7;
+			remoteInfo = Helper_macOS;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -203,6 +218,7 @@
 		2DF88A2A92C0219F9499C709 /* ASN1Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1Data.swift; sourceTree = "<group>"; };
 		2E59EDC7B029DB06F8E1F43D /* StringExtASN1EncodingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtASN1EncodingTest.swift; sourceTree = "<group>"; };
 		2F74452A4040AC0BEACAE527 /* Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = wrapper.cfbundle; path = Resources.bundle; sourceTree = "<group>"; };
+		35E0FD4375ACFB39D1404CED /* Helper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Helper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B27876AB4FF2F286108979A /* UIntExtTagNoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIntExtTagNoTest.swift; sourceTree = "<group>"; };
 		3B3565C1EF3F5358CB63989B /* ASN1Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1Object.swift; sourceTree = "<group>"; };
 		3EBAFBDD359F51A1632C7D09 /* BoolExtASN1EncodingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolExtASN1EncodingTest.swift; sourceTree = "<group>"; };
@@ -214,7 +230,6 @@
 		61C1D3C1FF03C75FE439C1DE /* ParseCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseCommand.swift; sourceTree = "<group>"; };
 		6356E857834185E8A2AAC586 /* Int+Length.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Length.swift"; sourceTree = "<group>"; };
 		651A74D459078AEE91E77A12 /* ASN1DecoderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1DecoderTest.swift; sourceTree = "<group>"; };
-		67959C4111EE1EF55B0DA0D2 /* DataKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DataKit.xcframework; path = Carthage/Build/DataKit.xcframework; sourceTree = "<group>"; };
 		682CA9461C4C8EC88F531612 /* ASN1CodableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1CodableType.swift; sourceTree = "<group>"; };
 		6BD6BC0258334E692989ACFD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		6CA0F933F8D96281292B9804 /* OutputStreamBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputStreamBuffer.swift; sourceTree = "<group>"; };
@@ -228,6 +243,7 @@
 		91DD74E01ECD7D6B36A8DD5C /* ASN1Object+Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASN1Object+Encoding.swift"; sourceTree = "<group>"; };
 		95E69CEBA06059B7CE7BDD86 /* String+ASN1Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ASN1Encoding.swift"; sourceTree = "<group>"; };
 		9A8427D30FFDE81EEE9EA077 /* ASN1Kit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = ASN1Kit.docc; sourceTree = "<group>"; };
+		A62809DBF680A07BB90E79FA /* Helper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Helper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A659A6785BA96384890F6CB3 /* DataScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScanner.swift; sourceTree = "<group>"; };
 		A9781C2A34B69ED0B9AAAED3 /* asn1c */ = {isa = PBXFileReference; includeInIndex = 0; path = asn1c; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5ECA8126459D5803D20DAB /* Nimbe+ASN1Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nimbe+ASN1Data.swift"; sourceTree = "<group>"; };
@@ -238,6 +254,7 @@
 		C0375FD76819501822510FF9 /* DataExtASN1IntTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtASN1IntTest.swift; sourceTree = "<group>"; };
 		CA6D1422AAD40249BFE7689C /* ASN1ObjectExtEncodingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1ObjectExtEncodingTest.swift; sourceTree = "<group>"; };
 		CB599D1E4B26C96101A2DF9B /* ASN1Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1Decoder.swift; sourceTree = "<group>"; };
+		CF0CAFEFAD934E8BECF14588 /* Data+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Hex.swift"; sourceTree = "<group>"; };
 		D06002EF12CB14E936090932 /* ASN1KitTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ASN1KitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20643EB5583D310782284D8 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		D4414BF62063B4067B098F2C /* DataScannerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerTest.swift; sourceTree = "<group>"; };
@@ -262,7 +279,6 @@
 			files = (
 				C364D6A567BF63E4D6083659 /* ASN1Kit.framework in Frameworks */,
 				66345111C7A542F39464DEF6 /* Commandant in Frameworks */,
-				C456C2C3495240017102D40F /* DataKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,7 +295,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E89462F4B6AA0EFEC43D1923 /* DataKit.xcframework in Frameworks */,
+				C66DC189EB58AF88864FB244 /* Helper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +312,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C2DC013AB774853109A7B51 /* DataKit.xcframework in Frameworks */,
+				DDA7445D5B3C5AB5B103F3C1 /* Helper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,17 +341,18 @@
 				A6E70248318396D5A7BA93A4 /* ASN1Kit */,
 				9343271E2FAD929AB4F08DF8 /* ASN1KitTests */,
 				D1B71D87CE9C63A39066866A /* CLI */,
-				50A67DE3431845D2FF6DA875 /* Frameworks */,
+				44CE026D1E6440308AA13BA4 /* Helper */,
 				C58099C8C669C0806B4D83F2 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		50A67DE3431845D2FF6DA875 /* Frameworks */ = {
+		44CE026D1E6440308AA13BA4 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				67959C4111EE1EF55B0DA0D2 /* DataKit.xcframework */,
+				CF0CAFEFAD934E8BECF14588 /* Data+Hex.swift */,
 			);
-			name = Frameworks;
+			name = Helper;
+			path = Sources/Helper;
 			sourceTree = "<group>";
 		};
 		9343271E2FAD929AB4F08DF8 /* ASN1KitTests */ = {
@@ -389,6 +406,8 @@
 				FCB2F1C0CA35F0DC4C840B06 /* ASN1Kit.framework */,
 				D06002EF12CB14E936090932 /* ASN1KitTests.xctest */,
 				80C94C8336D1F9456C479130 /* ASN1KitTests.xctest */,
+				A62809DBF680A07BB90E79FA /* Helper.framework */,
+				35E0FD4375ACFB39D1404CED /* Helper.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -459,6 +478,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				00C49AD1FFB5C3BC55B560AD /* PBXTargetDependency */,
 			);
 			name = ASN1Kit_macOS;
 			productName = ASN1Kit_macOS;
@@ -487,6 +507,21 @@
 			productReference = D06002EF12CB14E936090932 /* ASN1KitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		2D47B88656CB7B90BAF0A450 /* Helper_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E3C84E685F4CFA15ADB6F46D /* Build configuration list for PBXNativeTarget "Helper_iOS" */;
+			buildPhases = (
+				E2F8E14146289DD23758EC55 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Helper_iOS;
+			productName = Helper_iOS;
+			productReference = A62809DBF680A07BB90E79FA /* Helper.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		572EA20592E8E506DCA69F56 /* asn1c */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 81406BE605E47DA1BEF83ECC /* Build configuration list for PBXNativeTarget "asn1c" */;
@@ -507,6 +542,21 @@
 			productName = asn1c;
 			productReference = A9781C2A34B69ED0B9AAAED3 /* asn1c */;
 			productType = "com.apple.product-type.tool";
+		};
+		61521055430BC97E013C74D7 /* Helper_macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F922F39298F75E7FB25D1793 /* Build configuration list for PBXNativeTarget "Helper_macOS" */;
+			buildPhases = (
+				2356629F0BA4F8CC8F5D645C /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Helper_macOS;
+			productName = Helper_macOS;
+			productReference = 35E0FD4375ACFB39D1404CED /* Helper.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		6958CEE18CD9C1A98EE0CFB0 /* ASN1KitTests_macOS */ = {
 			isa = PBXNativeTarget;
@@ -540,6 +590,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0D1D4D43C0F5EC917086D7C0 /* PBXTargetDependency */,
 			);
 			name = ASN1Kit_iOS;
 			productName = ASN1Kit_iOS;
@@ -576,6 +627,8 @@
 				6958CEE18CD9C1A98EE0CFB0 /* ASN1KitTests_macOS */,
 				ADF48795950D497705C1D029 /* ASN1Kit_iOS */,
 				1C876C47CB6FF5E554E61A88 /* ASN1Kit_macOS */,
+				2D47B88656CB7B90BAF0A450 /* Helper_iOS */,
+				61521055430BC97E013C74D7 /* Helper_macOS */,
 				572EA20592E8E506DCA69F56 /* asn1c */,
 			);
 		};
@@ -601,6 +654,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2356629F0BA4F8CC8F5D645C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				466AA73D378EE0178855B409 /* Data+Hex.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A0DC5312C918F56E1EF419D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -712,6 +773,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E2F8E14146289DD23758EC55 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDCC151B8D8A6CC1D2DA40A6 /* Data+Hex.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4678E150096918EED110C50 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -746,6 +815,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		00C49AD1FFB5C3BC55B560AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 61521055430BC97E013C74D7 /* Helper_macOS */;
+			targetProxy = F4C3E0C5136D7FA7BD412CBC /* PBXContainerItemProxy */;
+		};
+		0D1D4D43C0F5EC917086D7C0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D47B88656CB7B90BAF0A450 /* Helper_iOS */;
+			targetProxy = 87094296B0DC701C3B875D34 /* PBXContainerItemProxy */;
+		};
 		162918FD40BD695ED8447DE5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1C876C47CB6FF5E554E61A88 /* ASN1Kit_macOS */;
@@ -764,6 +843,30 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		10521BD74F9F02A4A15153D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Resources/ASN1Kit_Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "de.gematik.ti.common.Helper-macOS";
+				PRODUCT_NAME = Helper;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
 		2017B9F665E3A2B53C128C6F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -840,10 +943,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"Carthage/Build\"",
-				);
 				INFOPLIST_FILE = Resources/ASN1Kit_Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -863,10 +962,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"Carthage/Build\"",
-				);
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path";
 				PRODUCT_BUNDLE_IDENTIFIER = de.gematik.ti.common.asn1c;
 				SDKROOT = macosx;
@@ -885,10 +980,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"Carthage/Build\"",
-				);
 				INFOPLIST_FILE = Resources/ASN1Kit_Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -897,6 +988,30 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.gematik.ti.common.ASN1Kit-macOS";
 				PRODUCT_NAME = ASN1Kit;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		4CA5FEF1679F0D65517E1058 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Resources/ASN1Kit_Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "de.gematik.ti.common.Helper-macOS";
+				PRODUCT_NAME = Helper;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -912,10 +1027,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"Carthage/Build\"",
-				);
 				INFOPLIST_FILE = Resources/ASN1Kit_Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -941,10 +1052,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"Carthage/Build\"",
-				);
 				INFOPLIST_FILE = Resources/ASN1Kit_Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -999,10 +1106,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"Carthage/Build\"",
-				);
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path";
 				PRODUCT_BUNDLE_IDENTIFIER = de.gematik.ti.common.asn1c;
 				SDKROOT = macosx;
@@ -1106,6 +1209,54 @@
 			};
 			name = Debug;
 		};
+		C481E3B948807BA73BCD942E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Resources/ASN1Kit_Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "de.gematik.ti.common.Helper-iOS";
+				PRODUCT_NAME = Helper;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		D8CFAF60741CC607FB604266 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Resources/ASN1Kit_Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "de.gematik.ti.common.Helper-iOS";
+				PRODUCT_NAME = Helper;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1159,6 +1310,24 @@
 			buildConfigurations = (
 				B8D5EFFB79B082A106022CBA /* Debug */,
 				834BF3143C48F3C16E994498 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E3C84E685F4CFA15ADB6F46D /* Build configuration list for PBXNativeTarget "Helper_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8CFAF60741CC607FB604266 /* Debug */,
+				C481E3B948807BA73BCD942E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F922F39298F75E7FB25D1793 /* Build configuration list for PBXNativeTarget "Helper_macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CA5FEF1679F0D65517E1058 /* Debug */,
+				10521BD74F9F02A4A15153D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

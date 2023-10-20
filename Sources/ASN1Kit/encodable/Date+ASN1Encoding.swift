@@ -14,7 +14,6 @@
 // limitations under the License.
 //
 
-import DataKit
 import Foundation
 
 /// Encoding formatter, Decoding formatter
