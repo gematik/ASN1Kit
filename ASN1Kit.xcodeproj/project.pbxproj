@@ -14,7 +14,6 @@
 		0B82CD9B738679672F1357BC /* IntExtASN1EncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF683ACCB52B2C08A6BB386 /* IntExtASN1EncodingTest.swift */; };
 		1183F1D6EE366FC4AD1EF46E /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20643EB5583D310782284D8 /* XCTestManifests.swift */; };
 		14A62F86561AA58F7A42B81E /* OutputStream+UInt8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D076069191DF89E13AE3EE9 /* OutputStream+UInt8.swift */; };
-		1A48E08E76953FB845FE6111 /* Commandant.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8878DCC21AFC93BB2564634 /* Commandant.xcframework */; };
 		1C88C7CF24A0B9895AB3D3EC /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20643EB5583D310782284D8 /* XCTestManifests.swift */; };
 		1CB55A4AC9602C33703C94FD /* ASN1Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCDE5B661AB69E4CC34002E /* ASN1Int.swift */; };
 		1E4B7657A0C3CF435784CAF4 /* Int+ASN1Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F552908E1DD373AD6498D714 /* Int+ASN1Encoding.swift */; };
@@ -24,7 +23,6 @@
 		2C130F6881BD9715461358D1 /* DataExtUIntTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129B2100778B001C7D6F193B /* DataExtUIntTest.swift */; };
 		3053A5FBF200E4F3B53DD670 /* ObjectIdentifierTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2283CDB733F21F0907E3DE /* ObjectIdentifierTest.swift */; };
 		310412CDFD875372C3944B07 /* ASN1PrimitiveEncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7149D565833C3F38AF2E9D3 /* ASN1PrimitiveEncodingTest.swift */; };
-		35DDF08ADBBE5D844779337E /* Nimble.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF61706FCE50D5985198456D /* Nimble.xcframework */; };
 		386D7340A71DCC2D17273A9F /* Bool+ASN1Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6589209BF92E6FAD1D8418 /* Bool+ASN1Encoding.swift */; };
 		3B20D9B06E44DEAEA63A92B2 /* Date+ASN1Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F75C80274863637D66895E /* Date+ASN1Encoding.swift */; };
 		3C7CDA3E63CFA87253E7EB67 /* GemCommonsKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1195CA0CCDEEC9DD286640CE /* GemCommonsKit.xcframework */; };
@@ -42,7 +40,6 @@
 		4EDE83BF61F1A24C49E50BC8 /* ParseCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C1D3C1FF03C75FE439C1DE /* ParseCommand.swift */; };
 		4FDD07E5C07A95F381EB0CC4 /* BoolExtASN1EncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBAFBDD359F51A1632C7D09 /* BoolExtASN1EncodingTest.swift */; };
 		4FE81CF90BB440EA399BA9F3 /* ASN1Object+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57696B242CEC1135B95932D3 /* ASN1Object+Subscript.swift */; };
-		5004154AFE2B7AE9B7E87278 /* Nimble.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF61706FCE50D5985198456D /* Nimble.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		50EA7203BD619CD6144433AE /* Nimbe+ASN1Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5ECA8126459D5803D20DAB /* Nimbe+ASN1Data.swift */; };
 		5160C1EC09178FCFA637AE90 /* ASN1Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7E3F5ED0AD2F7AE7791664 /* ASN1Error.swift */; };
 		52E6E9F3BC42628487BBE07B /* ASN1LengthEncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD80F567C76B43BC0CD8F42 /* ASN1LengthEncodingTest.swift */; };
@@ -54,6 +51,7 @@
 		607E363A5AB30754E6E253D0 /* ASN1Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB599D1E4B26C96101A2DF9B /* ASN1Decoder.swift */; };
 		6224D7C5EA9B740036728E3E /* Nimbe+ASN1Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5ECA8126459D5803D20DAB /* Nimbe+ASN1Data.swift */; };
 		6273F64D98265E1DDEE02AB8 /* Array+ASN1Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F936BE5E521F5EBDF2C5B0 /* Array+ASN1Encoding.swift */; };
+		66345111C7A542F39464DEF6 /* Commandant in Frameworks */ = {isa = PBXBuildFile; productRef = ADC84A421AF3853574CC987A /* Commandant */; };
 		69F4EEAF4E3E0397D40E476F /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2F74452A4040AC0BEACAE527 /* Resources.bundle */; };
 		6A218EA1A163879765BF62B1 /* String+ASN1Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E69CEBA06059B7CE7BDD86 /* String+ASN1Encoding.swift */; };
 		6D940EE80BED97360C44AAE5 /* ASN1Kit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FCB2F1C0CA35F0DC4C840B06 /* ASN1Kit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -64,7 +62,6 @@
 		72EE622871F2EDB6BE588677 /* Int+Length.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6356E857834185E8A2AAC586 /* Int+Length.swift */; };
 		732A8FB09B82773821E6E97E /* BitStringASN1EncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9B5B5EF9D8D523A3DA5AA2 /* BitStringASN1EncodingTest.swift */; };
 		735301D1F92747F563B85DB1 /* Data+ASN1Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB6D4A9A39457FB4F41F28 /* Data+ASN1Int.swift */; };
-		774AA8E1B969002B5F85CF61 /* Nimble.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF61706FCE50D5985198456D /* Nimble.xcframework */; };
 		777CE0C67FEFCC9C1C109B96 /* GeneralizedTimeDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2EAB03DFE2F370514F7C02 /* GeneralizedTimeDateFormatter.swift */; };
 		78C11DBA88FBCF69650BB224 /* ASN1Kit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FCB2F1C0CA35F0DC4C840B06 /* ASN1Kit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7C2CF32353B13885C17213DA /* ASN1Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5147C7BA70B61862A7B1B5C7 /* ASN1Tag.swift */; };
@@ -89,6 +86,7 @@
 		A6A96089E605B4F713B656C9 /* ASN1Primitive+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877161B2467F0F34D9E901D6 /* ASN1Primitive+Description.swift */; };
 		A7DF2275B7E5BF40960BF6F2 /* ASN1DecodedTagEncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B773A1D71BE54F4B12038A79 /* ASN1DecodedTagEncodingTest.swift */; };
 		A93FE26E1442617F0E73F491 /* ASN1Primitive+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877161B2467F0F34D9E901D6 /* ASN1Primitive+Description.swift */; };
+		ABFB0000A89EDE331ADBFA0F /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = FAD972F1322D428E2B7C6BCB /* Nimble */; };
 		B268059EEAA76F2A9C60CEBC /* Data+UInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81A14559C0096076BBF8F7B /* Data+UInt.swift */; };
 		B549A1752E99077D65E0AB1C /* UInt+TagNo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B56DBEE6D521DCA07780157 /* UInt+TagNo.swift */; };
 		B6CDFB682E538A091771BB2F /* String+ASN1Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E69CEBA06059B7CE7BDD86 /* String+ASN1Encoding.swift */; };
@@ -107,6 +105,7 @@
 		CE1752D5BFF7E57A2AE7BDDD /* ASN1DecoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651A74D459078AEE91E77A12 /* ASN1DecoderTest.swift */; };
 		D2A69AAB1AC9AAAE4F4C0D6C /* DataExtASN1EncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7721A2E275F531E9D69AAE59 /* DataExtASN1EncodingTest.swift */; };
 		D397A9BD10FA33391D43C193 /* GemCommonsKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1195CA0CCDEEC9DD286640CE /* GemCommonsKit.xcframework */; };
+		D3DD79C066DE100851035A4A /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 865F424137E154BB4527466E /* Nimble */; };
 		D4B306FC8ADDBCF028D3C458 /* ASN1Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3565C1EF3F5358CB63989B /* ASN1Object.swift */; };
 		D7D7F10BA7D8511B0366B3D0 /* ASN1Kit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA715287F36358662131FFEE /* ASN1Kit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D88F20B4EA775B5BC55E4E03 /* ASN1DecodedTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1283DF9E0AEE91D07BBE653 /* ASN1DecodedTag.swift */; };
@@ -124,7 +123,6 @@
 		EF979B0218F4137107A0A0F6 /* OutputStreamBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0F933F8D96281292B9804 /* OutputStreamBuffer.swift */; };
 		F0C963ACC445EE7E072C7681 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6BC0258334E692989ACFD /* main.swift */; };
 		F1CC544EBAC1321398D25FFE /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2F74452A4040AC0BEACAE527 /* Resources.bundle */; };
-		F3C305A2D82CC9F3D2DB7C96 /* Nimble.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF61706FCE50D5985198456D /* Nimble.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F93831715ADC6AC030CF452C /* ASN1Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7E3F5ED0AD2F7AE7791664 /* ASN1Error.swift */; };
 		F98ED991C169EFD79FC12D34 /* DataScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A659A6785BA96384890F6CB3 /* DataScanner.swift */; };
 		FAC877B733818A87D5486BB3 /* VersionCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE188072EC317B93DC93A87 /* VersionCommand.swift */; };
@@ -166,7 +164,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D7D7F10BA7D8511B0366B3D0 /* ASN1Kit.framework in Embed Frameworks */,
-				5004154AFE2B7AE9B7E87278 /* Nimble.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,7 +186,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				6D940EE80BED97360C44AAE5 /* ASN1Kit.framework in Embed Frameworks */,
-				F3C305A2D82CC9F3D2DB7C96 /* Nimble.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,14 +233,12 @@
 		95E69CEBA06059B7CE7BDD86 /* String+ASN1Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ASN1Encoding.swift"; sourceTree = "<group>"; };
 		9A8427D30FFDE81EEE9EA077 /* ASN1Kit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = ASN1Kit.docc; sourceTree = "<group>"; };
 		A659A6785BA96384890F6CB3 /* DataScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScanner.swift; sourceTree = "<group>"; };
-		A8878DCC21AFC93BB2564634 /* Commandant.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Commandant.xcframework; path = Carthage/Build/Commandant.xcframework; sourceTree = "<group>"; };
 		A9781C2A34B69ED0B9AAAED3 /* asn1c */ = {isa = PBXFileReference; includeInIndex = 0; path = asn1c; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5ECA8126459D5803D20DAB /* Nimbe+ASN1Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nimbe+ASN1Data.swift"; sourceTree = "<group>"; };
 		B0EB690DB57F739093557F15 /* String+Subscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Subscript.swift"; sourceTree = "<group>"; };
 		B5B7141F9BEAC2201CE5D6C6 /* ObjectIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectIdentifier.swift; sourceTree = "<group>"; };
 		B773A1D71BE54F4B12038A79 /* ASN1DecodedTagEncodingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1DecodedTagEncodingTest.swift; sourceTree = "<group>"; };
 		BE486480A900E1343206642F /* DateExtASN1EncodingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtASN1EncodingTest.swift; sourceTree = "<group>"; };
-		BF61706FCE50D5985198456D /* Nimble.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Nimble.xcframework; path = Carthage/Build/Nimble.xcframework; sourceTree = "<group>"; };
 		C0375FD76819501822510FF9 /* DataExtASN1IntTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtASN1IntTest.swift; sourceTree = "<group>"; };
 		CA6D1422AAD40249BFE7689C /* ASN1ObjectExtEncodingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1ObjectExtEncodingTest.swift; sourceTree = "<group>"; };
 		CB599D1E4B26C96101A2DF9B /* ASN1Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1Decoder.swift; sourceTree = "<group>"; };
@@ -270,7 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C364D6A567BF63E4D6083659 /* ASN1Kit.framework in Frameworks */,
-				1A48E08E76953FB845FE6111 /* Commandant.xcframework in Frameworks */,
+				66345111C7A542F39464DEF6 /* Commandant in Frameworks */,
 				C456C2C3495240017102D40F /* DataKit.xcframework in Frameworks */,
 				3C7CDA3E63CFA87253E7EB67 /* GemCommonsKit.xcframework in Frameworks */,
 				40BCAD1CC267E368E63E0981 /* ObjCCommonsKit.xcframework in Frameworks */,
@@ -282,7 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D999CC08525AB514861034F /* ASN1Kit.framework in Frameworks */,
-				35DDF08ADBBE5D844779337E /* Nimble.xcframework in Frameworks */,
+				ABFB0000A89EDE331ADBFA0F /* Nimble in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,7 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0976F2CB8E66F642F85AC4BD /* ASN1Kit.framework in Frameworks */,
-				774AA8E1B969002B5F85CF61 /* Nimble.xcframework in Frameworks */,
+				D3DD79C066DE100851035A4A /* Nimble in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,10 +340,8 @@
 		50A67DE3431845D2FF6DA875 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A8878DCC21AFC93BB2564634 /* Commandant.xcframework */,
 				67959C4111EE1EF55B0DA0D2 /* DataKit.xcframework */,
 				1195CA0CCDEEC9DD286640CE /* GemCommonsKit.xcframework */,
-				BF61706FCE50D5985198456D /* Nimble.xcframework */,
 				29688B379044C6353A547914 /* ObjCCommonsKit.xcframework */,
 			);
 			name = Frameworks;
@@ -496,6 +488,9 @@
 				84AC030323F264B73CB260BB /* PBXTargetDependency */,
 			);
 			name = ASN1KitTests_iOS;
+			packageProductDependencies = (
+				FAD972F1322D428E2B7C6BCB /* Nimble */,
+			);
 			productName = ASN1KitTests_iOS;
 			productReference = D06002EF12CB14E936090932 /* ASN1KitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -514,6 +509,9 @@
 				162918FD40BD695ED8447DE5 /* PBXTargetDependency */,
 			);
 			name = asn1c;
+			packageProductDependencies = (
+				ADC84A421AF3853574CC987A /* Commandant */,
+			);
 			productName = asn1c;
 			productReference = A9781C2A34B69ED0B9AAAED3 /* asn1c */;
 			productType = "com.apple.product-type.tool";
@@ -533,6 +531,9 @@
 				8E4682C9091B26B0F3276C46 /* PBXTargetDependency */,
 			);
 			name = ASN1KitTests_macOS;
+			packageProductDependencies = (
+				865F424137E154BB4527466E /* Nimble */,
+			);
 			productName = ASN1KitTests_macOS;
 			productReference = 80C94C8336D1F9456C479130 /* ASN1KitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -572,6 +573,10 @@
 				en,
 			);
 			mainGroup = 3DF890C6528F628272530696;
+			packageReferences = (
+				2B804BEFB9A41BF1C08FE06D /* XCRemoteSwiftPackageReference "Commandant" */,
+				789EEEE90C49D5DD0063CADC /* XCRemoteSwiftPackageReference "Nimble" */,
+			);
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -964,16 +969,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"Carthage/Build\"",
-				);
 				INFOPLIST_FILE = Resources/ASN1Kit_Tests_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "-no-verify-emitted-module-interface";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.gematik.ti.common.ASN1KitTests-iOS";
 				PRODUCT_NAME = ASN1KitTests;
 				SDKROOT = iphoneos;
@@ -986,16 +988,13 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"Carthage/Build\"",
-				);
 				INFOPLIST_FILE = Resources/ASN1Kit_Tests_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "-no-verify-emitted-module-interface";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.gematik.ti.common.ASN1KitTests-macOS";
 				PRODUCT_NAME = ASN1KitTests;
 				SDKROOT = macosx;
@@ -1082,16 +1081,13 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"Carthage/Build\"",
-				);
 				INFOPLIST_FILE = Resources/ASN1Kit_Tests_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "-no-verify-emitted-module-interface";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.gematik.ti.common.ASN1KitTests-macOS";
 				PRODUCT_NAME = ASN1KitTests;
 				SDKROOT = macosx;
@@ -1102,16 +1098,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"Carthage/Build\"",
-				);
 				INFOPLIST_FILE = Resources/ASN1Kit_Tests_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "-no-verify-emitted-module-interface";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.gematik.ti.common.ASN1KitTests-iOS";
 				PRODUCT_NAME = ASN1KitTests;
 				SDKROOT = iphoneos;
@@ -1177,6 +1170,43 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2B804BEFB9A41BF1C08FE06D /* XCRemoteSwiftPackageReference "Commandant" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Carthage/Commandant";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.18.0;
+			};
+		};
+		789EEEE90C49D5DD0063CADC /* XCRemoteSwiftPackageReference "Nimble" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Nimble/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		865F424137E154BB4527466E /* Nimble */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 789EEEE90C49D5DD0063CADC /* XCRemoteSwiftPackageReference "Nimble" */;
+			productName = Nimble;
+		};
+		ADC84A421AF3853574CC987A /* Commandant */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B804BEFB9A41BF1C08FE06D /* XCRemoteSwiftPackageReference "Commandant" */;
+			productName = Commandant;
+		};
+		FAD972F1322D428E2B7C6BCB /* Nimble */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 789EEEE90C49D5DD0063CADC /* XCRemoteSwiftPackageReference "Nimble" */;
+			productName = Nimble;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1499C78E18CE0089E24463EF /* Project object */;
 }

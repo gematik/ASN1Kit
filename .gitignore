@@ -2,6 +2,7 @@
 /.build
 *.xcarchive/
 /Packages
+.swiftpm
 
 # Generated documentation
 docs/
