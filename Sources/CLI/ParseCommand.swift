@@ -30,7 +30,7 @@ struct ParseCommand: CommandProtocol {
 
     func run(_ options: Options) -> Result<Void, Error> {
         let file = URL(fileURLWithPath: (options.file as NSString).expandingTildeInPath)
-        let fileContents = try? file.readFileContents()
+        let fileContents = try? Data(contentsOf: file)
         guard !options.string.isEmpty || fileContents != nil else {
             return .failure(.unsupportedMode("No string or valid file path passed"))
         }

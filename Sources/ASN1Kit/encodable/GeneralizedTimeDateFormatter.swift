@@ -15,7 +15,6 @@
 //
 
 import Foundation
-import GemCommonsKit
 
 /**
     Date formatting (encoding only) as described in X.680-201508 Chapter 46 Generalized time
@@ -56,22 +55,18 @@ public class GeneralizedTimeDateFormatter {
 
 extension Date {
     fileprivate func byAddingFraction(from date: String) -> Date {
-        guard let separatorIndex = date.firstIndex(of: ".") else {
+        // If `date` was ""19851106210627.3-0500" then ".3" should be added to self
+        guard let rangeFrom = date.range(of: ".")
+        else {
             // huh? Not a fraction?
             return self
         }
+        let fractionSeq = date[rangeFrom.upperBound...]
+            .prefix { String($0).isDigitsOnly }
 
-        var strFraction = ""
-        let index = separatorIndex.utf16Offset(in: date)
-        for idx in index ..< date.count {
-            let str = String(date[idx])
-            if str.isNumerical {
-                strFraction += str
-            } else {
-                break
-            }
-        }
-        guard let fraction = TimeInterval(strFraction) else {
+        let strFraction = String(fractionSeq)
+        guard let fraction = TimeInterval("." + strFraction)
+        else {
             // meh? Not Double/TimeInterval parse-able
             return self
         }
@@ -145,6 +140,12 @@ extension String {
 
     private var hasTimeZone: Bool {
         hasSuffix("Z") || contains("+") || contains("-")
+    }
+}
+
+extension String {
+    var isDigitsOnly: Bool {
+        allSatisfy(Set("0123456789").contains)
     }
 }
 

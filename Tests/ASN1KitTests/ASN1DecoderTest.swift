@@ -15,7 +15,7 @@
 //
 
 @testable import ASN1Kit
-import GemCommonsKit
+import Foundation
 import Nimble
 import XCTest
 
@@ -238,7 +238,7 @@ final class ASN1DecoderTest: XCTestCase { // swiftlint:disable:this type_body_le
     func testASN1DecodeTaggedNull() {
         // implicit null
         let expected: ASN1Object = ASN1Primitive(
-            data: .primitive(Data.empty),
+            data: .primitive(Data()),
             tag: ASN1DecodedTag.taggedTag(0x15)
         )
 
@@ -248,7 +248,7 @@ final class ASN1DecoderTest: XCTestCase { // swiftlint:disable:this type_body_le
 
     func testASN1DecodeTaggedNull_long() {
         // implicit null
-        let expected: ASN1Object = ASN1Primitive(data: .primitive(Data.empty), tag: .taggedTag(0x45))
+        let expected: ASN1Object = ASN1Primitive(data: .primitive(Data()), tag: .taggedTag(0x45))
 
         let data = Data([0x9F, 0x45, 0x0])
         expect(try ASN1Decoder.decode(asn1: data).asEquatable()) == expected.asEquatable()
@@ -336,7 +336,7 @@ final class ASN1DecoderTest: XCTestCase { // swiftlint:disable:this type_body_le
     }
 
     func testASN1DecodePrimitiveNull() {
-        let expected = ASN1Primitive(data: .primitive(Data.empty), tag: .universal(.null))
+        let expected = ASN1Primitive(data: .primitive(Data()), tag: .universal(.null))
         let data = Data([0x5, 0x0])
         expect(try ASN1Decoder.decode(asn1: data).asEquatable()) == expected.asEquatable()
     }
@@ -348,7 +348,7 @@ final class ASN1DecoderTest: XCTestCase { // swiftlint:disable:this type_body_le
     }
 
     func testASN1DecodePrimitiveZeroLengthOctetString() {
-        let expected = ASN1Primitive(data: .primitive(Data.empty), tag: .universal(.octetString))
+        let expected = ASN1Primitive(data: .primitive(Data()), tag: .universal(.octetString))
         let data = Data([0x4, 0x0])
         expect(try ASN1Decoder.decode(asn1: data).asEquatable()) == expected.asEquatable()
     }

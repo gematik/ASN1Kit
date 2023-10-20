@@ -23,7 +23,7 @@ packages:
     majorVersion: 0.18.0
   Nimble:
     url: https://github.com/Quick/Nimble/
-    majorVersion: 11.0.0
+    majorVersion: 10.0.0
 targets:
   ASN1Kit:
     type: framework
@@ -33,7 +33,6 @@ targets:
     sources:
       - Sources/ASN1Kit
     dependencies:
-      - framework: Carthage/Build/GemCommonsKit.xcframework
       - framework: Carthage/Build/DataKit.xcframework
     scheme:
       testTargets:
@@ -54,8 +53,6 @@ targets:
         embed: true
       - package: Commandant
       - framework: Carthage/Build/DataKit.xcframework
-      - framework: Carthage/Build/GemCommonsKit.xcframework
-      - framework: Carthage/Build/ObjCCommonsKit.xcframework
     scheme:
      gatherCoverageData: true 
   ASN1KitTests:
