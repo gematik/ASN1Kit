@@ -28,7 +28,7 @@ public struct ObjectIdentifier: Equatable, Hashable, RawRepresentable {
         let regex = try! NSRegularExpression( // swiftlint:disable:this force_try
             pattern: "^((urn:oid:)|\\{)?(([0-2]((\\.|\\s)([1-9]([0-9]*)|0))+)|(\\w+\\W?\\w*\\(\\d+\\)\\s*)+)(\\})?$"
         )
-        guard !regex.matches(in: value, options: [], range: value.fullRange).isEmpty else {
+        guard !regex.matches(in: value, options: [], range: NSRange(location: 0, length: value.count)).isEmpty else {
             throw ASN1Error.malformedEncoding("Invalid OID [\(value)]")
         }
         // Transform OID to internal (simple) representation
@@ -160,7 +160,7 @@ extension String {
     /// Check if `self` could be a valid ASN.1 OID
     /// - Returns: `true` when matching the oidRegex
     var isOID: Bool {
-        !String.oidRegex.matches(in: self, options: [], range: fullRange).isEmpty
+        !String.oidRegex.matches(in: self, options: [], range: NSRange(location: 0, length: count)).isEmpty
     }
 
     /// Create a Character set of self

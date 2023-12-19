@@ -15,7 +15,6 @@
 //
 
 import Foundation
-import GemCommonsKit
 
 extension Int: ASN1EncodableType {
     public func asn1encode(tag: ASN1DecodedTag?) throws -> ASN1Object {

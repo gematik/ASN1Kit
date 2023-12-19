@@ -16,7 +16,6 @@
 
 import DataKit
 import Foundation
-import GemCommonsKit
 
 /**
  ASN.1 (DER) Decoder implementation according to the X.690-0207 (Abstract Syntax Notation One) specification.
@@ -49,7 +48,6 @@ public class ASN1Decoder {
         }
 
         if firstByte == 0x0 {
-            DLog("Decoding ASN.1 object bounced unexpected on NULL (0x0) marker")
             throw ASN1Error.malformedEncoding("Decoding ASN.1 object bounced unexpected on NULL (0x0) marker")
         }
 
@@ -68,7 +66,6 @@ public class ASN1Decoder {
 
     class func decodeLength(from scanner: DataScanner) throws -> Int {
         guard let data = scanner.scan(distance: 1) else {
-            DLog("Decoding ASN.1 Scanner has no bytes left")
             throw ASN1Error.malformedEncoding("Scanner has no bytes left [length]")
         }
 
@@ -115,7 +112,6 @@ public class ASN1Decoder {
             var idx = 0
             repeat {
                 guard let byte = scanner.scan(distance: 1)?[0] else {
-                    DLog("Decoding ASN.1 Scanner has no bytes left")
                     throw ASN1Error.malformedEncoding("Scanner has no bytes left to decode long tag number")
                 }
                 // Overflow check
@@ -181,7 +177,7 @@ public class ASN1Decoder {
             // Can be implicit null
             guard length > 0 else {
                 return ASN1Primitive(
-                    data: .primitive(Data.empty),
+                    data: .primitive(Data()),
                     tag: tag
                 )
             }
@@ -206,7 +202,6 @@ public class ASN1Decoder {
         case .bitString:
             return try tag.toConstructed(with: decodeItems(from: scanner, length: length))
         case .external:
-            DLog("Decoding ASN.1 External Tag is unsupported")
             // TODO: //swiftlint:disable:this todo
             throw ASN1Error.unsupported("Decoding ASN.1 External Tag is unsupported")
         default:
@@ -223,7 +218,6 @@ public class ASN1Decoder {
         }
 
         guard let data = scanner.scan(distance: length) else {
-            DLog("Scanner has no bytes left to decode sequence")
             throw ASN1Error.malformedEncoding("Scanner has no bytes left to decode sequence")
         }
 
@@ -242,10 +236,9 @@ public class ASN1Decoder {
     fileprivate class func createPrimitive(tag: ASN1Tag, length: Int, scanner: DataScanner) throws -> ASN1Primitive {
         guard length > 0 else {
             let tag: ASN1Tag = tag == .octetString ? .octetString : .null
-            return tag.toPrimitive(with: Data.empty)
+            return tag.toPrimitive(with: Data())
         }
         guard let data = scanner.scan(distance: length) else {
-            DLog("Decoding ASN.1 Scanner has no bytes left")
             throw ASN1Error.malformedEncoding(
                 "Scanner has no bytes left to decode primitive: [0x\(String(tag.rawValue, radix: 16))]"
             )
