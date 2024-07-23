@@ -25,8 +25,6 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
-        .package(url: "http://github.com/Quick/Nimble", from: "9.2.0"),
-        .package(url: "https://github.com/SwiftCommon/DataKit.git", from: "1.1.0"),
         .package(url: "http://github.com/Carthage/Commandant", from: "0.17.0"),
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.1.0")
     ],
@@ -35,13 +33,13 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "ASN1Kit",
-            dependencies: ["DataKit"]),
+            dependencies: ["Helper"]),
         .executableTarget(
             name: "CLI",
             dependencies: ["ASN1Kit", "Commandant"]),
-        .testTarget(
-            name: "ASN1KitTests",
-            dependencies: ["ASN1Kit", "Nimble"]),
+        .target(
+            name: "Helper",
+            dependencies: []),
     ],
     swiftLanguageVersions: [.v5]
 )

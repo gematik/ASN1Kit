@@ -38,7 +38,6 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Package.swift
   - .build/
   - vendor/
-  - Carthage/
   - DerivedData/
 custom_rules:
   nimble_fail_with_description:

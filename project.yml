@@ -33,7 +33,7 @@ targets:
     sources:
       - Sources/ASN1Kit
     dependencies:
-      - framework: Carthage/Build/DataKit.xcframework
+      - target: Helper_${platform}
     scheme:
       testTargets:
         - ASN1KitTests_${platform}
@@ -52,9 +52,15 @@ targets:
       - target: ASN1Kit_macOS
         embed: true
       - package: Commandant
-      - framework: Carthage/Build/DataKit.xcframework
     scheme:
      gatherCoverageData: true 
+  Helper:
+    type: framework
+    platform: [macOS, iOS]
+    info:
+      path: Resources/ASN1Kit_Info.plist
+    sources:
+      - Sources/Helper
   ASN1KitTests:
     type: bundle.unit-test
     platform: [macOS,iOS]

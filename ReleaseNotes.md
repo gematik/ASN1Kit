@@ -1,3 +1,8 @@
+# Release 1.3.0
+
+- Remove dependency on GemCommonsKit
+- Remove dependency on DataKit
+
 # Release 1.2.0
 
 - Allow empty (zero item) sequences

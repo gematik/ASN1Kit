@@ -15,7 +15,6 @@
 //
 
 @testable import ASN1Kit
-import DataKit
 import Nimble
 import XCTest
 

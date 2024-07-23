@@ -21,14 +21,6 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
-### carthage_resolve_dependencies
-
-```sh
-[bundle exec] fastlane carthage_resolve_dependencies
-```
-
-Lane that resolves the project dependencies using Carthage.
-
 ### build_mac
 
 ```sh
@@ -89,7 +81,7 @@ Build and test (scan) the project for macOS and iOS by calling `test_mac` and `t
 [bundle exec] fastlane setup
 ```
 
-Lane that sets up the SPM/Carthage dependencies and xcodeproj.
+Lane that sets up the SPM dependencies and xcodeproj.
 
 
 
