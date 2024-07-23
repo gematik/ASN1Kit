@@ -33,13 +33,10 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "ASN1Kit",
-            dependencies: ["Helper"]),
+            dependencies: []),
         .executableTarget(
             name: "CLI",
             dependencies: ["ASN1Kit", "Commandant"]),
-        .target(
-            name: "Helper",
-            dependencies: []),
     ],
     swiftLanguageVersions: [.v5]
 )
