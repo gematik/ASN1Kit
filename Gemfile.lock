@@ -283,9 +283,6 @@ GEM
     word_wrap (1.0.0)
     xcinvoke (0.3.0)
       liferaft (~> 0.0.6)
-    xcode-install (2.6.8)
-      claide (>= 0.9.1, < 1.1.0)
-      fastlane (>= 2.1.0, < 3.0.0)
     xcodeproj (1.22.0)
       CFPropertyList (>= 2.3.3, < 4.0)
       atomos (~> 0.1.3)
@@ -305,7 +302,6 @@ DEPENDENCIES
   asciidoctor-reducer
   fastlane (~> 2.187)
   jazzy (~> 0.13)
-  xcode-install (~> 2.6.6)
   xcodeproj (~> 1.7)
 
 RUBY VERSION

@@ -32,8 +32,6 @@ targets:
       path: Resources/ASN1Kit_Info.plist
     sources:
       - Sources/ASN1Kit
-    dependencies:
-      - target: Helper_${platform}
     scheme:
       testTargets:
         - ASN1KitTests_${platform}
@@ -54,13 +52,6 @@ targets:
       - package: Commandant
     scheme:
      gatherCoverageData: true 
-  Helper:
-    type: framework
-    platform: [macOS, iOS]
-    info:
-      path: Resources/ASN1Kit_Info.plist
-    sources:
-      - Sources/Helper
   ASN1KitTests:
     type: bundle.unit-test
     platform: [macOS,iOS]
