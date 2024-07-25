@@ -1,3 +1,7 @@
+# Release 1.3.1
+
+- Set access level of func hexString() to internal (was erroneously public)
+
 # Release 1.3.0
 
 - Remove dependency on GemCommonsKit
