@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0040DDBB365A7AE691912256 /* DataExtASN1IntTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0375FD76819501822510FF9 /* DataExtASN1IntTest.swift */; };
 		028E1EABB69EA19F8B33BDA8 /* ASN1PrimitiveEncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7149D565833C3F38AF2E9D3 /* ASN1PrimitiveEncodingTest.swift */; };
+		04C3EDA0EC2F9B903C8A3179 /* Data+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6287DA2D3E0A2FB823016F9 /* Data+Hex.swift */; };
 		075D42347F9B859EFD75CA1F /* StringExtASN1EncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E59EDC7B029DB06F8E1F43D /* StringExtASN1EncodingTest.swift */; };
 		0976F2CB8E66F642F85AC4BD /* ASN1Kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB2F1C0CA35F0DC4C840B06 /* ASN1Kit.framework */; };
 		0B82CD9B738679672F1357BC /* IntExtASN1EncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF683ACCB52B2C08A6BB386 /* IntExtASN1EncodingTest.swift */; };
@@ -227,6 +228,7 @@
 		91DD74E01ECD7D6B36A8DD5C /* ASN1Object+Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASN1Object+Encoding.swift"; sourceTree = "<group>"; };
 		95E69CEBA06059B7CE7BDD86 /* String+ASN1Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ASN1Encoding.swift"; sourceTree = "<group>"; };
 		9A8427D30FFDE81EEE9EA077 /* ASN1Kit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = ASN1Kit.docc; sourceTree = "<group>"; };
+		A6287DA2D3E0A2FB823016F9 /* Data+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Hex.swift"; sourceTree = "<group>"; };
 		A659A6785BA96384890F6CB3 /* DataScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScanner.swift; sourceTree = "<group>"; };
 		A9781C2A34B69ED0B9AAAED3 /* asn1c */ = {isa = PBXFileReference; includeInIndex = 0; path = asn1c; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5ECA8126459D5803D20DAB /* Nimbe+ASN1Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nimbe+ASN1Data.swift"; sourceTree = "<group>"; };
@@ -299,6 +301,14 @@
 				95E69CEBA06059B7CE7BDD86 /* String+ASN1Encoding.swift */,
 			);
 			path = encodable;
+			sourceTree = "<group>";
+		};
+		28A3FCBE1AFC18F874A4253C /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				A6287DA2D3E0A2FB823016F9 /* Data+Hex.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		3DF890C6528F628272530696 = {
@@ -381,6 +391,7 @@
 				6BD6BC0258334E692989ACFD /* main.swift */,
 				61C1D3C1FF03C75FE439C1DE /* ParseCommand.swift */,
 				EAE188072EC317B93DC93A87 /* VersionCommand.swift */,
+				28A3FCBE1AFC18F874A4253C /* Helper */,
 			);
 			name = CLI;
 			path = Sources/CLI;
@@ -621,6 +632,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C3EDA0EC2F9B903C8A3179 /* Data+Hex.swift in Sources */,
 				4EDE83BF61F1A24C49E50BC8 /* ParseCommand.swift in Sources */,
 				FAC877B733818A87D5486BB3 /* VersionCommand.swift in Sources */,
 				F0C963ACC445EE7E072C7681 /* main.swift in Sources */,
