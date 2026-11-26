@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "Commandant",
-        "repositoryURL": "http://github.com/Carthage/Commandant",
+        "repositoryURL": "https://github.com/Carthage/Commandant",
         "state": {
           "branch": null,
           "revision": "a1671cf728db837cf5ec1980a80d276bbba748f6",
